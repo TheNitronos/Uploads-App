@@ -1,0 +1,19 @@
+<!DOCTYPE html> 
+<html> 
+    <head>
+        <mesta charset="utf-8" />
+        <title>index des images</title> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    </head>
+    <body>
+        <h1>Images uploadées</h1>
+        {% for image in images %}
+            <img class="image" src="{{ image.image.url }}"/>
+        {% endfor %}
+        <p>
+            <a href="https://projet-daniel-thenitronos.c9.io/cameraUpload/upload/" >Upload</a>
+        </p>
+    </body>
+</html>

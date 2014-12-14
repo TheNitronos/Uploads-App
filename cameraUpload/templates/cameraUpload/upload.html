@@ -1,0 +1,26 @@
+<!DOCTYPE html> 
+<html> 
+    <head>
+        <meta charset="utf-8" />
+        <title>Upload des image</title> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    </head> 
+    <body>
+        <h1>Upload d'image</h1>
+
+        {% if sauvegarde %}
+            <p>Cette image a bient été uploadée.</p>
+        {% endif %}
+           
+        <p>
+            <form method="post" enctype="multipart/form-data" action=".">
+               {% csrf_token %}
+               {{ form.as_p }}
+               <input type="submit"/>
+            </form>
+        </p>
+        <p>
+            <a href="https://projet-daniel-thenitronos.c9.io/cameraUpload/">Index</a>
+        </p>
+    </body>
+</html>
