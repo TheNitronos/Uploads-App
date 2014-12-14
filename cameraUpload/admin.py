@@ -1,3 +1,4 @@
 from django.contrib import admin
+from cameraUpload.models import classes
 
-# Register your models here.
+admin.site.register(classes)

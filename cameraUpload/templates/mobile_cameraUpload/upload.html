@@ -11,31 +11,32 @@
     </head> 
     <body>
         <div data-role="page" >
+
+        	<div data-role="header" data-position="fixed">
+        		<h1>Upload d'images</h1>
+        	</div><!-- /header -->
         
-        <div data-role="header" data-position="fixed">
-            <h1>Liste d'images uploadées</h1>
-        </div><!-- /header -->
-
-        <div role="main" class="ui-content">
-            {% if sauvegarde %}
-            <p>Cette image a bient été uploadée.</p>
-            {% endif %}
-
-            <p>
-                <form method="post" enctype="multipart/form-data" action=".">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="submit"/>
-                </form>
-            </p>
-            <p>
-                <a href="https://projet-daniel-thenitronos.c9.io/cameraUpload/" class="ui-btn">Index</a>
-            </p>
-        </div><!-- /content -->
-
-        <div data-role="footer" data-position="fixed">
-            <h4>Essai</h4>
-        </div><!-- /footer -->
+        	<div role="main" class="ui-content">
+        	    {% if sauvegarde %}
+                    <p>Cette image a bient été uploadée.</p>
+                {% endif %}
+                <p>
+                    <form method="post" enctype="multipart/form-data" action="." data-ajax="false">
+                       {% csrf_token %}
+                       {{ form.as_p }}
+                       <input type="submit" value="Upload !"/>
+                    </form>
+                </p>
+                <p>
+                    <a href="https://projet-daniel-thenitronos.c9.io/cameraUpload/" class="ui-btn">Index</a>
+                </p>
+        	</div><!-- /content -->
+        
+        	<div data-role="footer" data-position="fixed">
+        		<h4>Essai</h4>
+        	</div><!-- /footer -->
+        	
         </div><!-- /page -->
+    
     </body>
 </html>

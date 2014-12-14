@@ -19,7 +19,7 @@
         	<div role="main" class="ui-content">
         	    <ul data-role="listview">
                     {% for image in images %}
-                        <li><img class="image" src="{{ image.image.url }}"/></li>
+                        <li><img src="{{ image.image.url }}"/> <p> {{ image.tag }}</p> <p> {{ image.classe }}</p></li>
                     {% endfor %}
                 </ul>
                 <p>

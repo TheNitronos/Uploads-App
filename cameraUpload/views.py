@@ -13,13 +13,15 @@ def upload(request):
         if form.is_valid():
             image = pictures()
             image.image = form.cleaned_data["image"]
+            image.tag = form.cleaned_data["tag"]
+            image.classe = form.cleaned_data["classe"]
             image.save()
             sauvegarde = True
     else:
         form = UploadForm()
 
-    return render(request, 'cameraUpload/upload.html', locals())
+    return render(request, 'mobile_cameraUpload/upload.html', locals())
     
 def index(request):
     images = pictures.objects.all()
-    return render(request, 'cameraUpload/index.html', {'images': images})
+    return render(request, 'mobile_cameraUpload/index.html', {'images': images})
