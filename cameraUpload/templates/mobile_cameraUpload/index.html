@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         {% load staticfiles %}
         <link rel="stylesheet" href="{% static 'css/jquery.mobile-1.4.5.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
         <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
         <script src="{% static 'js/jquery.mobile-1.4.5.min.js' %}"></script>
     </head> 
@@ -17,14 +18,16 @@
         	</div><!-- /header -->
         
         	<div role="main" class="ui-content">
-        	    <ul data-role="listview">
-                    {% for image in images %}
-                        <li><img src="{{ image.image.url }}"/> <p> {{ image.tag }}</p> <p> {{ image.classe }}</p></li>
-                    {% endfor %}
-                </ul>
-                <p>
+        	    <div>
+        	        <ul data-role="listview">
+                        {% for image in images %}
+                            <li><a href="{% url 'cameraUpload:detail' image.id %}"><img src="{{ image.image.url }}"/> <p>{{ image.tag }}</p> <p>{{ image.classe }}</p> <p>id: {{ image.id }}</p></a></li>
+                        {% endfor %}
+                    </ul>7
+                </div>
+                <div>
                     <a href="https://projet-daniel-thenitronos.c9.io/cameraUpload/upload/" class="ui-btn">Upload</a>
-                </p>
+                </div>
         	</div><!-- /content -->
         
         	<div data-role="footer" data-position="fixed">

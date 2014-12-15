@@ -25,3 +25,8 @@ def upload(request):
 def index(request):
     images = pictures.objects.all()
     return render(request, 'mobile_cameraUpload/index.html', {'images': images})
+
+def detail(request, imageId):
+    image = pictures.objects.get(id=imageId)
+    return render(request, 'mobile_cameraUpload/detail.html', {'image': image})
+    

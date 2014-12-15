@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         {% load staticfiles %}
         <link rel="stylesheet" href="{% static 'css/jquery.mobile-1.4.5.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
         <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
         <script src="{% static 'js/jquery.mobile-1.4.5.min.js' %}"></script>
     </head> 
@@ -13,11 +14,19 @@
         <div data-role="page" >
 
         	<div data-role="header" data-position="fixed">
-        		<h1></h1>
+        		{% if image.tag %}
+        		    <h1>{{ image.tag }}</h1>
+        	    {% else %}
+        	        <h1>Détail</h1>
+        	    {% endif %}
         	</div><!-- /header -->
         
         	<div role="main" class="ui-content">
-        	    
+        	    <img class="imageDetail" src="{{ image.image.url }}"/>
+        	    <div data-role="collapsible">
+                    <h4>Modifications</h4>
+                    <p>Bientôt disponible</p>
+                </div>
         	</div><!-- /content -->
         
         	<div data-role="footer" data-position="fixed">

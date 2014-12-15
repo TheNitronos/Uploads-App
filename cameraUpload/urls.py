@@ -8,6 +8,7 @@ from cameraUpload import views
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
+    url(r'^detail/(?P<imageId>\w+)', views.detail, name='detail'),
     url(r'^upload/', views.upload, name='upload'),
 )
 

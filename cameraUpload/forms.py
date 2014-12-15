@@ -3,5 +3,5 @@ from django import forms
 
 class UploadForm(forms.Form):
     image = forms.ImageField()
-    tag = forms.CharField()
-    classe = forms.CharField()
+    tag = forms.CharField(required=False)
+    classe = forms.CharField(required=False)
