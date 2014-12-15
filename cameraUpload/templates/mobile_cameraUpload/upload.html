@@ -11,33 +11,34 @@
         <script src="{% static 'js/jquery.mobile-1.4.5.min.js' %}"></script>
     </head> 
     <body>
+        
         <div data-role="page" >
-
-        	<div data-role="header" data-position="fixed">
-        		<h1>Upload d'images</h1>
-        	</div><!-- /header -->
-        
-        	<div role="main" class="ui-content">
-        	    {% if sauvegarde %}
-                    <p>Cette image a bient été uploadée.</p>
+           
+            <div data-role="header" data-position="fixed">
+                <h1>Upload d'images</h1>
+            </div>
+            
+            <div role="main" class="ui-content">
+                {% if sauvegarde %}
+                <p>Cette image a bient été uploadée.</p>
                 {% endif %}
-                <p>
+                <div>
                     <form method="post" enctype="multipart/form-data" action="." data-ajax="false">
-                       {% csrf_token %}
-                       {{ form.as_p }}
-                       <button type="submit" />Upload</button>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" />Upload</button>
                     </form>
-                </p>
-                <p>
-                    <a href="https://projet-daniel-thenitronos.c9.io/cameraUpload/" class="ui-btn">Index</a>
-                </p>
-        	</div><!-- /content -->
+                </div>
+                <div>
+                    <a href="{% url 'cameraUpload:index'  %}" class="ui-btn">Index</a>
+                </div>
+            </div>
+            
+            <div data-role="footer" data-position="fixed">
+                <h4>Essai</h4>
+            </div>
+            
+        </div>
         
-        	<div data-role="footer" data-position="fixed">
-        		<h4>Essai</h4>
-        	</div><!-- /footer -->
-        	
-        </div><!-- /page -->
-    
     </body>
 </html>
