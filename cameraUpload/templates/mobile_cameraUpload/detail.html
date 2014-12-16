@@ -7,6 +7,7 @@
         {% load staticfiles %}
         <link rel="stylesheet" href="{% static 'css/jquery.mobile-1.4.5.min.css' %}" />
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <script src="{% static 'js/delete.js' %}"></script>
         <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
         <script src="{% static 'js/jquery.mobile-1.4.5.min.js' %}"></script>
     </head> 
@@ -23,9 +24,31 @@
         
         	<div role="main" class="ui-content">
         	    <img class="imageDetail" src="{{ image.image.url }}"/>
-        	    <div data-role="collapsible">
-                    <h4>Modifications</h4>
+        	    <div data-role="collapsibleset">
+                    <div data-role="collapsible">
+                        <h3>Informations</h3>
                     <p>Bientôt disponible</p>
+                        </div>
+                    <div data-role="collapsible">
+                        <h3>Modifications</h3>
+                    <p>Bientôt disponible</p>
+                    </div>
+                    <div data-role="collapsible">
+                        <h3>Zone de danger</h3>
+                    <p><a href="#suppression" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-check ui-btn-icon-left ui-btn-a" data-transition="pop">Supprimer</a>
+                    <div data-role="popup" id="suppression" class="ui-corner-all">
+                        <form>
+                            <div style="padding:10px 20px;">
+                                <h2 class="center">Attention !</h2>
+                                <form method="post" enctype="multipart/form-data" action="." data-ajax="false">
+                                {% csrf_token %}
+                                <input type="text" data-clear-btn="true" placeholder="Veuillez saisir 'supprimer'">
+                                <button type="submit" />Supprimer</button>
+                                </form>
+                            </div>
+                        </form>
+                    </div></p>
+                    </div>
                 </div>
         	</div>
         

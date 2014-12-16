@@ -29,4 +29,6 @@ def index(request):
 def detail(request, imageId):
     image = pictures.objects.get(id=imageId)
     return render(request, 'mobile_cameraUpload/detail.html', {'image': image})
+ 
+
     
