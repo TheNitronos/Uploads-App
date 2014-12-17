@@ -4,6 +4,7 @@ from django.template import RequestContext, loader
 from django.http import HttpResponseRedirect
 from cameraUpload.forms import UploadForm
 from cameraUpload.models import pictures
+from django.core.urlresolvers import reverse
 
 def upload(request):
     sauvegarde = False
@@ -29,6 +30,11 @@ def index(request):
 def detail(request, imageId):
     image = pictures.objects.get(id=imageId)
     return render(request, 'mobile_cameraUpload/detail.html', {'image': image})
- 
+
+def delete(request, imageId):
+    image = pictures.objects.get(id=imageId)
+    if request.method == "POST":
+        return HttpResponseRedirect(reverse('cameraUpload:index', args=(image.id,)))
+#utiliser méthode .delete() 
 
     

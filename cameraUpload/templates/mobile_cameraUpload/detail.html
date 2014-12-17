@@ -25,10 +25,10 @@
         	<div role="main" class="ui-content">
         	    <img class="imageDetail" src="{{ image.image.url }}"/>
         	    <div>
-        	        <form method="post" enctype="multipart/form-data" action="." data-ajax="false">
+        	        <form action="{% url 'cameraUpload:delete' image.id %}" method="post">
                     {% csrf_token %}
                     <input type="text" data-clear-btn="true" placeholder="Veuillez saisir 'supprimer'">
-                    <button type="submit" />Supprimer</button>
+                    <input type="submit" value="Delete" />
                     </form>
                 </div>
         	</div>
