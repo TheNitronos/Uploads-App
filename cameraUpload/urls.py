@@ -10,6 +10,5 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^detail/(?P<imageId>\w+)', views.detail, name='detail'),
     url(r'^upload/', views.upload, name='upload'),
-    url(r'^detail/(?P<imageId>\w+)/delete/$', views.delete, name='delete'),
 )
 

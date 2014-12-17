@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, redirect
 from django.template import RequestContext, loader
 from django.http import HttpResponseRedirect
 from cameraUpload.forms import UploadForm
@@ -29,12 +29,13 @@ def index(request):
 
 def detail(request, imageId):
     image = pictures.objects.get(id=imageId)
-    return render(request, 'mobile_cameraUpload/detail.html', {'image': image})
-
-def delete(request, imageId):
-    image = pictures.objects.get(id=imageId)
     if request.method == "POST":
-        return HttpResponseRedirect(reverse('cameraUpload:index', args=(image.id,)))
+        image.image.delete()
+        image.delete()
+        images = pictures.objects.all()
+        return redirect('cameraUpload:index')
+        
+    return render(request, 'mobile_cameraUpload/detail.html', {'image': image})
 #utiliser méthode .delete() 
 
     

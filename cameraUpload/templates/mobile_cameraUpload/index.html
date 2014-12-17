@@ -21,12 +21,17 @@
         	    <div>
         	        <ul data-role="listview">
                         {% for image in images %}
-                            <li><a href="{% url 'cameraUpload:detail' image.id %}"><img src="{{ image.image.url }}"/> <p>{{ image.tag }}</p> <p>{{ image.classe }}</p> <p>id: {{ image.id }}</p></a></li>
+                            <li>
+                                <a href="{% url 'cameraUpload:detail' image.id %}"><img src="{{ image.image.url }}"/> 
+                                <p>{{ image.tag }}</p> 
+                                <p>{{ image.classe }}</p> 
+                                <p>id: {{ image.id }}</p>
+                                </a>
+                            </li>
                         {% endfor %}
-                    </ul>7
-                </div>
-                <div>
-                    <a href="{% url 'cameraUpload:upload' %}" class="ui-btn">Upload</a>
+                    </ul>
+                    
+                    <a href="{% url 'cameraUpload:upload' %}" class="ui-btn btn-bottom">Upload</a>
                 </div>
         	</div>
         
