@@ -12,3 +12,13 @@
 {
     margin-top: 5%;
 }
+
+.popup
+{
+    padding:100px 200px; 
+}
+
+.conteneur-popup
+{
+    max-width: 90%;
+}
