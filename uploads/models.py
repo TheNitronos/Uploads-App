@@ -9,6 +9,8 @@ class Teacher(models.Model):
 
 class Exercise(models.Model):
     exercice_topic = models.CharField(max_length=30)
+class Course(models.Model):
+    course_topic = models.CharField(max_length=30)
     
 
 
@@ -29,6 +31,7 @@ class Picture(models.Model):
     
     #exercices concernés si nécessaire
     exercises = models.ManyToManyField(Exercise, null=True)
+    courses = models.ManyToManyField(Course, null=True)
     
     #date de l'upload
     date = models.DateField(auto_now_add=True)
