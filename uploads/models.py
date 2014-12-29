@@ -1,6 +1,6 @@
 from django.db import models
 
-#ces trois premières classes ont été créées pour faire des essais comme je n'ai pas encore les classe définitives
+#ces quatres premières classes ont été créées pour faire des essais comme je n'ai pas encore les classe définitives
 class Student(models.Model):
     student_name = models.CharField(max_length=30)
 
@@ -8,7 +8,8 @@ class Teacher(models.Model):
     teacher_name = models.CharField(max_length=30)
 
 class Exercise(models.Model):
-    exercice_topic = models.CharField(max_length=30)
+    exercise_topic = models.CharField(max_length=30)
+
 class Course(models.Model):
     course_topic = models.CharField(max_length=30)
     
@@ -35,4 +36,3 @@ class Picture(models.Model):
     
     #date de l'upload
     date = models.DateField(auto_now_add=True)
-    

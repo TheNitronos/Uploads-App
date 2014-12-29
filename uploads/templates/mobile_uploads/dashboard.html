@@ -24,7 +24,9 @@
         
         <!-- début contenu --> 
         <div role="main" class="ui-content">
-        <p>Contenu</p>
+            <a href="{% url 'uploads:upload'  %}" class="ui-btn">Upload</a>
+            <a href="{% url 'uploads:ex_index'  %}" class="ui-btn">Exercices</a>
+            <a href="{% url 'uploads:course_index'  %}" class="ui-btn">Cours</a>
         </div>
         <!-- fin contenu -->
         

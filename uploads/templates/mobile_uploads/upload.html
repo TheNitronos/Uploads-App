@@ -24,7 +24,22 @@
         
         <!-- début contenu --> 
         <div role="main" class="ui-content">
-        <p>Contenu</p>
+            <!-- quand l'image a été uploadée cette ligne s'afficher --> 
+            {% if sauvegarde %}
+                <p>Cette image a bient été uploadée.</p>
+            {% endif %}
+            <div>
+                <!-- formulaire pour upload de l'image, data-ajax="false" permet d'éviter des chargements propres a jQM qui empêchent le bon fonctionnement des formulaires  --> 
+                <form method="post" enctype="multipart/form-data" action="." data-ajax="false">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="ui-btn btn-bottom" />Uploader !</button>
+                </form>
+            </div>
+            <div>
+                <!-- bouton pour revenir au dashbord -->
+                <a href="{% url 'uploads:dashboard'  %}" class="ui-btn">Retour</a>
+            </div>
         </div>
         <!-- fin contenu -->
         

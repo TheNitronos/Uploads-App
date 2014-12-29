@@ -2,7 +2,7 @@
 <html> 
     <head>
         <meta charset="utf-8" />
-        <title>Uploads</title>
+        <title>Index exercices</title>
         <!-- ligne pour que le contenu s'adapte à l'appreil mobile --> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- chargement des script et du css nécessaire --> 
@@ -18,19 +18,25 @@
         
         <!-- début entête --> 
         <div data-role="header" data-position="fixed">
-        <h1>Uploads</h1>
+        <h1>Index exercices</h1>
         </div>
         <!-- fin entête -->
         
         <!-- début contenu --> 
         <div role="main" class="ui-content">
-        <p>Contenu</p>
+            <ul data-role="listview">
+                {% for exercise in exercises %}
+                    <li>
+                        <p>{{ exercise.exercise_topic }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
         <!-- fin contenu -->
         
         <!-- début bas de page --> 
         <div data-role="footer" data-position="fixed">
-        <h4>Uploads</h4>
+        <h4>Index exercices</h4>
         </div>
         <!-- fin bas de page -->
         
