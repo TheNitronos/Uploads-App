@@ -18,7 +18,7 @@ def ex_index(request):
 #affichage d'un exercice
 def ex_detail(request, exerciseId):
     exercise = Exercise.objects.get(id=exerciseId)
-    return render(request, 'mobile_uploads/exercice_detail.html', {'exercise': exercise})
+    return render(request, 'mobile_uploads/exercise_detail.html', {'exercise': exercise})
     
 #affichage des cours
 def course_index(request):

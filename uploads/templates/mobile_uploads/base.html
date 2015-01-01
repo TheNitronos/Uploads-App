@@ -7,17 +7,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- chargement des script et du css nécessaire --> 
         {% load staticfiles %}
+        <link rel="import" href="{% static 'html/panel.html' %}" />
         <link rel="stylesheet" href="{% static 'css/jquery.mobile-1.4.5.min.css' %}" />
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
         <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
         <script src="{% static 'js/jquery.mobile-1.4.5.min.js' %}"></script>
+        <script src="{% static 'js/panel.js' %}"></script>
     </head> 
     <body>
         <!-- début de page --> 
-        <div data-role="page" >
+        <div data-role="page" id="page" >
+            
+        <!-- début du panel -->
+        <div data-role="panel" id="panel">
+            <p>Salut</p>
+        </div>
+        <!-- fin du panel -->
         
         <!-- début entête --> 
         <div data-role="header" data-position="fixed">
+            <a href="{% url 'uploads:dashboard'  %}" class="ui-btn ui-icon-home ui-btn-icon-left ui-shadow ui-corner-all">Dashboard</a>
         <h1>Uploads</h1>
         </div>
         <!-- fin entête -->
