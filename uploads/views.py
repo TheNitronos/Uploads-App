@@ -14,11 +14,21 @@ def dashboard(request):
 def ex_index(request):
     exercises = Exercise.objects.all()
     return render(request, 'mobile_uploads/exercise_index.html', {'exercises': exercises})
-
+    
+#affichage d'un exercice
+def ex_detail(request, exerciseId):
+    exercise = Exercise.objects.get(id=exerciseId)
+    return render(request, 'mobile_uploads/exercice_detail.html', {'exercise': exercise})
+    
 #affichage des cours
 def course_index(request):
     courses = Course.objects.all()
     return render(request, 'mobile_uploads/course_index.html', {'courses': courses})
+    
+#affichage d'un cours
+def course_detail(request, courseId):
+    course = Course.objects.get(id=courseId)
+    return render(request, 'mobile_uploads/course_detail.html', {'course': course})
 
 #requête pour uploader une image simple   
 def upload(request):
