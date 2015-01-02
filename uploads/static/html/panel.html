@@ -1,5 +1,18 @@
 <!-- début du panel -->
 <div data-role="panel" id="panel">
-    <p>Salut</p>
+    <div id="panelContent">
+        <h2>Daniel</h2>
+        <a href="#" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-mini ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-right">Fermer</a>
+        <ul data-role="listview" data-inset="true" data-divider-theme="a" data-filter="true">
+            <li data-role="list-divider">Tableau de bord</li>
+            <li><a href="{% url 'uploads:course_index'  %}">Cours</a></li>
+            <li><a href="{% url 'uploads:ex_index'  %}">Exercices</a></li>
+            <li><a href="http://webmathquiz-blm08.c9.io/quiz/">Quiz</a></li>
+            <li data-role="list-divider">Personnel</li>
+            <li><a href="#">Compte</a></li>
+            <li><a href="#">Se deconnecter</a></li>
+        </ul>
+    </div>>
 </div>
 <!-- fin du panel -->
+       
