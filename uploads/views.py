@@ -67,7 +67,7 @@ def ex_upload(request, exerciseId):
 
     return render(request, 'mobile_uploads/upload.html', locals())
     
-#requête pour uploader une image pour un exercice  
+#requête pour uploader une image pour un cours
 def course_upload(request, courseId):
     sauvegarde = False
 
