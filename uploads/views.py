@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from uploads.forms import UploadForm
+from django.shortcuts import render, redirect
+from uploads.forms import UploadForm, ModifyForm
 from uploads.models import Picture, Course, Exercise
 
 #affichage du code de base pour une page en jQM
@@ -47,41 +47,23 @@ def upload(request):
         form = UploadForm()
 
     return render(request, 'mobile_uploads/upload.html', locals())
- 
-#requête pour uploader une image pour un exercice  
-def ex_upload(request, exerciseId):
-    sauvegarde = False
 
-    if request.method == "POST":
-        form = UploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            image = Picture()
-            image.image = form.cleaned_data["image"]
-            image.tag = form.cleaned_data["tag"]
-            image.description = form.cleaned_data["description"]
-            image.exercices = exerciseId
-            image.save()
-            sauvegarde = True
-    else:
-        form = UploadForm()
+#requête pour afficher toutes les images uploadées
+def uploaded(request):
+    images = Picture.objects.all()
+    return render(request, 'mobile_uploads/images_index.html', {'images': images})
 
-    return render(request, 'mobile_uploads/upload.html', locals())
+#requête pour afficher le détail d'une image
+def detail_uploaded(request, imageId):
+    image = Picture.objects.get(id=imageId)
+    return render(request, 'mobile_uploads/images_detail.html', locals())
     
-#requête pour uploader une image pour un cours
-def course_upload(request, courseId):
-    sauvegarde = False
+def delete(request, imageId):
+    image = Picture.objects.get(id=imageId)
+    image.image.delete()
+    image.delete()
+    return redirect('uploads:uploaded')
 
-    if request.method == "POST":
-        form = UploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            image = Picture()
-            image.image = form.cleaned_data["image"]
-            image.tag = form.cleaned_data["tag"]
-            image.description = form.cleaned_data["description"]
-            image.courses = courseId
-            image.save()
-            sauvegarde = True
-    else:
-        form = UploadForm()
 
-    return render(request, 'mobile_uploads/upload.html', locals())
+            
+    

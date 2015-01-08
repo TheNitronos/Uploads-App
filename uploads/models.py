@@ -25,14 +25,15 @@ class Picture(models.Model):
     #description: texte pour décrire l'image et apporter des précisions si nécessaire
     description = models.CharField(max_length=500, null=True)
     
+    #désactivés pour l'instant
     #destinateur
-    owner = models.ForeignKey(Student)
+    owner = models.ForeignKey(Student, null=True)
     #destinataire
-    receiver = models.ForeignKey(Teacher)
+    receiver = models.ForeignKey(Teacher, null=True)
     
     #exercices concernés si nécessaire
     exercises = models.ManyToManyField(Exercise, null=True)
-    courses = models.ManyToManyField(Course, null=True)
+    #courses = models.ManyToManyField(Course, null=True)
     
     #date de l'upload
     date = models.DateField(auto_now_add=True)

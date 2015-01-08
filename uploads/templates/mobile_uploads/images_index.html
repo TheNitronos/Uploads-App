@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- chargement des script et du css nécessaire --> 
         {% load staticfiles %}
-        <link rel="import" href="{% static 'html/panel.html' %}" />
+        <link rel="import" class="panel" href="{% static 'html/panel.html' %}" />
         <link rel="stylesheet" href="{% static 'css/jquery.mobile-1.4.5.min.css' %}" />
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
         <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
@@ -21,20 +21,26 @@
         <!-- début entête --> 
         <div data-role="header" data-position="fixed">
             <a href="{% url 'uploads:dashboard'  %}" class="ui-btn ui-icon-home ui-btn-icon-left ui-shadow ui-corner-all">Dashboard</a>
-            <h1>Uploads</h1>
+        <h1>Uploads</h1>
         </div>
         <!-- fin entête -->
         
         <!-- début contenu --> 
         <div role="main" class="ui-content">
-            <!-- début grille de type a: 2 colonnes -->
-            <fieldset class="ui-grid-a">
-                <!-- bloc a de la grille qui s'affiche sous la première colonne -->
-                <div class="ui-block-a"><a href="{% url 'uploads:upload'  %}" class="ui-btn">Upload</a></div>
-                <!-- bloc b de la grille qui s'affiche sous la deuxième colonne -->
-                <div class="ui-block-b"><a href="{% url 'uploads:uploaded'  %}" class="ui-btn">Upload: images</a></div>
-            </fieldset>
-            <!-- fin grille de type a -->
+            <ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true">
+                {% for image in images %}
+                    <li><a href="{% url 'uploads:detail_uploaded' image.id  %}">
+                        <img src="{{ image.image.url }}">
+                        <p>{{ image.tag }}</p> 
+                        <p>id: {{ image.id }}</p></a>
+                        <a href="#modifications" data-rel="popup" data-position-to="window" data-transition="pop">Modifications</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div data-role="popup" id="modifications" class="ui-content conteneur-popup">
+                <h3>Modifications ?</h3>
+            <p>Bientôt dispo</p>
+            </div>
         </div>
         <!-- fin contenu -->
         

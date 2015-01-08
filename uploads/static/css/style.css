@@ -15,16 +15,11 @@
 
 .popup
 {
-    padding:100px 200px; 
+    padding:10px 20px; 
 }
 
 .conteneur-popup
 {
     max-width: 90%;
-}
-
-.liste
-{
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom:2em;
 }

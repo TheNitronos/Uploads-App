@@ -13,14 +13,21 @@ urlpatterns = patterns('',
     #urls pour les exercices: index, détail et upload
     url(r'exercices/', views.ex_index, name='ex_index'),
     url(r'exercice/(?P<exerciseId>\w+)', views.ex_detail, name='ex_detail'),
-    url(r'ex/(?P<exerciseId>\w+)/upload', views.ex_upload, name='ex_upload'),
     
     #urls pour les cours: index, détail et upload
     url(r'courses/', views.course_index, name='course_index'),
     url(r'course/(?P<courseId>\w+)', views.course_detail, name='course_detail'),
-    url(r'c/(?P<courseId>\w+)/upload', views.course_upload, name='course_upload'),
     
+    #upload d'image quelconque
     url(r'^upload/', views.upload, name='upload'),
+    
+    #affichage des images
+    url(r'imagesAll/', views.uploaded, name='uploaded'),
+    url(r'imageDetail/(?P<imageId>\w+)', views.detail_uploaded, name='detail_uploaded'),
+    
+    #suppression d'image
+    url(r'delete/(?P<imageId>\w+)', views.delete, name='delete'),
+    #url(r'modify/(?P<imageId>\w+)', views.modify, name='modify'),
 )
 
 
