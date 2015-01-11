@@ -56,14 +56,26 @@ def uploaded(request):
 #requête pour afficher le détail d'une image
 def detail_uploaded(request, imageId):
     image = Picture.objects.get(id=imageId)
+    form = ModifyForm()
     return render(request, 'mobile_uploads/images_detail.html', locals())
     
 def delete(request, imageId):
+    if request.method == "POST":
+        image = Picture.objects.get(id=imageId)
+        image.image.delete()
+        image.delete()
+        return redirect('uploads:uploaded')
+
+def modify(request, imageId):
     image = Picture.objects.get(id=imageId)
-    image.image.delete()
-    image.delete()
-    return redirect('uploads:uploaded')
-
-
+    if request.method == "POST":
+        form = ModifyForm(request.POST, request.FILES)
+        if form.is_valid():
+            image.tag = form.cleaned_data["tag"]
+            image.description = form.cleaned_data["description"]
+            image.save()
+            return redirect('uploads:uploaded')
+        else:
+            return redirect('uploads:uploaded')
             
-    
+            

@@ -13,6 +13,7 @@
         <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
         <script src="{% static 'js/jquery.mobile-1.4.5.min.js' %}"></script>
         <script src="{% static 'js/panel.js' %}"></script>
+        <script src="{% static 'js/popupIMG.js' %}"></script>
     </head> 
     <body>
         <!-- début de page --> 
@@ -29,18 +30,18 @@
         <div role="main" class="ui-content">
             <ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true">
                 {% for image in images %}
-                    <li><a href="{% url 'uploads:detail_uploaded' image.id  %}">
+                    <li><a href="#popup{{ image.id }}" data-rel="popup" data-position-to="window" data-transition="slide">
                         <img src="{{ image.image.url }}">
                         <p>{{ image.tag }}</p> 
                         <p>id: {{ image.id }}</p></a>
-                        <a href="#modifications" data-rel="popup" data-position-to="window" data-transition="pop">Modifications</a>
+                        <a href="{% url 'uploads:detail_uploaded' image.id  %}"></a>
+                        <!-- popup avec l'image personalisé -->
+                        <div data-role="popup" id="popup{{ image.id }}" class="popupIMG conteneur-popup">
+                            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Fermer</a><img src="{{ image.image.url }}" class="ui-corner-all">
+                        </div>
                     </li>
                 {% endfor %}
             </ul>
-            <div data-role="popup" id="modifications" class="ui-content conteneur-popup">
-                <h3>Modifications ?</h3>
-            <p>Bientôt dispo</p>
-            </div>
         </div>
         <!-- fin contenu -->
         

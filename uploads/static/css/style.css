@@ -1,6 +1,6 @@
 .imageDetail
 {
-    max-width: 100%;
+    width: 100%;
 }
 
 .center
@@ -20,6 +20,5 @@
 
 .conteneur-popup
 {
-    max-width: 90%;
-    padding-bottom:2em;
+    max-width:80%;
 }
