@@ -8,11 +8,12 @@
         <!-- chargement des script et du css nécessaire --> 
         {% load staticfiles %}
         <link rel="import" href="{% static 'html/panel.html' %}" />
-        <link rel="stylesheet" href="{% static 'css/jquery.mobile-1.4.5.min.css' %}" />
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-        <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
-        <script src="{% static 'js/jquery.mobile-1.4.5.min.js' %}"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script src="{% static 'js/panel.js' %}"></script>
+        <script src="{% static 'js/uploadsLoader.js' %}"></script>
     </head> 
     <body>
         <!-- début de page --> 
@@ -36,12 +37,8 @@
                 <form method="post" enctype="multipart/form-data" action="." data-ajax="false">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button type="submit" class="ui-btn btn-bottom" />Uploader !</button>
+                    <button type="submit" class="ui-btn btn-bottom upload" data-textonly="false" data-textvisible="true" data-msgtext="" data-inline="true">Uploader !</button>
                 </form>
-            </div>
-            <div>
-                <!-- bouton pour revenir au dashbord -->
-                <a href="{% url 'uploads:dashboard'  %}" class="ui-btn">Retour</a>
             </div>
         </div>
         <!-- fin contenu -->
