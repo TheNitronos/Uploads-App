@@ -1,45 +1,14 @@
-<!DOCTYPE html> 
-<html> 
-    <head>
-        <meta charset="utf-8" />
-        <title>{{ exercise.exercise_topic}}</title>
-        <!-- ligne pour que le contenu s'adapte à l'appreil mobile --> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- chargement des script et du css nécessaire --> 
-        {% load staticfiles %}
-        <link rel="import" href="{% static 'html/panel.html' %}" />
-        <link rel="stylesheet" href="{% static 'css/jquery.mobile-1.4.5.min.css' %}" />
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-        <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
-        <script src="{% static 'js/jquery.mobile-1.4.5.min.js' %}"></script>
-        <script src="{% static 'js/panel.js' %}"></script>
-    </head> 
-    <body>
-        <!-- début de page --> 
-        <div data-role="page" id="page" >
-        
-        <!-- début entête --> 
-        <div data-role="header" data-position="fixed">
-            <a href="{% url 'uploads:dashboard'  %}" class="ui-btn ui-icon-home ui-btn-icon-left ui-shadow ui-corner-all">Dashboard</a>
-        <p class="center">{{ exercise.exercise_topic}}</p>
-        </div>
-        <!-- fin entête -->
-        
-        <!-- début contenu --> 
-        <div role="main" class="ui-content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia risus ac nunc tempus ultricies. Sed sodales dui vitae diam rhoncus, porta fermentum risus vestibulum. Aliquam facilisis facilisis mi a rhoncus. Nunc finibus massa nunc, ac varius lectus feugiat in. Quisque congue lorem turpis, eget pellentesque orci ultrices et. Maecenas massa turpis, rhoncus eget neque non, convallis tincidunt mi. Sed at arcu sed elit malesuada fermentum et sit amet odio.
+{% extends "base.html" %}
+{% block header %}{{ exercise.exercise_topic}}{% endblock %}
+{% block content %}
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia risus<br>
+ac nunc tempus ultricies. Sed sodales dui vitae diam rhoncus, porta fermentum<br>
+risus vestibulum. Aliquam facilisis facilisis mi a rhoncus. Nunc finibus massa<br>
+nunc, ac varius lectus feugiat in. Quisque congue lorem turpis,<br>
+pellentesque orci ultrices et. Maecenas massa turpis, rhoncus eget neque non,<br>
+convallis tincidunt mi. Sed at arcu sed elit malesuada fermentum et sit amet odio.<br>
 
-Pellentesque eget sollicitudin ex. Vestibulum ullamcorper, eros a suscipit egestas, erat nunc congue est, sit amet semper neque mauris sed dui. Etiam at quam egestas, tempus lacus ut, varius elit.</p>
-        </div>
-        <!-- fin contenu -->
-        
-        <!-- début bas de page --> 
-        <div data-role="footer" data-position="fixed">
-        <h4>{{ exercise.exercise_topic}}</h4>
-        </div>
-        <!-- fin bas de page -->
-        
-        </div>
-        <!-- fin de page --> 
-    </body>
-</html>
+Pellentesque eget sollicitudin ex. Vestibulum ullamcorper, eros a suscipit <br>
+egestas, erat nunc congue est, sit amet semper neque mauris sed dui. Etiam at <br>
+quam egestas, tempus lacus ut, varius elit.</p>
+{% endblock %}

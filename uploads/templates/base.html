@@ -14,7 +14,7 @@
         <!-- mes scripts et css -->
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
         <script src="{% static 'js/panel.js' %}"></script>
-        {% block scripts %}{% endblock %}
+        <script src="{% static 'js/uploadsLoader.js' %}"></script>
     </head> 
     <body>
         <!-- début de page --> 
@@ -29,6 +29,8 @@
                 <li><a href="{% url 'uploads:course_index'  %}">Cours</a></li>
                 <li><a href="{% url 'uploads:ex_index'  %}">Exercices</a></li>
                 <li><a href="http://webmathquiz-blm08.c9.io/quiz/">Quiz</a></li>
+                <li><a href="{% url 'uploads:uploaded'  %}">Images</a></li>
+                <li><a href="{% url 'uploads:upload'  %}">Upload</a></li>
                 <li data-role="list-divider">Personnel</li>
                 <li><a href="{% url 'uploads:dashboard'  %}">Dashboard</a></li>
                 <li><a href="#">Compte</a></li>
@@ -61,3 +63,4 @@
         <!-- fin de page --> 
     </body>
 </html>
+

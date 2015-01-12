@@ -1,50 +1,10 @@
-<!DOCTYPE html> 
-<html> 
-    <head>
-        <meta charset="utf-8" />
-        <title>Uploads</title>
-        <!-- ligne pour que le contenu s'adapte à l'appreil mobile --> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- chargement des script et du css nécessaire --> 
-        {% load staticfiles %}
-        <link rel="import" href="{% static 'html/panel.html' %}" />
-        <link rel="stylesheet" href="{% static 'css/jquery.mobile-1.4.5.min.css' %}" />
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-        <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
-        <script src="{% static 'js/jquery.mobile-1.4.5.min.js' %}"></script>
-        <script src="{% static 'js/panel.js' %}"></script>
-    </head> 
-    <body>
-        <!-- début de page --> 
-        <div data-role="page" id="page" >
-        
-        <!-- début entête --> 
-        <div data-role="header" data-position="fixed">
-            <a href="{% url 'uploads:dashboard'  %}" class="ui-btn ui-icon-home ui-btn-icon-left ui-shadow ui-corner-all">Dashboard</a>
-            <h1>Uploads</h1>
-        </div>
-        <!-- fin entête -->
-        
-        <!-- début contenu --> 
-        <div role="main" class="ui-content">
-            <!-- début grille de type a: 2 colonnes -->
-            <fieldset class="ui-grid-a">
-                <!-- bloc a de la grille qui s'affiche sous la première colonne -->
-                <div class="ui-block-a"><a href="{% url 'uploads:upload'  %}" class="ui-btn">Upload</a></div>
-                <!-- bloc b de la grille qui s'affiche sous la deuxième colonne -->
-                <div class="ui-block-b"><a href="{% url 'uploads:uploaded'  %}" class="ui-btn">Upload: images</a></div>
-            </fieldset>
-            <!-- fin grille de type a -->
-        </div>
-        <!-- fin contenu -->
-        
-        <!-- début bas de page --> 
-        <div data-role="footer" data-position="fixed">
-        <h4>Uploads</h4>
-        </div>
-        <!-- fin bas de page -->
-        
-        </div>
-        <!-- fin de page --> 
-    </body>
-</html>
+{% extends "base.html" %}
+{% block header %}Dashboard{% endblock %}
+{% block content %}
+<fieldset class="ui-grid-a">
+    <!-- bloc a de la grille qui s'affiche sous la première colonne -->
+    <div class="ui-block-a"><a href="{% url 'uploads:upload'  %}" class="ui-btn">Upload</a></div>
+    <!-- bloc b de la grille qui s'affiche sous la deuxième colonne -->
+    <div class="ui-block-b"><a href="{% url 'uploads:uploaded'  %}" class="ui-btn">Upload: images</a></div>
+</fieldset>
+{% endblock %}

@@ -4,7 +4,7 @@ from uploads.models import Picture, Course, Exercise
 
 #affichage du code de base pour une page en jQM
 def base(request):
-    return render(request, 'mobile_uploads/base.html')
+    return render(request, 'base.html')
 
 #affichage du dashboard
 def dashboard(request):

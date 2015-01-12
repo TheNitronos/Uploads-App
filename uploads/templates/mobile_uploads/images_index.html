@@ -1,57 +1,18 @@
-<!DOCTYPE html> 
-<html> 
-    <head>
-        <meta charset="utf-8" />
-        <title>Uploads</title>
-        <!-- ligne pour que le contenu s'adapte à l'appreil mobile --> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- chargement des script et du css nécessaire --> 
-        {% load staticfiles %}
-        <link rel="import" class="panel" href="{% static 'html/panel.html' %}" />
-        <link rel="stylesheet" href="{% static 'css/jquery.mobile-1.4.5.min.css' %}" />
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-        <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
-        <script src="{% static 'js/jquery.mobile-1.4.5.min.js' %}"></script>
-        <script src="{% static 'js/panel.js' %}"></script>
-        <script src="{% static 'js/popupIMG.js' %}"></script>
-    </head> 
-    <body>
-        <!-- début de page --> 
-        <div data-role="page" id="page" >
-        
-        <!-- début entête --> 
-        <div data-role="header" data-position="fixed">
-            <a href="{% url 'uploads:dashboard'  %}" class="ui-btn ui-icon-home ui-btn-icon-left ui-shadow ui-corner-all">Dashboard</a>
-        <h1>Uploads</h1>
-        </div>
-        <!-- fin entête -->
-        
-        <!-- début contenu --> 
-        <div role="main" class="ui-content">
-            <ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true">
-                {% for image in images %}
-                    <li><a href="#popup{{ image.id }}" data-rel="popup" data-position-to="window" data-transition="slide">
-                        <img src="{{ image.image.url }}">
-                        <p>{{ image.tag }}</p> 
-                        <p>id: {{ image.id }}</p></a>
-                        <a href="{% url 'uploads:detail_uploaded' image.id  %}"></a>
-                        <!-- popup avec l'image personalisé -->
-                        <div data-role="popup" id="popup{{ image.id }}" class="popupIMG conteneur-popup">
-                            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Fermer</a><img src="{{ image.image.url }}" class="ui-corner-all">
-                        </div>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-        <!-- fin contenu -->
-        
-        <!-- début bas de page --> 
-        <div data-role="footer" data-position="fixed">
-        <h4>Uploads</h4>
-        </div>
-        <!-- fin bas de page -->
-        
-        </div>
-        <!-- fin de page --> 
-    </body>
-</html>
+{% extends "base.html" %}
+{% block header %}Images uploadées{% endblock %}
+{% block content %}
+<ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true">
+    {% for image in images %}
+        <li><a href="#popup{{ image.id }}" data-rel="popup" data-position-to="window" data-transition="slide">
+            <img src="{{ image.image.url }}">
+            <p>{{ image.tag }}</p> 
+            <p>id: {{ image.id }}</p></a>
+            <a href="{% url 'uploads:detail_uploaded' image.id  %}"></a>
+            <!-- popup avec l'image personalisé -->
+            <div data-role="popup" id="popup{{ image.id }}" class="popupIMG conteneur-popup">
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Fermer</a><img src="{{ image.image.url }}" class="ui-corner-all">
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

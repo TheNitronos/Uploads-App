@@ -1,55 +1,16 @@
-<!DOCTYPE html> 
-<html> 
-    <head>
-        <meta charset="utf-8" />
-        <title>Upload</title>
-        <!-- ligne pour que le contenu s'adapte à l'appreil mobile --> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- chargement des script et du css nécessaire --> 
-        {% load staticfiles %}
-        <link rel="import" href="{% static 'html/panel.html' %}" />
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-        <script src="{% static 'js/panel.js' %}"></script>
-        <script src="{% static 'js/uploadsLoader.js' %}"></script>
-    </head> 
-    <body>
-        <!-- début de page --> 
-        <div data-role="page" id="page" >
-        
-        <!-- début entête --> 
-        <div data-role="header" data-position="fixed">
-            <a href="{% url 'uploads:dashboard'  %}" class="ui-btn ui-icon-home ui-btn-icon-left ui-shadow ui-corner-all">Dashboard</a>
-        <h1>Upload</h1>
-        </div>
-        <!-- fin entête -->
-        
-        <!-- début contenu --> 
-        <div role="main" class="ui-content">
-            <!-- quand l'image a été uploadée cette ligne s'afficher --> 
-            {% if sauvegarde %}
-                <p>Cette image a bient été uploadée.</p>
-            {% endif %}
-            <div>
-                <!-- formulaire pour upload de l'image, data-ajax="false" permet d'éviter des chargements propres a jQM qui empêchent le bon fonctionnement des formulaires  --> 
-                <form method="post" enctype="multipart/form-data" action="." data-ajax="false">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="ui-btn btn-bottom upload" data-textonly="false" data-textvisible="true" data-msgtext="" data-inline="true">Uploader !</button>
-                </form>
-            </div>
-        </div>
-        <!-- fin contenu -->
-        
-        <!-- début bas de page --> 
-        <div data-role="footer" data-position="fixed">
-        <h4>Upload</h4>
-        </div>
-        <!-- fin bas de page -->
-        
-        </div>
-        <!-- fin de page --> 
-    </body>
-</html>
+{% extends "base.html" %}
+{% block header %}Upload{% endblock %}
+{% block content %}
+<!-- quand l'image a été uploadée cette ligne s'afficher --> 
+{% if sauvegarde %}
+    <p>Cette image a bient été uploadée.</p>
+{% endif %}
+<div>
+    <!-- formulaire pour upload de l'image, data-ajax="false" permet d'éviter des chargements propres a jQM qui empêchent le bon fonctionnement des formulaires  --> 
+    <form method="post" enctype="multipart/form-data" action="." data-ajax="false">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="ui-btn btn-bottom upload" data-textonly="false" data-textvisible="true" data-msgtext="" data-inline="true">Uploader !</button>
+    </form>
+</div>
+{% endblock %}
