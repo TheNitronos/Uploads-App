@@ -1,52 +1,11 @@
-<!DOCTYPE html> 
-<html> 
-    <head>
-        <meta charset="utf-8" />
-        <title>Index cours</title>
-        <!-- ligne pour que le contenu s'adapte à l'appreil mobile --> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- chargement des script et du css nécessaire --> 
-        {% load staticfiles %}
-        <link rel="import" href="{% static 'html/panel.html' %}" />
-        <link rel="stylesheet" href="{% static 'css/jquery.mobile-1.4.5.min.css' %}" />
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-        <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
-        <script src="{% static 'js/jquery.mobile-1.4.5.min.js' %}"></script>
-        <script src="{% static 'js/panel.js' %}"></script>
-    </head> 
-    <body>
-        <!-- début de page --> 
-        <div data-role="page" id="page" >
-        
-        <!-- début entête --> 
-        <div data-role="header" data-position="fixed">
-            <a href="{% url 'uploads:dashboard'  %}" class="ui-btn ui-icon-home ui-btn-icon-left ui-shadow ui-corner-all">Dashboard</a>
-        <h1>Index cours</h1>
-        </div>
-        <!-- fin entête -->
-        
-        <!-- début contenu --> 
-        <div role="main" class="ui-content">
-            <ul data-role="listview">
-                {% for course in courses %}
-                    <li>
-                        <a href="{% url 'uploads:course_detail' course.id %}">
-                            <p>{{ course.course_topic}}</p>
-                            <p>id : {{ course.id}}</p>
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-        <!-- fin contenu -->
-        
-        <!-- début bas de page --> 
-        <div data-role="footer" data-position="fixed">
-        <h4>Index cours</h4>
-        </div>
-        <!-- fin bas de page -->
-        
-        </div>
-        <!-- fin de page --> 
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+    <h2>Bienvenue !</h2>
+    <p>
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rhoncus 
+       massa non tortor. Vestibulum diam diam, posuere in viverra in, 
+       ullamcorper et libero. Donec eget libero quis risus congue imperdiet ac 
+       id lectus. Nam euismod cursus arcu, et consequat libero ullamcorper sit 
+       amet.
+    </p>
+{% endblock %}
