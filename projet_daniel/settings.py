@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'polls',
     'cameraUpload',
+    'uploads',
 )
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
