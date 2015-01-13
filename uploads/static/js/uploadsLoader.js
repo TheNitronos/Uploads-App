@@ -1,11 +1,11 @@
 $( document ).on( "pagecreate", function() {
-    var $this = $(".upload"),
+    var $this = $(".buttonLoad"),
     theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
     msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
     textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
     textonly = !!$this.jqmData( "textonly" );
     
-    $( ".upload" ).click(function() {
+    $( ".buttonLoad" ).click(function() {
         $.mobile.loading( "show", {
             text: msgText,
             textVisible: textVisible,

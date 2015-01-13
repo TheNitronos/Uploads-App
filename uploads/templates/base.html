@@ -14,7 +14,9 @@
         <!-- mes scripts et css -->
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
         <script src="{% static 'js/panel.js' %}"></script>
-        {% block script %}{% endblock %}
+        <script src="{% static 'js/popupIMG.js' %}"></script>
+        <script src="{% static 'js/uploadsLoader.js' %}"></script>
+        <script src="{% static 'js/refreshButton.js' %}"></script>
     </head> 
     <body>
         <!-- début de page --> 
@@ -42,7 +44,10 @@
         <!-- début entête --> 
         <div data-role="header" data-position="fixed">
             <a href="#panel" class="ui-btn ui-icon-bars ui-btn-icon-left ui-shadow ui-corner-all">Panel</a>
-            <a href="#" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext">Back</a>
+            <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+                {% block buttons %}{% endblock %}
+                <a href="#" data-rel="back" class="ui-btn ui-btn-icon-right ui-icon-back ui-btn-icon-notext">Retour</a>
+            </div>
         <h1>{% block header %}Base{% endblock %}</h1>
         </div>
         <!-- fin entête -->
