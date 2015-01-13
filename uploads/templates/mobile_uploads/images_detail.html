@@ -34,15 +34,13 @@
         <h3>Zone de danger</h3>
         <p><a href="#popupdelete" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-a" data-transition="slide">Supprimer</a></p>
         <!-- popup pour supprimer -->
-        <div data-role="popup" id="popupdelete" data-theme="a" class="ui-corner-all conteneur-popup">
-            <div class="popup">
-                <h3 class="center">Attention !!!</h3>
-                <p>Vous êtes sur le point de supprimer cette image.</p>
-                <form method="post" action="{% url 'uploads:delete' image.id %}" data-ajax="false">
-                    {% csrf_token %}
-                    <button type="submit"  id="btnSupprimer" />Supprimer</button>
-                </form>
-            </div>
+        <div data-role="popup" id="popupdelete" data-theme="a" class="ui-corner-all ui-content">
+            <h3 class="center">Attention !!!</h3>
+            <p>Vous êtes sur le point de supprimer cette image.</p>
+            <form method="post" action="{% url 'uploads:delete' image.id %}" data-ajax="false">
+                {% csrf_token %}
+                <button type="submit"  id="btnSupprimer" />Supprimer</button>
+            </form>
         </div>
         
     </div>

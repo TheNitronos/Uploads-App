@@ -12,7 +12,7 @@ ToDo
 **adaptation de l’application au reste du site
 **compression d’image
 **inégration de la fonctionnalité swipe pour le panel
-**remplacer static jqm par le cdn
+**remplacer static jqm par le cdngit
 **se renseigner sur les themes jqm pour le coté ludique
 **arrière plan oscurci lors de louvrture d'une popup
 
