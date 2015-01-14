@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Welcome to TravailEcrit’s documentation! &mdash; TravailEcrit 0.1 documentation</title>
+    <title>Welcome to TravailEcrit’s documentation! &mdash; documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -23,8 +23,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="TravailEcrit 0.1 documentation" href="#" />
+    <link rel="top" title="documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1" href="#" />
     <link rel="next" title="Introduction" href="intro.html" /> 
   </head>
   <body>
@@ -32,12 +33,12 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
+          <a href="genindex.html" title="Index général"
              accesskey="I">index</a></li>
         <li class="right" >
           <a href="intro.html" title="Introduction"
-             accesskey="N">next</a> |</li>
-        <li><a href="#">TravailEcrit 0.1 documentation</a> &raquo;</li> 
+             accesskey="N">suivant</a> |</li>
+        <li><a href="#">documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -47,8 +48,7 @@
           <div class="body">
             
   <div class="section" id="welcome-to-travailecrit-s-documentation">
-<h1>Welcome to TravailEcrit&#8217;s documentation!<a class="headerlink" href="#welcome-to-travailecrit-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
+<h1>Welcome to TravailEcrit&#8217;s documentation!<a class="headerlink" href="#welcome-to-travailecrit-s-documentation" title="Lien permanent vers ce titre">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
@@ -58,10 +58,20 @@
 <li class="toctree-l2"><a class="reference internal" href="presentation_jQM.html#le-choix-de-jquery-mobile-plutot-qu-un-autre-concurent">Le choix de jQuery Mobile plutôt qu&#8217;un autre concurent</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Différence_jQM_boot.html">Différence entre jQuery Mobile et Bootstrap</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="Différence_jQM_boot.html">jQuery Mobile et Bootstrap</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Différence_jQM_boot.html#fonctionnement-general-de-jquery-mobile">Fonctionnement général de jQuery Mobile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Différence_jQM_boot.html#fonctionnement-general-de-bootstrap">Fonctionnement général de Bootstrap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Différence_jQM_boot.html#similitudes-et-differences">Similitudes et différences</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Particularités.html">Particularités du développement mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technologie.html">Technologies utilisés pour le développement</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="technologie.html#html-5">HTML 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="technologie.html#css-3">CSS 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="technologie.html#jquery">jQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="technologie.html#django">Django</a></li>
+<li class="toctree-l2"><a class="reference internal" href="technologie.html#python">python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="technologie.html#jquery-mobile">jQuery Mobile</a></li>
 </ul>
 </li>
 </ul>
@@ -74,16 +84,16 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h4>Next topic</h4>
+  <h4>Sujet suivant</h4>
   <p class="topless"><a href="intro.html"
-                        title="next chapter">Introduction</a></p>
-  <h3>This Page</h3>
+                        title="Chapitre suivant">Introduction</a></p>
+  <h3>Cette page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/index.txt"
-           rel="nofollow">Show Source</a></li>
+           rel="nofollow">Montrer la source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
+  <h3>Recherche rapide</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
@@ -91,7 +101,7 @@
       <input type="hidden" name="area" value="default" />
     </form>
     <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+    Saisissez un mot clef ou un nom de module, classe ou fonction.
     </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
@@ -103,17 +113,17 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
+          <a href="genindex.html" title="Index général"
              >index</a></li>
         <li class="right" >
           <a href="intro.html" title="Introduction"
-             >next</a> |</li>
-        <li><a href="#">TravailEcrit 0.1 documentation</a> &raquo;</li> 
+             >suivant</a> |</li>
+        <li><a href="#">documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2015, Daniel Filipe Nunes Silva.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

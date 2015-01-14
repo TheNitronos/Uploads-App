@@ -50,4 +50,3 @@ l'idée de départ qui est jQuery Mobile car j'ai facilement associée celle-ci
 à la bibliothèque Javascript déjà existante du même nom dont la renommée n'est pas 
 à remettre en question. JQuery Mobile et aussi indirectement jQuery seront au 
 centre de mon travail de recherche et pratique.
-

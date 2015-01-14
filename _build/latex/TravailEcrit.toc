@@ -1,10 +1,11 @@
-\select@language {english}
-\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}
-\contentsline {chapter}{\numberline {2}Pr\IeC {\'e}sentation jQuery Mobile}{5}{chapter.2}
-\contentsline {section}{\numberline {2.1}Pourquoi avoir choisi une biblioth\IeC {\`e}que de ce genre ?}{5}{section.2.1}
-\contentsline {section}{\numberline {2.2}Existe-t-il des concurents \IeC {\`a} jQuery Mobile ?}{5}{section.2.2}
-\contentsline {section}{\numberline {2.3}Le choix de jQuery Mobile plut\IeC {\^o}t qu'un autre concurent}{5}{section.2.3}
-\contentsline {chapter}{\numberline {3}Diff\IeC {\'e}rence entre jQuery Mobile et Bootstrap}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}Fonctionnement g\IeC {\'e}n\IeC {\'e}ral de jQuery Mobile}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}Fonctionnement g\IeC {\'e}n\IeC {\'e}ral de Bootstrap}{7}{section.3.2}
-\contentsline {section}{\numberline {3.3}Similitudes et diff\IeC {\'e}rences}{8}{section.3.3}
+\select@language {french}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}Pr\IeC {\'e}sentation jQuery Mobile}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Pourquoi avoir choisi une biblioth\IeC {\`e}que de ce genre ?}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Existe-t-il des concurents \IeC {\`a} jQuery Mobile ?}{3}{section.2.2}
+\contentsline {section}{\numberline {2.3}Le choix de jQuery Mobile plut\IeC {\^o}t qu'un autre concurent}{3}{section.2.3}
+\contentsline {chapter}{\numberline {3}Diff\IeC {\'e}rence entre jQuery Mobile et Bootstrap}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}Fonctionnement g\IeC {\'e}n\IeC {\'e}ral de jQuery Mobile}{5}{section.3.1}
+\contentsline {section}{\numberline {3.2}Fonctionnement g\IeC {\'e}n\IeC {\'e}ral de Bootstrap}{5}{section.3.2}
+\contentsline {section}{\numberline {3.3}Similitudes et diff\IeC {\'e}rences}{6}{section.3.3}
+\contentsline {chapter}{\numberline {4}Particularit\IeC {\'e}s du d\IeC {\'e}veloppement mobile}{7}{chapter.4}

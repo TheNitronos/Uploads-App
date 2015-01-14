@@ -1,6 +1,6 @@
-===========================================
-Différence entre jQuery Mobile et Bootstrap
-===========================================
+==========================
+jQuery Mobile et Bootstrap
+==========================
 
 ***************************************
 Fonctionnement général de jQuery Mobile

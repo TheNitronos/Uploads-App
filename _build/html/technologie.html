@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Technologies utilisés pour le développement &mdash; documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1" href="index.html" />
+    <link rel="next" title="&lt;no title&gt;" href="guide.html" />
+    <link rel="prev" title="Particularités du développement mobile" href="Particularités.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Index général"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="guide.html" title="&lt;no title&gt;"
+             accesskey="N">suivant</a> |</li>
+        <li class="right" >
+          <a href="Particularités.html" title="Particularités du développement mobile"
+             accesskey="P">précédent</a> |</li>
+        <li><a href="index.html">documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="technologies-utilises-pour-le-developpement">
+<h1>Technologies utilisés pour le développement<a class="headerlink" href="#technologies-utilises-pour-le-developpement" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="html-5">
+<h2>HTML 5<a class="headerlink" href="#html-5" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Abréviation de &#8216;HyperText Markup Language 5&#8217;, ce language permet d&#8217;introduire le
+contenu qui sera affiché dans une page. Celui-ci sera sectionné en différentes
+catégories séparées par des balises. Exemple d&#8217;une page simple en html:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="c">&lt;!-- head est destiné à placer les scripts a charger CSS, Javascript,...,</span>
+<span class="c">    spécifier l&#39;encodage ou encore le titre qui sera sur l&#39;onglet de la page --&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+            <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;style.css&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;javascript.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+            <span class="nt">&lt;title&gt;</span>Essai simple<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="c">&lt;!-- body contient tout le content chargé pour la page --&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="c">&lt;!-- header correspond à l&#39;entête --&gt;</span>
+            <span class="nt">&lt;header&gt;</span>Voici ma première page en HTML<span class="nt">&lt;/header&gt;</span>
+            <span class="c">&lt;!-- h1 correspond à un niveau de titre du plus au moins important:</span>
+<span class="c">            h1, h2, h3, ..., h6 --&gt;</span>
+            <span class="nt">&lt;h1&gt;</span>Titre<span class="nt">&lt;/h1&gt;</span>
+            <span class="c">&lt;!-- p correspond a un paragraphe standard et stron à mettre le contenu</span>
+<span class="c">            des balises en gras--&gt;</span>
+            <span class="nt">&lt;p&gt;</span>Contenu de la <span class="nt">&lt;strong&gt;</span>page<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
+            <span class="c">&lt;!-- footer correspond au pied de page --&gt;</span>
+            <span class="nt">&lt;footer&gt;</span>Ici est placé le bas de page<span class="nt">&lt;/footer&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<img alt="_images/HTML_presentation.png" src="_images/HTML_presentation.png" />
+</div>
+<div class="section" id="css-3">
+<h2>CSS 3<a class="headerlink" href="#css-3" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="abreviation-de-cascading-style-sheets-3">
+<h3>Abréviation de &#8216;Cascading Style Sheets 3&#8217;<a class="headerlink" href="#abreviation-de-cascading-style-sheets-3" title="Lien permanent vers ce titre">¶</a></h3>
+</div>
+<div class="section" id="javascript">
+<h3>Javascript<a class="headerlink" href="#javascript" title="Lien permanent vers ce titre">¶</a></h3>
+</div>
+</div>
+<div class="section" id="jquery">
+<h2>jQuery<a class="headerlink" href="#jquery" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+<div class="section" id="django">
+<h2>Django<a class="headerlink" href="#django" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+<div class="section" id="python">
+<h2>python<a class="headerlink" href="#python" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+<div class="section" id="jquery-mobile">
+<h2>jQuery Mobile<a class="headerlink" href="#jquery-mobile" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table des Matières</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Technologies utilisés pour le développement</a><ul>
+<li><a class="reference internal" href="#html-5">HTML 5</a></li>
+<li><a class="reference internal" href="#css-3">CSS 3</a><ul>
+<li><a class="reference internal" href="#abreviation-de-cascading-style-sheets-3">Abréviation de &#8216;Cascading Style Sheets 3&#8217;</a></li>
+<li><a class="reference internal" href="#javascript">Javascript</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#jquery">jQuery</a></li>
+<li><a class="reference internal" href="#django">Django</a></li>
+<li><a class="reference internal" href="#python">python</a></li>
+<li><a class="reference internal" href="#jquery-mobile">jQuery Mobile</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="Particularités.html"
+                        title="Chapitre précédent">Particularités du développement mobile</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="guide.html"
+                        title="Chapitre suivant">&lt;no title&gt;</a></p>
+  <h3>Cette page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/technologie.txt"
+           rel="nofollow">Montrer la source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Recherche rapide</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Saisissez un mot clef ou un nom de module, classe ou fonction.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Index général"
+             >index</a></li>
+        <li class="right" >
+          <a href="guide.html" title="&lt;no title&gt;"
+             >suivant</a> |</li>
+        <li class="right" >
+          <a href="Particularités.html" title="Particularités du développement mobile"
+             >précédent</a> |</li>
+        <li><a href="index.html">documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Daniel Filipe Nunes Silva.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

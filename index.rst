@@ -6,8 +6,6 @@
 Welcome to TravailEcrit's documentation!
 ========================================
 
-Contents:
-
 .. toctree::
    :maxdepth: 2
 
@@ -15,6 +13,7 @@ Contents:
    presentation_jQM
    Différence_jQM_boot
    Particularités
+   technologie
    guide
    mon_application
 
