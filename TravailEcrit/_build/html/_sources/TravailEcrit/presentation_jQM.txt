@@ -1,0 +1,16 @@
+==========================
+Présentation jQuery Mobile
+==========================
+
+JQuery Mobile est une bibliothèque qui facilite grandement le développement web.\
+Elle a été mise sur pieds par la même maison que la si fameuse bibliothèque \
+Javascript également nommée jQuery. Dans ma partie du projet, il est avant tout \
+question de développement web mobile. Lorsque l'on parle d'un projet mobile, trois \
+grandes approches sont envisageables. On peut aussi bien partir sur le principe \
+de développer une application native, adaptée à chaque système d'exploitation. \
+Cette possibilité a l'avantage d'être très optimisée et performante mais nous \
+contraint à développer une application pour chaque support que nous viendros \
+à utiliser. Ou alors développer une application à mi-chemin entre le natif et \
+le site web version mobile. La plupart du temps, celle-ci est codée en Javascript, \
+html et css qui sera ensuite compilée pour offrir un rendu à l'allure native mais \
+plutôt basée sur un code qui se rapproche 

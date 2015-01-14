@@ -1,0 +1,481 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Guide du programmeur &mdash; documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1" href="index.html" />
+    <link rel="next" title="&lt;no title&gt;" href="mon_application.html" />
+    <link rel="prev" title="Technologies utilisées pour le développement" href="technologie.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Index général"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="mon_application.html" title="&lt;no title&gt;"
+             accesskey="N">suivant</a> |</li>
+        <li class="right" >
+          <a href="technologie.html" title="Technologies utilisées pour le développement"
+             accesskey="P">précédent</a> |</li>
+        <li><a href="index.html">documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="guide-du-programmeur">
+<h1>Guide du programmeur<a class="headerlink" href="#guide-du-programmeur" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Dans ce guide du programmeur, je vais vous montrer comment coder une application
+web qui permet de charger des images sur un serveur. Ce tutoriel prend en compte
+que vous connaissez un minimum django, le HTML et le CSS.</p>
+</div>
+<div class="section" id="les-modeles">
+<h2>Les modèles<a class="headerlink" href="#les-modeles" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Après avoir créé l&#8217;application django et réglé le nécessaire dans django, nous
+allons commencer par les modèles dans le fichier &#8216;models.py&#8217;:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">Picture</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c">#ImageField pour que l&#39;image soit enregistrée comme une image</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ImageField</span><span class="p">(</span><span class="n">upload_to</span><span class="o">=</span><span class="s">&quot;uploadedImages&quot;</span><span class="p">)</span>
+
+    <span class="c">#tag: court énoncé sur l&#39;image</span>
+    <span class="n">tag</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+    <span class="c">#description: texte pour décrire l&#39;image</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+
+    <span class="c">#date de l&#39;upload</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ensuite, on procède au fameux &#8216; makemigrations &lt;nomApp&gt; &#8216; et &#8216; migrate &#8216;</p>
+</div>
+<div class="section" id="les-formulaires">
+<h2>Les formulaires<a class="headerlink" href="#les-formulaires" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Les formulaires sont indispensables lorsque l&#8217;on veut charger une image ou du
+texte sur un serveur et que l&#8217;on désire contrôler si ce que l&#8217;utilisateur a
+saisi est bien le type de données qui est attendu nous créons alors ces
+formulaires dans le fichier &#8216;forms.py&#8217;:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+
+<span class="c">#classe pour le téléversement d&#39;images</span>
+<span class="k">class</span> <span class="nc">ChargementForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ImageField</span><span class="p">()</span>
+    <span class="n">tag</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+
+<span class="c">#classe pour le formulaire de modifications</span>
+<span class="k">class</span> <span class="nc">ModificationForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">tag</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>On observe une forte similairité avec les classes de modèles. Ceci est dû au
+fait que les formulaire sont créés pour instancier des objets des classes des
+modèles.</p>
+</div>
+<div class="section" id="les-vues">
+<h2>Les vues<a class="headerlink" href="#les-vues" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Ici nous allons créer quelques vues qui serviront à charger l&#8217;image sur le
+serveur, supprimer l&#8217;image, afficher toutes les images ou encore modifier
+les détails d&#8217;une image.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="o">&lt;</span><span class="n">nomApp</span><span class="o">&gt;.</span><span class="n">forms</span> <span class="kn">import</span> <span class="nn">ChargementForm</span><span class="o">,</span> <span class="nn">ModificationForm</span>
+<span class="kn">from</span> <span class="o">&lt;</span><span class="n">nomApp</span><span class="o">&gt;.</span><span class="n">models</span> <span class="kn">import</span> <span class="nn">Picture</span>
+
+<span class="c">#vue pour charger une image sur le serveur, si la requête post a lieu et que</span>
+<span class="c">#tous les champs du formulaire sont correctement remplis, on sauvegarde cette</span>
+<span class="c">#instance. Le boléen sauvegarde sera utile pour affiche un message lorsque</span>
+<span class="c">#l&#39;image aura été chargée.</span>
+<span class="k">def</span> <span class="nf">chargement</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">sauvegarde</span> <span class="o">=</span> <span class="bp">False</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ChargementForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="n">Picture</span><span class="p">()</span>
+            <span class="n">image</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&quot;image&quot;</span><span class="p">]</span>
+            <span class="n">image</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&quot;tag&quot;</span><span class="p">]</span>
+            <span class="n">image</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&quot;description&quot;</span><span class="p">]</span>
+            <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="n">sauvegarde</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ChargementForm</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;chargement.html&#39;</span><span class="p">,</span> <span class="nb">locals</span><span class="p">())</span>
+
+<span class="c">#vue pour afficher toutes les images. On instancie tous les objets de la</span>
+<span class="c">#classe Picture et on retourne le template et les images</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">images</span> <span class="o">=</span> <span class="n">Picture</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;index_images.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;images&#39;</span><span class="p">:</span> <span class="n">images</span><span class="p">})</span>
+
+<span class="c">#vue pour afficher le détail d&#39;une image. On instancie l&#39;objet de la classe</span>
+<span class="c">#picture qui correspond a l&#39;id désiré (récupéré dans l&#39;url) et l&#39;on retourne</span>
+<span class="c">#le template, l&#39;instanciation d&#39;image et de formulaire grâce à &#39;locals()&#39;</span>
+<span class="k">def</span> <span class="nf">detail_image</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">imageId</span><span class="p">):</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Picture</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">imageId</span><span class="p">)</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">ModificationForm</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;image_detail.html&#39;</span><span class="p">,</span> <span class="nb">locals</span><span class="p">())</span>
+
+<span class="c">#vue pour supprimer une image, active lors d&#39;une requête post et qui supprime</span>
+<span class="c">#l&#39;image elle-même ainsi que l&#39;instance de la classe Picture avant de nous</span>
+<span class="c">#rediriger vers l&#39;index</span>
+<span class="k">def</span> <span class="nf">supprimer_image</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">imageId</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">Picture</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">imageId</span><span class="p">)</span>
+        <span class="n">image</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="n">image</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">&#39;&lt;nomApp&gt;:index&#39;</span><span class="p">)</span>
+
+<span class="c">#vue pour modifier le tag ou la description d&#39;une image, il s&#39;agit du même</span>
+<span class="c">#principe que les vues d&#39;avant.</span>
+<span class="k">def</span> <span class="nf">modifier_image</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">imageId</span><span class="p">):</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Picture</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">imageId</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModificationForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">image</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&quot;tag&quot;</span><span class="p">]</span>
+            <span class="n">image</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&quot;description&quot;</span><span class="p">]</span>
+            <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">&#39;&lt;nomApp&gt;:index&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">&#39;&lt;nomApp&gt;:index&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fichier-settings-py">
+<h2>Fichier settings.py<a class="headerlink" href="#fichier-settings-py" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour que les images soit enregistrées correctement il est nécessaire de définir
+ces variables là:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">MEDIA_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">&#39;media/&#39;</span><span class="p">)</span>
+<span class="n">MEDIA_URL</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">&#39;media/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fichier-urls-py">
+<h2>Fichier urls.py<a class="headerlink" href="#fichier-urls-py" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Nous devons d&#8217;abord ajouter le chemin vers les urls de l&#8217;application que nous
+avons créée. Ceci doit dans le fichier urls.py dans les fichiers de
+l&#8217;environnement de travail, ce ne sont pas les urls.py spécifique à
+l&#8217;application que nous sommes en train de créer):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">patterns</span><span class="p">,</span> <span class="n">include</span><span class="p">,</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">django.conf.urls.static</span> <span class="kn">import</span> <span class="n">static</span>
+<span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^admin/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+    <span class="c">#cette ligne-ci</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^&lt;nomApp&gt;/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;&lt;nomApp&gt;.urls&#39;</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="s">&quot;&lt;nomApp&gt;&quot;</span><span class="p">)),</span>
+<span class="p">)</span>
+
+<span class="c">#Et l&#39;ajout de cette ligne également pour l&#39;accès aux images chargées</span>
+<span class="n">urlpatterns</span> <span class="o">+=</span> <span class="n">static</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">MEDIA_URL</span><span class="p">,</span> <span class="n">document_root</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">MEDIA_ROOT</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Nous devons aussi créer nos propres url pour l&#8217;application que nous sommes en
+train de creer dans le fichiers urls.py de l&#8217;application:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">patterns</span><span class="p">,</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">django.conf.urls.static</span> <span class="kn">import</span> <span class="n">static</span>
+
+<span class="kn">from</span> <span class="o">&lt;</span><span class="n">nomApp</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">views</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+
+    <span class="c">#pour la vue d&#39;index</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^index/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;index&#39;</span><span class="p">),</span>
+
+    <span class="c">#pour la vue détaillée</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;detail/(?P&lt;imageId&gt;\w+)&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">detail_image</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;detail_image&#39;</span><span class="p">),</span>
+
+    <span class="c">#pour la vue de chargement</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^chargement/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">chargement</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;chargement&#39;</span><span class="p">),</span>
+
+    <span class="c">#suppression d&#39;image</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;suppression/(?P&lt;imageId&gt;\w+)&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">supprimer_image</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;supprimer_image&#39;</span><span class="p">),</span>
+
+    <span class="c">#modification d&#39;image</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;modification/(?P&lt;imageId&gt;\w+)&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">modifier_image</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;modifier_image&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="les-templates">
+<h2>Les templates<a class="headerlink" href="#les-templates" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Nous avons déjà préparé toute la partie cachée qui va s&#8217;éxécuter lorsque l&#8217;on
+utilisera notr application mais nous n&#8217;avons encore fait aucune page qui nous
+permettra d&#8217;utiliser toutes ces fonctions, nous allons donc nous attaquer aux
+templates. Les templates présentés sont composés d&#8217;éléments de jQuery Mobile,
+qui seront précisément présentés lors de la démostration des fonctionnalités de
+mon application utilisée dans sa version finale.</p>
+<p>Nous utiliserons la balise blocks pour notre premier template :base.html&#8217;:</p>
+<p>Ne pas oublier dans un premier temps d&#8217;ajouter la directions vers le dossier où
+se trouvent les templates:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">TEMPLATE_DIRS</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">&#39;templates&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>Ensuite placer le fichier &#8216;base.hmtl&#8217; dans ce même dossier:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Mobile<span class="nt">&lt;/title&gt;</span>
+        <span class="c">&lt;!-- ligne pour que le contenu s&#39;adapte à l&#39;appreil mobile --&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width, initial-scale=1&quot;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- chargement des script et du css nécessaire --&gt;</span>
+        {% load staticfiles %}
+        <span class="c">&lt;!-- cdn jqm et jq --&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;http://code.jquery.com/mobile/</span>
+<span class="s">        1.4.5/jquery.mobile-1.4.5.min.css&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/jquery-1.11.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/mobile/</span>
+<span class="s">        1.4.5/jquery.mobile-1.4.5.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="c">&lt;!-- début de page --&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;page&quot;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- début entête --&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;header&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>MonApp<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="c">&lt;!-- fin entête --&gt;</span>
+
+        <span class="c">&lt;!-- début contenu --&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;main&quot;</span> <span class="na">class=</span><span class="s">&quot;ui-content&quot;</span><span class="nt">&gt;</span>
+        {% block content %}<span class="nt">&lt;p&gt;</span>Content<span class="nt">&lt;/p&gt;</span>{% endblock %}
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="c">&lt;!-- fin contenu --&gt;</span>
+
+        <span class="c">&lt;!-- début bas de page --&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h4&gt;</span>Mobile<span class="nt">&lt;/h4&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="c">&lt;!-- fin bas de page --&gt;</span>
+
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="c">&lt;!-- fin de page --&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>Nous utiliserons ce fichier &#8216;base.html&#8217; comme squelette pour toutes les autres
+pages. Nous aurons uniquement à spécifier que les autres templates sont des
+extensions de celui-ci et rajouter le contenu entre les balises
+&#8216;{% block contenu %}...{% endblock %}&#8217;.</p>
+<p>L&#8217;index:</p>
+<div class="highlight-html"><div class="highlight"><pre>{% extends &quot;base.html&quot; %}
+{% block content %}
+<span class="c">&lt;!-- on affiche les images dans une liste --&gt;</span>
+<span class="nt">&lt;ul</span> <span class="na">data-role=</span><span class="s">&quot;listview&quot;</span> <span class="na">data-split-icon=</span><span class="s">&quot;gear&quot;</span> <span class="na">data-split-theme=</span><span class="s">&quot;a&quot;</span> <span class="na">data-inset=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+    {% for image in images %}
+        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#popup{{ image.id }}&quot;</span> <span class="na">data-rel=</span><span class="s">&quot;popup&quot;</span> <span class="na">data-position-to=</span><span class="s">&quot;window&quot;</span> <span class="na">data-transition=</span><span class="s">&quot;slide&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;{{ image.image.url }}&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;p&gt;</span>{{ image.tag }}<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;p&gt;</span>id: {{ image.id }}<span class="nt">&lt;/p&gt;&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{% url &#39;uploads:detail_uploaded&#39; image.id  %}&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
+
+            <span class="c">&lt;!-- popup avec l&#39;image personalisé --&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;popup&quot;</span> <span class="na">id=</span><span class="s">&quot;popup{{ image.id }}&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">data-rel=</span><span class="s">&quot;back&quot;</span> <span class="na">class=</span><span class="s">&quot;ui-btn ui-corner-all</span>
+<span class="s">                ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext</span>
+<span class="s">                ui-btn-right&quot;</span><span class="nt">&gt;</span>Fermer<span class="nt">&lt;/a&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;{{ image.image.url }}&quot;</span>
+                <span class="na">class=</span><span class="s">&quot;ui-corner-all&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+    {% endfor %}
+<span class="nt">&lt;/ul&gt;</span>
+{% endblock %}
+</pre></div>
+</div>
+<p>La page de chargement:</p>
+<div class="highlight-html"><div class="highlight"><pre>{% extends &quot;base.html&quot; %}
+{% block contenu %}
+<span class="c">&lt;!-- quand l&#39;image a été uploadée cette ligne s&#39;afficher --&gt;</span>
+{% if sauvegarde %}
+    <span class="nt">&lt;p&gt;</span>Cette image a bient été uploadée.<span class="nt">&lt;/p&gt;</span>
+{% endif %}
+<span class="nt">&lt;div&gt;</span>
+    <span class="c">&lt;!-- formulaire pour upload de l&#39;image, data-ajax=&quot;false&quot; permet --&gt;</span>
+    <span class="c">&lt;!-- d&#39;éviter des chargements propres a jQM qui empêchent le bon --&gt;</span>
+    <span class="c">&lt;!-- fonctionnement des formulaires  --&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">enctype=</span><span class="s">&quot;multipart/form-data&quot;</span> <span class="na">action=</span><span class="s">&quot;.&quot;</span> <span class="na">data-ajax=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+        {% csrf_token %}
+        <span class="c">&lt;!-- on intègre le formulaire de chargement --&gt;</span>
+        {{ form.as_p }}
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;ui-btn btn-bottom buttonLoad&quot;</span>
+        <span class="na">data-textonly=</span><span class="s">&quot;false&quot;</span> <span class="na">data-textvisible=</span><span class="s">&quot;true&quot;</span> <span class="na">data-msgtext=</span><span class="s">&quot;&quot;</span>
+        <span class="na">data-inline=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>Uploader !<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+{% endblock %}
+</pre></div>
+</div>
+<p>Le détail d&#8217;une image:</p>
+<div class="highlight-html"><div class="highlight"><pre>{% extends &quot;base.html&quot; %}
+{% block content %}
+<span class="c">&lt;!-- image --&gt;</span>
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;{{ image.image.url }}&quot;</span><span class="nt">/&gt;</span>
+<span class="c">&lt;!-- début liste déroulable --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;collapsibleset&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;a&quot;</span> <span class="na">data-content-theme=</span><span class="s">&quot;a&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- début premier item --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;collapsible&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h3&gt;</span>Informations<span class="nt">&lt;/h3&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Tag: {{ image.tag }}<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Description: {{ image.description }}<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;p&gt;</span>date: {{ image.date }}<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!-- fin premier item --&gt;</span>
+    <span class="c">&lt;!-- début deuxième item --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;collapsible&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h3&gt;</span>Modifications<span class="nt">&lt;/h3&gt;</span>
+        <span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">action=</span><span class="s">&quot;{% url &#39;uploads:modify&#39; image.id %}&quot;</span>
+        <span class="na">enctype=</span><span class="s">&quot;multipart/form-data&quot;</span> <span class="na">data-ajax=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+            {% csrf_token %}
+            <span class="c">&lt;!-- ici je fais le formulaire manuellement pour résussir a--&gt;</span>
+            <span class="c">&lt;!-- mettre une valeur initiale --&gt;</span>
+            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;tag&quot;</span><span class="nt">&gt;</span>Tag: <span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;tag&quot;</span> <span class="na">data-clear-btn=</span><span class="s">&quot;true&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;tag&quot;</span>
+            <span class="na">maxlength=</span><span class="s">&quot;20&quot;</span> <span class="na">value=</span><span class="s">&quot;{{ image.tag }}&quot;</span><span class="nt">&gt;</span>
+
+            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;description&quot;</span><span class="nt">&gt;</span>Description: <span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;description&quot;</span> <span class="na">data-clear-btn=</span><span class="s">&quot;true&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span>
+            <span class="na">name=</span><span class="s">&quot;description&quot;</span> <span class="na">maxlength=</span><span class="s">&quot;500&quot;</span> <span class="na">value=</span><span class="s">&quot;{{ image.description}}&quot;</span><span class="nt">&gt;</span>
+
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span><span class="nt">/&gt;</span>Modifier<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!-- fin deuxième item --&gt;</span>
+    <span class="c">&lt;!-- début troisième item --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;collapsible&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h3&gt;</span>Zone de danger<span class="nt">&lt;/h3&gt;</span>
+        <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#popupdelete&quot;</span> <span class="na">data-rel=</span><span class="s">&quot;popup&quot;</span> <span class="na">data-position-to=</span><span class="s">&quot;window&quot;</span>
+        <span class="na">class=</span><span class="s">&quot;ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete</span>
+<span class="s">        ui-btn-icon-left ui-btn-a&quot;</span> <span class="na">data-transition=</span><span class="s">&quot;slide&quot;</span><span class="nt">&gt;</span>Supprimer<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+        <span class="c">&lt;!-- popup pour supprimer --&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;popup&quot;</span> <span class="na">id=</span><span class="s">&quot;popupdelete&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;a&quot;</span>
+        <span class="na">class=</span><span class="s">&quot;ui-corner-all ui-content&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h3&gt;</span>Attention !!!<span class="nt">&lt;/h3&gt;</span>
+            <span class="nt">&lt;p&gt;</span>Vous êtes sur le point de supprimer cette image.<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">action=</span><span class="s">&quot;{% url &#39;uploads:delete&#39; image.id %}&quot;</span>
+            <span class="na">data-ajax=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+                {% csrf_token %}
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span><span class="nt">/&gt;</span>Supprimer<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!-- fin troisième item --&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+{% endblock %}
+</pre></div>
+</div>
+<p>Comme les fonctionnalités modifier et supprimer s&#8217;éxécute du côté serveur, nous
+n&#8217;avons pas besoin de produire un template pour chacune de celle-ci.</p>
+<p>Grâce à ce petit tutoriel, vous avez pu créer un rudimentaire réseau social de
+photographies en exploitant le jQuery Mobile, ainsi que Django et évidemment
+tout ce qui est HTML et CSS.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table des Matières</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Guide du programmeur</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#les-modeles">Les modèles</a></li>
+<li><a class="reference internal" href="#les-formulaires">Les formulaires</a></li>
+<li><a class="reference internal" href="#les-vues">Les vues</a></li>
+<li><a class="reference internal" href="#fichier-settings-py">Fichier settings.py</a></li>
+<li><a class="reference internal" href="#fichier-urls-py">Fichier urls.py</a></li>
+<li><a class="reference internal" href="#les-templates">Les templates</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="technologie.html"
+                        title="Chapitre précédent">Technologies utilisées pour le développement</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="mon_application.html"
+                        title="Chapitre suivant">&lt;no title&gt;</a></p>
+  <h3>Cette page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/guide.txt"
+           rel="nofollow">Montrer la source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Recherche rapide</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Saisissez un mot clef ou un nom de module, classe ou fonction.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Index général"
+             >index</a></li>
+        <li class="right" >
+          <a href="mon_application.html" title="&lt;no title&gt;"
+             >suivant</a> |</li>
+        <li class="right" >
+          <a href="technologie.html" title="Technologies utilisées pour le développement"
+             >précédent</a> |</li>
+        <li><a href="index.html">documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Daniel Filipe Nunes Silva.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
