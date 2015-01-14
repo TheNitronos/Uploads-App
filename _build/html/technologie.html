@@ -55,7 +55,7 @@
 <h1>Technologies utilisés pour le développement<a class="headerlink" href="#technologies-utilises-pour-le-developpement" title="Lien permanent vers ce titre">¶</a></h1>
 <div class="section" id="html-5">
 <h2>HTML 5<a class="headerlink" href="#html-5" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Abréviation de &#8216;HyperText Markup Language 5&#8217;, ce language permet d&#8217;introduire le
+<p>Abréviation de &#8216;HyperText Markup Language 5&#8217;, ce langage permet d&#8217;introduire le
 contenu qui sera affiché dans une page. Celui-ci sera sectionné en différentes
 catégories séparées par des balises. Exemple d&#8217;une page simple en html:</p>
 <div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -88,24 +88,150 @@ catégories séparées par des balises. Exemple d&#8217;une page simple en html:
 </div>
 <div class="section" id="css-3">
 <h2>CSS 3<a class="headerlink" href="#css-3" title="Lien permanent vers ce titre">¶</a></h2>
-<div class="section" id="abreviation-de-cascading-style-sheets-3">
-<h3>Abréviation de &#8216;Cascading Style Sheets 3&#8217;<a class="headerlink" href="#abreviation-de-cascading-style-sheets-3" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Abréviation de &#8216;Cascading Style Sheets 3&#8217;, ce langage permet de structurer,
+personnaliser, modifier votre code html. Et cela aussi bien en y ajoutant des
+couleur, des grilles, des bordures,... Exemple sur la page HTML:</p>
+<div class="highlight-css"><div class="highlight"><pre><span class="c">/* on applique la police Verdana a tous le corps de texte*/</span>
+<span class="nt">body</span>
+<span class="p">{</span>
+    <span class="k">font-family</span><span class="o">:</span> <span class="n">Verdana</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* On aligne le titre h1 au centre */</span>
+<span class="nt">h1</span>
+<span class="p">{</span>
+    <span class="k">text-align</span><span class="o">:</span> <span class="k">center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* pour l&#39;entête et le pied de page, on met leur arrière plan en orange */</span>
+<span class="nt">header</span><span class="o">,</span> <span class="nt">footer</span>
+<span class="p">{</span>
+    <span class="k">background-color</span><span class="o">:</span> <span class="nb">orange</span>
+<span class="p">}</span>
+
+<span class="c">/* on met le texte en rouge dans les paragraphes */</span>
+<span class="nt">p</span>
+<span class="p">{</span>
+    <span class="k">color</span><span class="o">:</span> <span class="nb">red</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img alt="_images/HTML_presentation_2.png" src="_images/HTML_presentation_2.png" />
 </div>
 <div class="section" id="javascript">
-<h3>Javascript<a class="headerlink" href="#javascript" title="Lien permanent vers ce titre">¶</a></h3>
+<h2>Javascript<a class="headerlink" href="#javascript" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Le Javascript est un langage qui lui permet d&#8217;ajouter de l&#8217;interactivité dans ses
+pages internet car comme vous avez pu le remarquer on se retrouve avec des pages
+dite &#8216;statiques&#8217; qui ne font qu&#8217;afficher du contenu. Nous allons ici ajouter une
+boite de dialogue avec javascript:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/* la fonction alert permet une boite de dialogue */</span>
+<span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Ceci est une boite de dialogue à l&#39;aide de JS.&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
+<img alt="_images/HTML_presentation_3.png" src="_images/HTML_presentation_3.png" />
 </div>
 <div class="section" id="jquery">
 <h2>jQuery<a class="headerlink" href="#jquery" title="Lien permanent vers ce titre">¶</a></h2>
+<p>JQuery est une bibliothèque javascript ce qui veut dire qu&#8217;elle est basée sur du
+code javascript avec des fonctions déjà préparée et pour pouvoir les utiliser,
+nous devons charger un script supplémentaire comme l&#8217;on a fait avec le CSS et le
+JS:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/jquery-1.11.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+</div>
+<p>En plus de cela jQuery utilise également des évènements qui, par exemple, lance
+des fonctions lorsqu&#8217;on clique sur une bouton. Sur notre page vous avez pu
+remarquer que la boite de dialogue s&#8217;ouvre avant le chargement de la page. Nous
+allons donc créer remplacer le code javascript d&#8217;avant par un autre qui
+affichera cette boite de dialogue seulement après le chargement:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/* on se réfère au document ouvert, donc la page qui quand elle est ouverte</span>
+<span class="cm">méthode &#39;ready&#39; éxécute la fonction alert que l&#39;on a vu précédemment*/</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Voici la nouvelle boite de dialogue.&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Et nous devrions obtenir un résultat de ceci:</p>
+<img alt="_images/HTML_presentation_4.png" src="_images/HTML_presentation_4.png" />
 </div>
 <div class="section" id="django">
 <h2>Django<a class="headerlink" href="#django" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Django est également une bibliothèque mais basée sur le langage python cette fois.
+C&#8217;est une bibliothèque web qui permet de créer des sites internet de façon plutôt
+intuitive une fois que l&#8217;on a appréhender le fonctionnement de celle-ci. Tout
+comme python le langage django est relativement facile à comprendre et permet
+de proposer un site web efficace avec effort qui est moindre.</p>
 </div>
 <div class="section" id="python">
 <h2>python<a class="headerlink" href="#python" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Python est donc ce langage qui alimente django et qui lui permet la plupart des
+actions. Celui-ci est plutôt de haut niveau ce qui signifie qu&#8217;il se rapproche
+plutôt de la façon de penser de l&#8217;homme plutôt que de la machine. Un petit
+exemple qui illustre la syntaxe et l&#8217;allure du langage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">somme</span><span class="p">(</span><span class="n">nbrUn</span><span class="p">,</span> <span class="n">nbrDeux</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;somme(float nbrUn, float nbrDeux) ---&gt; float fonction qui retourne</span>
+<span class="sd">    la somme de nbrUn et nbrDeux&quot;&quot;&quot;</span>
+    <span class="n">somme</span> <span class="o">=</span> <span class="n">nbrUn</span> <span class="o">+</span> <span class="n">nbrDeux</span>
+    <span class="k">return</span> <span class="n">somme</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="jquery-mobile">
 <h2>jQuery Mobile<a class="headerlink" href="#jquery-mobile" title="Lien permanent vers ce titre">¶</a></h2>
+<p>jquery mobile est cette fameuse bibliothèque que j&#8217;aurai l&#8217;occasion de présenter
+d&#8217;une façon plus approfondie dans ce travail. Tout d&#8217;abord, il faut la charger
+tout comme jQuery:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="c">&lt;!-- le script CSS qui va charger les éléments de style jQuery Mobile--&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css&quot;</span> <span class="nt">/&gt;</span>
+<span class="c">&lt;!-- le script de jQuery qui est aussi nécessaire --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/jquery-1.11.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- et enfin celui de jQuery Mobile --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+</div>
+<p>A partir de là, il ne nous reste plus qu&#8217;à retravailler le code html pour
+l&#8217;adapter au balisage jQuery Mobile. Aussi bien au niveau du nom de la balise,
+attribuer un id spécifique ou le plus souvent une classe. Voici une page
+jQuery Mobile de base avec un rendu sur smartphone:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+    <span class="nt">&lt;html&gt;</span>
+        <span class="nt">&lt;head&gt;</span>
+            <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/jquery-1.11.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+            <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+                    <span class="nt">&lt;title&gt;</span>Essai simple<span class="nt">&lt;/title&gt;</span>
+            <span class="nt">&lt;/head&gt;</span>
+
+            <span class="nt">&lt;body&gt;</span>
+                <span class="c">&lt;!-- début de page --&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;page&quot;</span> <span class="na">id=</span><span class="s">&quot;page&quot;</span> <span class="nt">&gt;</span>
+
+            <span class="c">&lt;!-- début entête --&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;header&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;h1&gt;</span>Voici ma première page en HTML<span class="nt">&lt;/h1&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="c">&lt;!-- fin entête --&gt;</span>
+
+            <span class="c">&lt;!-- début contenu --&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;main&quot;</span> <span class="na">class=</span><span class="s">&quot;ui-content&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;h1&gt;</span>Titre<span class="nt">&lt;/h1&gt;</span>
+                    <span class="nt">&lt;p&gt;</span>Contenu de la <span class="nt">&lt;strong&gt;</span>page<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="c">&lt;!-- fin contenu --&gt;</span>
+
+            <span class="c">&lt;!-- début bas de page --&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;footer&quot;</span> <span class="na">data-position=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;h4&gt;</span>Ici est placé le bas de page<span class="nt">&lt;/h4&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="c">&lt;!-- fin bas de page --&gt;</span>
+
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="c">&lt;!-- fin de page --&gt;</span>
+            <span class="nt">&lt;/body&gt;</span>
+    <span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -119,11 +245,8 @@ catégories séparées par des balises. Exemple d&#8217;une page simple en html:
   <ul>
 <li><a class="reference internal" href="#">Technologies utilisés pour le développement</a><ul>
 <li><a class="reference internal" href="#html-5">HTML 5</a></li>
-<li><a class="reference internal" href="#css-3">CSS 3</a><ul>
-<li><a class="reference internal" href="#abreviation-de-cascading-style-sheets-3">Abréviation de &#8216;Cascading Style Sheets 3&#8217;</a></li>
+<li><a class="reference internal" href="#css-3">CSS 3</a></li>
 <li><a class="reference internal" href="#javascript">Javascript</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#jquery">jQuery</a></li>
 <li><a class="reference internal" href="#django">Django</a></li>
 <li><a class="reference internal" href="#python">python</a></li>
