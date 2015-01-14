@@ -8,7 +8,7 @@
     
     <title>jQuery Mobile et Bootstrap &mdash; documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1" href="index.html" />
     <link rel="next" title="Particularités du développement mobile" href="Particularités.html" />
-    <link rel="prev" title="Présentation jQuery Mobile" href="presentation_jQM.html" /> 
+    <link rel="prev" title="Présentation de jQuery Mobile" href="presentation_jQM.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,7 +40,7 @@
           <a href="Particularités.html" title="Particularités du développement mobile"
              accesskey="N">suivant</a> |</li>
         <li class="right" >
-          <a href="presentation_jQM.html" title="Présentation jQuery Mobile"
+          <a href="presentation_jQM.html" title="Présentation de jQuery Mobile"
              accesskey="P">précédent</a> |</li>
         <li><a href="index.html">documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1</a> &raquo;</li> 
       </ul>
@@ -57,14 +57,15 @@
 <h2>Fonctionnement général de jQuery Mobile<a class="headerlink" href="#fonctionnement-general-de-jquery-mobile" title="Lien permanent vers ce titre">¶</a></h2>
 <p>La majeure partie de jQuery Mobile se joue dans le balisage de son code html.
 Dans la mesure où l&#8217;on définit si le contenu d&#8217;un balisage:</p>
+<p>Du contenu:</p>
 <div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;div&gt;</span>contenu<span class="nt">&lt;/div&gt;</span>
 </pre></div>
 </div>
-<p>ou d&#8217;un</p>
+<p>Un lien:</p>
 <div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>lien<span class="nt">&lt;/a&gt;</span>
 </pre></div>
 </div>
-<p>et pourquoi pas d&#8217;un bouton</p>
+<p>et pourquoi pas un bouton:</p>
 <div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;button&gt;</span>bouton<span class="nt">&lt;/button&gt;</span>
 </pre></div>
 </div>
@@ -75,7 +76,7 @@ telles que ui-content pour le contenu:</p>
 </pre></div>
 </div>
 <p>Les scripts jQuery Mobile viendront s&#8217;appliquer là-dessus et considéreront ceci
-comme le contenu d&#8217;une page par exemple et appliqueront le code css nécessaire.
+comme le contenu d&#8217;une page et appliqueront le code css nécessaire.
 Pareil pour le lien et le bouton qui suivent. Nous pouvons y ajouter la classe
 &#8216;ui-btn&#8217; qui dira aux scripts jQuery Mobile d&#8217;appliquer de code css nécessaire
 pour avoir l&#8217;allure d&#8217;un bouton.</p>
@@ -83,10 +84,10 @@ pour avoir l&#8217;allure d&#8217;un bouton.</p>
 <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;ui-btn&quot;</span><span class="nt">&gt;</span>bouton<span class="nt">&lt;/button&gt;</span>
 </pre></div>
 </div>
-<p>Pour travail avec jQuery Mobile, il est donc nécessaire de travailler avec ce balisage
-qui permettra à la bibliotheque d&#8217;interpreéter le code et d&#8217;y appliquer les
+<p>Pour l&#8217;utilisation de jQuery Mobile, il est donc nécessaire de travailler avec ce balisage
+qui permettra à la bibliotheque d&#8217;interpréter le code et d&#8217;y appliquer les
 attributs et la mise en page nécessaire avec une allure très agréable à
-l&#8217;utilisation tactile et très bien adaptée aux écrans de taille plutôt que l&#8217;on
+l&#8217;utilisation tactile et très bien adaptée aux écrans de taille plutôt réduite que l&#8217;on
 peut retrouver sur un smartphone standard voire sur une tablette de petite taille.</p>
 </div>
 <div class="section" id="fonctionnement-general-de-bootstrap">
@@ -109,8 +110,10 @@ le site sur un écran large pourrait se retrouver horizontalement sur un écrant
 les deux utiles afin de créer une interface mobile pour ma future application.
 Elles proposent un affichage qui est facilement utilisable dans des conditions
 que l&#8217;on ne retrouve pas sur un ordinateur de bureau et auxquelles on ne pense pas
-forcément en développement. Ceci nous permet donc une interface utilisateur
-adaptée aux besoins d&#8217;une personne utilisant cette application.
+forcément au cours du développement. Ceci nous permet donc une interface utilisateur
+adaptée aux besoins d&#8217;une personne utilisant cette application mobile. Les deux
+présentent également un très bon système pour modifier les thèmes et ainsi
+apporter un côté ludique ou encore plus agréable.
 Par contre Bootstrap se concentre vraiment sur une allure du site qui s&#8217;adapte
 aux différents formats d&#8217;écrans tandis que jQuery Mobile est plutôt dans l&#8217;optique
 de proposer un rendu qui lui est entièrement consacré au mobile en se souciant peu
@@ -138,7 +141,7 @@ tactile mais ce n&#8217;est pas le meilleur que l&#8217;on puisse avoir.</p>
 
   <h4>Sujet précédent</h4>
   <p class="topless"><a href="presentation_jQM.html"
-                        title="Chapitre précédent">Présentation jQuery Mobile</a></p>
+                        title="Chapitre précédent">Présentation de jQuery Mobile</a></p>
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="Particularités.html"
                         title="Chapitre suivant">Particularités du développement mobile</a></p>
@@ -174,7 +177,7 @@ tactile mais ce n&#8217;est pas le meilleur que l&#8217;on puisse avoir.</p>
           <a href="Particularités.html" title="Particularités du développement mobile"
              >suivant</a> |</li>
         <li class="right" >
-          <a href="presentation_jQM.html" title="Présentation jQuery Mobile"
+          <a href="presentation_jQM.html" title="Présentation de jQuery Mobile"
              >précédent</a> |</li>
         <li><a href="index.html">documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1</a> &raquo;</li> 
       </ul>

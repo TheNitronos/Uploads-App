@@ -6,9 +6,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Technologies utilisés pour le développement &mdash; documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1</title>
+    <title>Technologies utilisées pour le développement &mdash; documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/translations.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="documentation Conception et développement d’une version du site adaptée à l’utilisation sur smartphone ou tablette 0.1" href="index.html" />
-    <link rel="next" title="&lt;no title&gt;" href="guide.html" />
+    <link rel="next" title="Guide du programmeur" href="guide.html" />
     <link rel="prev" title="Particularités du développement mobile" href="Particularités.html" /> 
   </head>
   <body>
@@ -37,7 +37,7 @@
           <a href="genindex.html" title="Index général"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="guide.html" title="&lt;no title&gt;"
+          <a href="guide.html" title="Guide du programmeur"
              accesskey="N">suivant</a> |</li>
         <li class="right" >
           <a href="Particularités.html" title="Particularités du développement mobile"
@@ -51,8 +51,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="technologies-utilises-pour-le-developpement">
-<h1>Technologies utilisés pour le développement<a class="headerlink" href="#technologies-utilises-pour-le-developpement" title="Lien permanent vers ce titre">¶</a></h1>
+  <div class="section" id="technologies-utilisees-pour-le-developpement">
+<h1>Technologies utilisées pour le développement<a class="headerlink" href="#technologies-utilisees-pour-le-developpement" title="Lien permanent vers ce titre">¶</a></h1>
 <div class="section" id="html-5">
 <h2>HTML 5<a class="headerlink" href="#html-5" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Abréviation de &#8216;HyperText Markup Language 5&#8217;, ce langage permet d&#8217;introduire le
@@ -89,8 +89,9 @@ catégories séparées par des balises. Exemple d&#8217;une page simple en html:
 <div class="section" id="css-3">
 <h2>CSS 3<a class="headerlink" href="#css-3" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Abréviation de &#8216;Cascading Style Sheets 3&#8217;, ce langage permet de structurer,
-personnaliser, modifier votre code html. Et cela aussi bien en y ajoutant des
-couleur, des grilles, des bordures,... Exemple sur la page HTML:</p>
+personnaliser, modifier le code html. Et cela aussi bien en y ajoutant des
+couleur, des grilles, des bordures,... Exemple sur la page HTML (dans le fichier
+style.css, chargé dans la page html d&#8217;avant):</p>
 <div class="highlight-css"><div class="highlight"><pre><span class="c">/* on applique la police Verdana a tous le corps de texte*/</span>
 <span class="nt">body</span>
 <span class="p">{</span>
@@ -123,7 +124,8 @@ couleur, des grilles, des bordures,... Exemple sur la page HTML:</p>
 <p>Le Javascript est un langage qui lui permet d&#8217;ajouter de l&#8217;interactivité dans ses
 pages internet car comme vous avez pu le remarquer on se retrouve avec des pages
 dite &#8216;statiques&#8217; qui ne font qu&#8217;afficher du contenu. Nous allons ici ajouter une
-boite de dialogue avec javascript:</p>
+boite de dialogue avec javascript (dans le fichier
+javascript.js, chargé dans la page html d&#8217;avant):</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/* la fonction alert permet une boite de dialogue */</span>
 <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Ceci est une boite de dialogue à l&#39;aide de JS.&quot;</span><span class="p">)</span>
 </pre></div>
@@ -142,9 +144,9 @@ JS:</p>
 <p>En plus de cela jQuery utilise également des évènements qui, par exemple, lance
 des fonctions lorsqu&#8217;on clique sur une bouton. Sur notre page vous avez pu
 remarquer que la boite de dialogue s&#8217;ouvre avant le chargement de la page. Nous
-allons donc créer remplacer le code javascript d&#8217;avant par un autre qui
+allons donc remplacer le code javascript d&#8217;avant par un autre qui
 affichera cette boite de dialogue seulement après le chargement:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/* on se réfère au document ouvert, donc la page qui quand elle est ouverte</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/* on se réfère au document ouvert, donc la page qui quand elle est prête</span>
 <span class="cm">méthode &#39;ready&#39; éxécute la fonction alert que l&#39;on a vu précédemment*/</span>
 <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
     <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Voici la nouvelle boite de dialogue.&quot;</span><span class="p">);</span>
@@ -158,9 +160,9 @@ affichera cette boite de dialogue seulement après le chargement:</p>
 <h2>Django<a class="headerlink" href="#django" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Django est également une bibliothèque mais basée sur le langage python cette fois.
 C&#8217;est une bibliothèque web qui permet de créer des sites internet de façon plutôt
-intuitive une fois que l&#8217;on a appréhender le fonctionnement de celle-ci. Tout
-comme python le langage django est relativement facile à comprendre et permet
-de proposer un site web efficace avec effort qui est moindre.</p>
+intuitive une fois que l&#8217;on a appréhendé le fonctionnement de celle-ci. Tout
+comme python, le langage django est relativement facile à comprendre et permet
+de proposer un site web efficace avec un effort qui est moindre.</p>
 </div>
 <div class="section" id="python">
 <h2>python<a class="headerlink" href="#python" title="Lien permanent vers ce titre">¶</a></h2>
@@ -180,26 +182,34 @@ exemple qui illustre la syntaxe et l&#8217;allure du langage:</p>
 <h2>jQuery Mobile<a class="headerlink" href="#jquery-mobile" title="Lien permanent vers ce titre">¶</a></h2>
 <p>jquery mobile est cette fameuse bibliothèque que j&#8217;aurai l&#8217;occasion de présenter
 d&#8217;une façon plus approfondie dans ce travail. Tout d&#8217;abord, il faut la charger
-tout comme jQuery:</p>
+tous les scripts de la même façon que jQuery:</p>
 <div class="highlight-html"><div class="highlight"><pre><span class="c">&lt;!-- le script CSS qui va charger les éléments de style jQuery Mobile--&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;http://code.jquery.com/mobile/1.4.5/jquery.</span>
+<span class="s">mobile-1.4.5.min.css&quot;</span> <span class="nt">/&gt;</span>
+
 <span class="c">&lt;!-- le script de jQuery qui est aussi nécessaire --&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/jquery-1.11.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+
 <span class="c">&lt;!-- et enfin celui de jQuery Mobile --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5</span>
+<span class="s">.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 </pre></div>
 </div>
 <p>A partir de là, il ne nous reste plus qu&#8217;à retravailler le code html pour
 l&#8217;adapter au balisage jQuery Mobile. Aussi bien au niveau du nom de la balise,
 attribuer un id spécifique ou le plus souvent une classe. Voici une page
-jQuery Mobile de base avec un rendu sur smartphone:</p>
+jQuery Mobile de base avec un rendu type &#8216;écran mobile&#8217;:</p>
 <div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
     <span class="nt">&lt;html&gt;</span>
         <span class="nt">&lt;head&gt;</span>
             <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span> <span class="nt">/&gt;</span>
-            <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css&quot;</span> <span class="nt">/&gt;</span>
-            <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/jquery-1.11.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-            <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+            <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;http://code.jquery.com/mobile/</span>
+<span class="s">            1.4.5/jquery.mobile-1.4.5.min.css&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/jquery-1.11.1.min.js&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/script&gt;</span>
+            <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/mobile/1.4.5/jquery.</span>
+<span class="s">            mobile-1.4.5.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
                     <span class="nt">&lt;title&gt;</span>Essai simple<span class="nt">&lt;/title&gt;</span>
             <span class="nt">&lt;/head&gt;</span>
 
@@ -232,6 +242,9 @@ jQuery Mobile de base avec un rendu sur smartphone:</p>
     <span class="nt">&lt;/html&gt;</span>
 </pre></div>
 </div>
+<img alt="_images/HTML_presentation_5.png" src="_images/HTML_presentation_5.png" />
+<p>On voit déjà ici la puissance de jQuery Mobile pour la mise en page qui malgré
+son thème de base reste très agréable et s&#8217;adapte bien au petits écrans.</p>
 </div>
 </div>
 
@@ -243,7 +256,7 @@ jQuery Mobile de base avec un rendu sur smartphone:</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table des Matières</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Technologies utilisés pour le développement</a><ul>
+<li><a class="reference internal" href="#">Technologies utilisées pour le développement</a><ul>
 <li><a class="reference internal" href="#html-5">HTML 5</a></li>
 <li><a class="reference internal" href="#css-3">CSS 3</a></li>
 <li><a class="reference internal" href="#javascript">Javascript</a></li>
@@ -260,7 +273,7 @@ jQuery Mobile de base avec un rendu sur smartphone:</p>
                         title="Chapitre précédent">Particularités du développement mobile</a></p>
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="guide.html"
-                        title="Chapitre suivant">&lt;no title&gt;</a></p>
+                        title="Chapitre suivant">Guide du programmeur</a></p>
   <h3>Cette page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/technologie.txt"
@@ -290,7 +303,7 @@ jQuery Mobile de base avec un rendu sur smartphone:</p>
           <a href="genindex.html" title="Index général"
              >index</a></li>
         <li class="right" >
-          <a href="guide.html" title="&lt;no title&gt;"
+          <a href="guide.html" title="Guide du programmeur"
              >suivant</a> |</li>
         <li class="right" >
           <a href="Particularités.html" title="Particularités du développement mobile"

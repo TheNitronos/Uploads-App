@@ -1,6 +1,6 @@
-==========================
+===========================
 jQuery Mobile et Bootstrap
-==========================
+===========================
 
 ***************************************
 Fonctionnement général de jQuery Mobile
@@ -9,15 +9,19 @@ Fonctionnement général de jQuery Mobile
 La majeure partie de jQuery Mobile se joue dans le balisage de son code html. 
 Dans la mesure où l'on définit si le contenu d'un balisage:
 
+Du contenu:
+
 .. code-block:: html
 
     <div>contenu</div>
-ou d'un 
+
+Un lien:
 
 .. code-block:: html
 
     <a href="#">lien</a>
-et pourquoi pas d'un bouton
+    
+et pourquoi pas un bouton:
 
 .. code-block:: html
 
@@ -32,7 +36,7 @@ telles que ui-content pour le contenu:
     <div class="ui-content">contenu</div> 
 
 Les scripts jQuery Mobile viendront s'appliquer là-dessus et considéreront ceci 
-comme le contenu d'une page par exemple et appliqueront le code css nécessaire. 
+comme le contenu d'une page et appliqueront le code css nécessaire. 
 Pareil pour le lien et le bouton qui suivent. Nous pouvons y ajouter la classe 
 'ui-btn' qui dira aux scripts jQuery Mobile d'appliquer de code css nécessaire 
 pour avoir l'allure d'un bouton.
@@ -42,10 +46,10 @@ pour avoir l'allure d'un bouton.
     <a href="#" class="ui-btn">lien</a>
     <button class="ui-btn">bouton</button>
     
-Pour travail avec jQuery Mobile, il est donc nécessaire de travailler avec ce balisage 
-qui permettra à la bibliotheque d'interpreéter le code et d'y appliquer les 
+Pour l'utilisation de jQuery Mobile, il est donc nécessaire de travailler avec ce balisage 
+qui permettra à la bibliotheque d'interpréter le code et d'y appliquer les 
 attributs et la mise en page nécessaire avec une allure très agréable à 
-l'utilisation tactile et très bien adaptée aux écrans de taille plutôt que l'on 
+l'utilisation tactile et très bien adaptée aux écrans de taille plutôt réduite que l'on 
 peut retrouver sur un smartphone standard voire sur une tablette de petite taille. 
 
 
@@ -73,8 +77,10 @@ Ces deux bibliothèques se ressemblent dans la mesure où elles me seraient tout
 les deux utiles afin de créer une interface mobile pour ma future application.
 Elles proposent un affichage qui est facilement utilisable dans des conditions
 que l'on ne retrouve pas sur un ordinateur de bureau et auxquelles on ne pense pas 
-forcément en développement. Ceci nous permet donc une interface utilisateur
-adaptée aux besoins d'une personne utilisant cette application.
+forcément au cours du développement. Ceci nous permet donc une interface utilisateur
+adaptée aux besoins d'une personne utilisant cette application mobile. Les deux
+présentent également un très bon système pour modifier les thèmes et ainsi
+apporter un côté ludique ou encore plus agréable.
 Par contre Bootstrap se concentre vraiment sur une allure du site qui s'adapte
 aux différents formats d'écrans tandis que jQuery Mobile est plutôt dans l'optique
 de proposer un rendu qui lui est entièrement consacré au mobile en se souciant peu
