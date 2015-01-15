@@ -78,7 +78,7 @@ style.css, chargé dans la page html d'avant):
 Javascript
 **********
 Le Javascript est un langage qui lui permet d'ajouter de l'interactivité dans ses
-pages internet car comme vous avez pu le remarquer on se retrouve avec des pages
+pages internet car comme vous avez pu le remarquer, on se retrouve avec des pages
 dite 'statiques' qui ne font qu'afficher du contenu. Nous allons ici ajouter une 
 boite de dialogue avec javascript (dans le fichier
 javascript.js, chargé dans la page html d'avant):

@@ -28,14 +28,14 @@ class Picture(models.Model):
     
     #désactivés pour l'instant
     #destinateur, celui qui envoie l'image
-    sender = models.ForeignKey(Student, null=True)
+    #sender = models.ForeignKey(Student, null=True)
     #destinataire, souvvent le professeur si une image ne passe pas par un
     #exercice mais va directemetn chez le professeur pour une question, par ex.
     #recipient = models.ForeignKey(Teacher, null=True)
     
     #exercices concernés si nécessaire mais ceci sera sûrement ajouté 
     #automatiquement lors de l'appui sur le bouton à la fin d'un exercice
-    exercises = models.ManyToManyField(Exercise, null=True)
+    #exercises = models.ManyToManyField(Exercise, null=True)
     #courses = models.ManyToManyField(Course, null=True)
     
     #date de l'upload
