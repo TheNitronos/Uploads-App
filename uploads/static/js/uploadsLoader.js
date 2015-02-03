@@ -1,6 +1,3 @@
-/* 
-   laissé de côté car jqm avait déja prévu le coup
-*/ 
 $( document ).on( "pagecreate", function() {
     var $this = $(".buttonLoad"),
     theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,

@@ -2,7 +2,7 @@ from django import forms
 
 
 class UploadForm(forms.Form):
-    image = forms.ImageField()
+    image = forms.ImageField(error_messages={'required': 'Aucune image n\'a été sélectionnée'})
     tag = forms.CharField(max_length=20, required=False)
     description = forms.CharField(max_length=500, required=False)
     #pour receiver, exercise et course, il n'y aura pas besoin de mettre de données dans le formulaire

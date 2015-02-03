@@ -17,6 +17,7 @@
         <script src="{% static 'js/panel.js' %}"></script>
         <script src="{% static 'js/popupIMG.js' %}"></script>
         <script src="{% static 'js/refreshButton.js' %}"></script>
+        <script src="{% static 'js/uploadsLoader.js' %}"></script>
     </head> 
     <body>
         <!-- début de page --> 
@@ -30,7 +31,7 @@
                 <li data-role="list-divider">Tableau de bord</li>
                 <li><a href="{% url 'uploads:course_index'  %}">Cours</a></li>
                 <li><a href="{% url 'uploads:ex_index'  %}">Exercices</a></li>
-                <li><a href="http://webmathquiz-blm08.c9.io/quiz/">Quiz</a></li>
+                <li><a href="http://quiztm-2014-blm08.c9.io/quiz">Quiz</a></li>
                 <li><a href="{% url 'uploads:uploaded'  %}">Images</a></li>
                 <li><a href="{% url 'uploads:upload'  %}">Upload</a></li>
                 <li data-role="list-divider">Personnel</li>

@@ -1,6 +1,3 @@
-/* 
-   laissé de côté car il ne fonctionne pas toujours, quelques problèmes de chargement
-*/ 
 $( document ).on( "pagecreate", "#page", function() {
     $( document ).on( "swiperight", "#page", function( e ) {
         if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) {

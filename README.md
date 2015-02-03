@@ -18,4 +18,5 @@ ToDo
 - arrière plan oscurci lors de louvrture d'une popup
 - voir les template des autres pour les refaire avec jQuery Mobile
 - adaption des modèles
+- supprimer fichier inutiles
 
