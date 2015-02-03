@@ -1,0 +1,9 @@
+# pour ignorer tous le dossier __pycache__ (dossier contenant les fichiers
+# *.pyc qui sont les versions compilées des scripts Python
+__pycache__
+
+# pour ignorer le dossier .c9 sous Cloud9
+.c9
+
+# pour ignorer le dossier build contenant le rendu d'une documentation Sphinx
+build/
