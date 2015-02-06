@@ -23,8 +23,12 @@
             </form>
             <div class="apercu">
                 <img id="output"/>
-                <label for="slider-1">Contraste:</label> 
-                <input type="range" name="contraste" id="contraste" min="0" max="5" value="1" onchange="changecontrast(event)">
+                <label for=".">Contraste:</label> 
+                <input type="range" name="contraste" id="contraste" min="0" max="5" value="1" step=".2" onchange="changecontraste(event)">
+                <label for=".">Luminosité:</label> 
+                <input type="range" name="luminosite" id="luminosite" min="0" max="5" value="0" step=".5" onchange="changeluminosite(event)">
+                <label for=".">Saturation:</label> 
+                <input type="range" name="saturation" id="saturation" min="0" max="5" value="0" step=".5" onchange="changesaturation(event)">
             </div>
         </div>
         
