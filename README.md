@@ -20,3 +20,15 @@ ToDo
 - adaption des modèles
 - supprimer fichier inutiles
 
+
+
+
+
+
+Branche apercu-image
+--------------------
+
+- les curseurs fonctionnement indépendemment: à résoudre
+- curseurs pour changer la saturation, contraste et luminosite d'une image
+- apercu de l'image grace au js de apercuIMG.js
+- à voir pour adapter le formulaire d'envoi
