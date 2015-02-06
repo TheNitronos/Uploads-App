@@ -21,7 +21,4 @@
 #output
 {
     max-width: 100%;
-    -webkit-filter: contrast(5);
-    -webkit-filter: brightness(5);
-    -webkit-filter: saturate(5);
 }
