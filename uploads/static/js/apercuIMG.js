@@ -4,14 +4,8 @@ var loadFile = function(event) {
 };
 
 var changecontrast = function(event) {
-    var contraste = document.getElementById('contraste');
-    contraste += ")";
-    var valeurcontraste = "contrast(";
-    valeurcontraste += contraste
+    var valeurcontraste = $("#contraste").val();
+    var contraste = "contrast({})".format(valeurcontraste);
     
-    $("#output").css("-webkit-filter",valeurcontraste);
+    $("#output").css("-webkit-filter", contraste);
 };
-
-
-
-
