@@ -26,6 +26,12 @@ class Picture(models.Model):
     #description: texte pour décrire l'image et apporter des précisions si nécessaire
     description = models.CharField(max_length=500, null=True)
     
+    saturation = models.decimalField(min_value=0, max_value=10)
+    
+    contraste = models.decimalField(min_value=0, max_value=10)
+    
+    luminosite = models.decimalField(min_value= 0, max_value=10)
+    
     #désactivés pour l'instant
     #destinateur, celui qui envoie l'image
     #sender = models.ForeignKey(Student, null=True)
