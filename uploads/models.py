@@ -26,11 +26,11 @@ class Picture(models.Model):
     #description: texte pour décrire l'image et apporter des précisions si nécessaire
     description = models.CharField(max_length=500, null=True)
     
-    saturation = models.DecimalField(decimal_places=2, max_digits=2, default=0)
+    saturation = models.DecimalField(decimal_places=1, max_digits=2, default=0)
     
-    contraste = models.DecimalField(decimal_places=2, max_digits=2, default=0)
+    contraste = models.DecimalField(decimal_places=1, max_digits=2, default=0)
     
-    luminosite = models.DecimalField(decimal_places=2, max_digits=2, default=0)
+    luminosite = models.DecimalField(decimal_places=1, max_digits=2, default=0)
     
     #désactivés pour l'instant
     #destinateur, celui qui envoie l'image
