@@ -16,8 +16,6 @@
             <!-- formulaire pour upload de l'image, data-ajax="false" permet d'éviter des chargements propres a jQM qui empêchent le bon fonctionnement des formulaires  --> 
             <form method="post" enctype="multipart/form-data" action="." data-ajax="false">
                 {% csrf_token %}
-                <label for="">Image: </label>
-                <input type="file" accept="image/*" onchange="loadFile(event)">
                 {{ form.as_p }}
                 <button type="submit" class="ui-btn btn-bottom buttonLoad" data-textonly="false" data-textvisible="true" data-msgtext="L'image est en chargement" data-inline="true">Uploader !</button>
             </form>
