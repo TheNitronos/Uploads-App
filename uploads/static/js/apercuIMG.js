@@ -7,13 +7,13 @@ $( document ).on( "pagecreate", function() {
     $( "#contraste" ).on( 'slidestart', function(event) {
         $( "#contraste" ).on( 'slidestop', function(event) {
             var valeurcontraste = $("#contraste").val();
-            var contraste = 'contrast(' + valeurcontraste + '%)';
+            var contraste = 'contrast(' + valeurcontraste + ')';
             
             var valeurluminosite = $("#luminosite").val();
-            var luminosite = 'brightness(' + valeurluminosite + '%)';
+            var luminosite = 'brightness(' + valeurluminosite + ')';
             
             var valeursaturation = $("#saturation").val();
-            var saturation = 'saturate(' + valeursaturation + '%)';
+            var saturation = 'saturate(' + valeursaturation + ')';
             
             var attribut =  contraste + luminosite +  saturation
             $("#output").css("-webkit-filter", attribut);
@@ -22,13 +22,13 @@ $( document ).on( "pagecreate", function() {
     $( "#luminosite" ).on( 'slidestart', function(event) {
         $( "#luminosite" ).on( 'slidestop', function(event) {
             var valeurcontraste = $("#contraste").val();
-            var contraste = 'contrast(' + valeurcontraste + '%)';
+            var contraste = 'contrast(' + valeurcontraste + ')';
             
             var valeurluminosite = $("#luminosite").val();
-            var luminosite = 'brightness(' + valeurluminosite + '%)';
+            var luminosite = 'brightness(' + valeurluminosite + ')';
             
             var valeursaturation = $("#saturation").val();
-            var saturation = 'saturate(' + valeursaturation + '%)';
+            var saturation = 'saturate(' + valeursaturation + ')';
             
             var attribut =  contraste + luminosite +  saturation
             $("#output").css("-webkit-filter", attribut);
@@ -37,13 +37,13 @@ $( document ).on( "pagecreate", function() {
     $( "#saturation" ).on( 'slidestart', function(event) {
         $( "#saturation" ).on( 'slidestop', function(event) {
             var valeurcontraste = $("#contraste").val();
-            var contraste = 'contrast(' + valeurcontraste + '%)';
+            var contraste = 'contrast(' + valeurcontraste + ')';
             
             var valeurluminosite = $("#luminosite").val();
-            var luminosite = 'brightness(' + valeurluminosite + '%)';
+            var luminosite = 'brightness(' + valeurluminosite + ')';
             
             var valeursaturation = $("#saturation").val();
-            var saturation = 'saturate(' + valeursaturation + '%)';
+            var saturation = 'saturate(' + valeursaturation + ')';
             
             var attribut =  contraste + luminosite +  saturation
             $("#output").css("-webkit-filter", attribut);
