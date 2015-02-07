@@ -28,7 +28,8 @@ ToDo
 Branche apercu-image
 --------------------
 
-- les curseurs fonctionnement indépendemment: à résoudre
-- curseurs pour changer la saturation, contraste et luminosite d'une image
-- apercu de l'image grace au js de apercuIMG.js
-- à voir pour adapter le formulaire d'envoi
+- les curseurs fonctionnement indépendemment: fini
+- curseurs pour changer la saturation, contraste et luminosite d'une image: fini
+- apercu de l'image grace au js de apercuIMG.js: fini
+- à voir pour adapter le formulaire d'envoi: fini
+- faire un script pour afficher l'image avec les filtres sur les autres partie du site
