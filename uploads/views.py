@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from uploads.forms import UploadForm, ModifyForm
 from uploads.models import Picture, Course, Exercise
-from sorl.thumbnail import get_thumbnail, delete
+from sorl.thumbnail import get_thumbnail
 
 #affichage du code de base pour une page en jQM
 def base(request):
@@ -64,7 +64,7 @@ def detail_uploaded(request, imageId):
     form = ModifyForm()
     return render(request, 'mobile_uploads/images_detail.html', locals())
     
-def supprimer(request, imageId):
+def delete(request, imageId):
     if request.method == "POST":
         image = Picture.objects.get(id=imageId)
         image.image.delete()
