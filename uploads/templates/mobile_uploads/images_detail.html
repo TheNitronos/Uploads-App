@@ -41,7 +41,7 @@
         <div data-role="popup" id="popupdelete" data-theme="a" class="ui-corner-all ui-content">
             <h3 class="center">Attention !!!</h3>
             <p>Vous êtes sur le point de supprimer cette image.</p>
-            <form method="post" action="{% url 'uploads:delete' image.id %}" data-ajax="false">
+            <form method="post" action="{% url 'uploads:supprimer' image.id %}" data-ajax="false">
                 {% csrf_token %}
                 <button type="submit"  id="btnSupprimer" />Supprimer</button>
             </form>

@@ -26,7 +26,7 @@ urlpatterns = patterns('',
     url(r'imageDetail/(?P<imageId>\w+)', views.detail_uploaded, name='detail_uploaded'),
     
     #suppression d'image
-    url(r'delete/(?P<imageId>\w+)', views.delete, name='delete'),
+    url(r'delete/(?P<imageId>\w+)', views.supprimer, name='delete'),
     url(r'modify/(?P<imageId>\w+)', views.modify, name='modify'),
 )
 
