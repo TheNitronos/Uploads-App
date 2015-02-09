@@ -42,7 +42,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'uploads',
-    'sorl.thumbnail',
 )
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]

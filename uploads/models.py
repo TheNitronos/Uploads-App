@@ -1,5 +1,4 @@
 from django.db import models
-from sorl.thumbnail import ImageField
 
 #ces quatres premières classes ont été créées pour faire des essais comme je n'ai pas encore les classe définitives
 class Student(models.Model):
