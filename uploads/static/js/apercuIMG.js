@@ -1,7 +1,10 @@
-var loadFile = function(event) {
+var loadFile = function(event, input) {
     var output = document.getElementById('output');
-    output.src = URL.createObjectURL(event.target.files[0]);
+    var img = URL.createObjectURL(input.files[0]);
+    output.src = img;
 };
+
+
 
 $( document ).on( "pagecreate", function() {
     $( "#contraste" ).on( 'slidestart', function(event) {
