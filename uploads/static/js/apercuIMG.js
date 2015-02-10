@@ -1,7 +1,15 @@
+$( document ).on( "pagecreate", function() {
+    var width = $("#imageInput").width();
+    var height = width/16*9;
+    $("#imageInput").css("height", height)
+});
+
+    
 var loadFile = function(event, input) {
     var output = document.getElementById('output');
     var img = URL.createObjectURL(input.files[0]);
     output.src = img;
+    
 };
 
 
