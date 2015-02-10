@@ -36,3 +36,4 @@ Branche apercu-image
 - reduction de la résolution de l'image, soluion a exploiter: faire un inputfile, reduire la qualite avec js et la saisir automatiquement dans le formulaire d'upload
 - ajouter les filtres au formulaire de modifications
 - ajout de plusieurs images liées plus tard
+- probleme avec filtres: ne fonctionnent pas avec telechargement

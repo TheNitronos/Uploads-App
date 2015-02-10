@@ -14,11 +14,9 @@
             <form method="post" enctype="multipart/form-data" action="." data-ajax="false">
                 {% csrf_token %}
                 {{ form.as_p }}
+                <img id="output" style="-webkit-filter: contrast(1); -webkit-filter: brightness(1); -webkit-filter: saturate(1);"/>
                 <button type="submit" class="ui-btn btn-bottom buttonLoad" data-textonly="false" data-textvisible="true" data-msgtext="L'image est en chargement" data-inline="true">Uploader !</button>
             </form>
-            <div class="apercu">
-                <img id="output" style="-webkit-filter: contrast(1); -webkit-filter: brightness(1); -webkit-filter: saturate(1);"/>
-            </div>
         </div>
         
     </div>
