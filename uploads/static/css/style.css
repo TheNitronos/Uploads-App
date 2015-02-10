@@ -22,3 +22,9 @@
 {
     max-width: 100%;
 }
+
+#imageInput{
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}

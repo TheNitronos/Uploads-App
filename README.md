@@ -34,4 +34,5 @@ Branche apercu-image
 - à voir pour adapter le formulaire d'envoi: fini
 - faire un script pour afficher l'image avec les filtres sur les autres partie du site
 - reduction de la résolution de l'image, soluion a exploiter: faire un inputfile, reduire la qualite avec js et la saisir automatiquement dans le formulaire d'upload
-- ajouter les filtres au formulaire de modifications 
+- ajouter les filtres au formulaire de modifications
+- ajout de plusieurs images liées plus tard

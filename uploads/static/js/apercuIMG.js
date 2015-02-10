@@ -1,13 +1,23 @@
-$( document ).on( "pagecreate", function() {
-    var width = $("#imageInput").width();
+function adaptation() {
+    var width = $( window ).width();
     var height = width/16*9;
-    $("#imageInput").css("height", height)
+    $("#imageInput").css("height", height);
+};
+
+$( document ).on( "pagechange", function() {
+    adaptation();
+    
+    $( window ).resize( function(){
+        adaptation();
+    });
 });
 
     
 var loadFile = function(event, input) {
     var output = document.getElementById('output');
     var img = URL.createObjectURL(input.files[0]);
+    $("#imageInput").css("background-image", "url(" + img + ")");
+    
     output.src = img;
     
 };
