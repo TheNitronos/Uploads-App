@@ -2,6 +2,8 @@
 {% block buttons %}<a href="#" id ="refresh" class="ui-btn ui-btn-icon-right ui-icon-recycle ui-btn-icon-notext">Rafraîchir</a>{% endblock %}
 {% block header %}Images uploadées{% endblock %}
 {% block content %}
+<h3 class="ui-bar ui-bar-a ui-corner-all">Veuillez remplir les champs suivants:</h3>
+
 <ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true">
     {% for image in images %}
         <li><a href="#popup{{ image.id }}" data-rel="popup" data-position-to="window" data-transition="slide">
