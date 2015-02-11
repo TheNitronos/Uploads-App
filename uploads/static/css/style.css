@@ -21,8 +21,7 @@
 #output
 {
     max-width: 100%;
-}
-
-#imageInput{
-    width: 100%;
+    border-radius: 10px;
+    display: block;
+    margin: auto auto;
 }
