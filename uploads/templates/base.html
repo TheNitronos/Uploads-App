@@ -19,7 +19,8 @@
         <script src="{% static 'js/refreshButton.js' %}"></script>
         <script src="{% static 'js/uploadsLoader.js' %}"></script>
         <script src="{% static 'js/apercuIMG.js' %}"></script>
-        <script src="{% static 'js/afficherfiltresindex.js' %}"></script>
+        {% block scripts %}
+        {% endblock %}
     </head> 
     <body>
         <!-- début de page --> 
@@ -31,10 +32,10 @@
             <a href="#" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-mini ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-right">Fermer</a>
             <ul data-role="listview" data-inset="true" data-divider-theme="a">
                 <li data-role="list-divider">Tableau de bord</li>
-                <li><a href="{% url 'uploads:course_index'  %}">Cours</a></li>
+                <li><a href="{% url 'uploads:course_index'  %}" data-ajax="false">Cours</a></li>
                 <li><a href="{% url 'uploads:ex_index'  %}">Exercices</a></li>
                 <li><a href="http://quiztm-2014-blm08.c9.io/quiz">Quiz</a></li>
-                <li><a href="{% url 'uploads:uploaded'  %}">Images</a></li>
+                <li><a href="{% url 'uploads:uploaded'  %}" data-ajax="false">Images</a></li>
                 <li><a href="{% url 'uploads:upload'  %}">Upload</a></li>
                 <li data-role="list-divider">Personnel</li>
                 <li><a href="{% url 'uploads:dashboard'  %}">Dashboard</a></li>
