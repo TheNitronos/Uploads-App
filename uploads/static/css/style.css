@@ -25,3 +25,8 @@
     display: block;
     margin: auto auto;
 }
+
+.cache
+{
+    display: none;
+}

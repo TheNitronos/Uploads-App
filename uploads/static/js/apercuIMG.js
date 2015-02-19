@@ -20,7 +20,7 @@ $( document ).on( "pagecreate", function() {
             var valeursaturation = $("#saturation").val();
             var saturation = 'saturate(' + valeursaturation + ')';
             
-            var attribut =  contraste + luminosite +  saturation
+            var attribut =  contraste + luminosite +  saturation;
             $("#output").css("-webkit-filter", attribut);
         });
     });
@@ -35,7 +35,7 @@ $( document ).on( "pagecreate", function() {
             var valeursaturation = $("#saturation").val();
             var saturation = 'saturate(' + valeursaturation + ')';
             
-            var attribut =  contraste + luminosite +  saturation
+            var attribut =  contraste + luminosite +  saturation;
             $("#output").css("-webkit-filter", attribut);
         });
     });
@@ -50,7 +50,7 @@ $( document ).on( "pagecreate", function() {
             var valeursaturation = $("#saturation").val();
             var saturation = 'saturate(' + valeursaturation + ')';
             
-            var attribut =  contraste + luminosite +  saturation
+            var attribut =  contraste + luminosite +  saturation;
             $("#output").css("-webkit-filter", attribut);
         });
     });

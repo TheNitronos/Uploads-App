@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block header %}Modifications{% endblock %}
 {% block content %}
+
 <!-- image -->
 <img class="imageDetail" src="{{ image.image.url }}"/>
 <!-- début liste déroulable -->
@@ -10,9 +11,9 @@
         <h3>Informations</h3>
         <p>Tag: {{ image.tag }}</p>
         <p>Description: {{ image.description }}</p>
-        <p>Contraste:</p><p class="contraste">{{ image.contraste }}</p>
-        <p>Saturation:</p><p class="saturation">{{ image.saturation }}</p>
-        <p>Luminosité:</p><p class="luminosite">{{ image.luminosite }}</p>
+        <p class="contraste cache">{{ image.contraste }}</p>
+        <p class="saturation cache">{{ image.saturation }}</p>
+        <p class="luminosite cache">{{ image.luminosite }}</p>
         <p>date: {{ image.date }}</p>
     </div>
     <!-- fin premier item -->
