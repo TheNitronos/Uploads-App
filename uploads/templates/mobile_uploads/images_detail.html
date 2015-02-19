@@ -1,6 +1,9 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+{% block scripts %}<script src="{% static 'js/afficherfiltresdetail.js' %}"></script>{% endblock %}
 {% block header %}Modifications{% endblock %}
 {% block content %}
+
 <!-- image -->
 <img class="imageDetail" src="{{ image.image.url }}"/>
 <!-- début liste déroulable -->
@@ -10,6 +13,9 @@
         <h3>Informations</h3>
         <p>Tag: {{ image.tag }}</p>
         <p>Description: {{ image.description }}</p>
+        <p class="contraste cache">{{ image.contraste }}</p>
+        <p class="saturation cache">{{ image.saturation }}</p>
+        <p class="luminosite cache">{{ image.luminosite }}</p>
         <p>date: {{ image.date }}</p>
     </div>
     <!-- fin premier item -->

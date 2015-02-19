@@ -5,7 +5,6 @@ from django.conf import settings
 
 urlpatterns = patterns('',
     url(r'^uploads/', include('uploads.urls', namespace="uploads")),
-    url(r'^mobile_upload/', include('mobile_upload.urls', namespace="mobile_upload")),
     url(r'^admin/', include(admin.site.urls)),
 )
 

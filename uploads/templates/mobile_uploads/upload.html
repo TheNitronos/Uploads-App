@@ -1,16 +1,23 @@
 {% extends "base.html" %}
 {% block header %}Upload{% endblock %}
 {% block content %}
-<!-- quand l'image a été uploadée cette ligne s'afficher --> 
-{% if sauvegarde %}
-    <p>Cette image a bient été uploadée.</p>
-{% endif %}
-<div>
-    <!-- formulaire pour upload de l'image, data-ajax="false" permet d'éviter des chargements propres a jQM qui empêchent le bon fonctionnement des formulaires  --> 
-    <form method="post" enctype="multipart/form-data" action="." data-ajax="false">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="ui-btn btn-bottom buttonLoad" data-textonly="false" data-textvisible="true" data-msgtext="L'image est en chargement" data-inline="true">Uploader !</button>
-    </form>
-</div>
+<!-- titre du paragraphe -->
+<h3 class="ui-bar ui-bar-a ui-corner-all">Veuillez remplir les champs suivants:</h3>
+    <div class="ui-body ui-body-a ui-corner-all">
+    <!-- contenu du paragraphe -->
+        <div>
+            <!-- quand l'image a été uploadée cette ligne s'afficher --> 
+            {% if sauvegarde %}
+                <p>Cette image a bient été uploadée.</p>
+            {% endif %}
+            <!-- formulaire pour upload de l'image, data-ajax="false" permet d'éviter des chargements propres a jQM qui empêchent le bon fonctionnement des formulaires  --> 
+            <form method="post" enctype="multipart/form-data" action="." data-ajax="false">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <img id="output" style="-webkit-filter: contrast(2); -webkit-filter: brightness(1.5); -webkit-filter: saturate(0);"/>
+                <button type="submit" class="ui-btn btn-bottom buttonLoad" data-textonly="false" data-textvisible="true" data-msgtext="L'image est en chargement" data-inline="true">Uploader !</button>
+            </form>
+        </div>
+        
+    </div>
 {% endblock %}
