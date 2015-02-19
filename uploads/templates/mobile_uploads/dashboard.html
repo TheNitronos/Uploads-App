@@ -5,6 +5,6 @@
     <!-- bloc a de la grille qui s'affiche sous la première colonne -->
     <div class="ui-block-a"><a href="{% url 'uploads:upload'  %}" class="ui-btn">Upload</a></div>
     <!-- bloc b de la grille qui s'affiche sous la deuxième colonne -->
-    <div class="ui-block-b"><a href="{% url 'uploads:uploaded'  %}" class="ui-btn">Upload: images</a></div>
+    <div class="ui-block-b"><a href="{% url 'uploads:uploaded'  %}" class="ui-btn" data-ajax="false">Upload: images</a></div>
 </fieldset>
 {% endblock %}
