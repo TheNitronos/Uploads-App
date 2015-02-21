@@ -1,4 +1,4 @@
-$( document ).on( "pagecreate", function() {
+$( document ).ready(function() {
     $(".liste").each(function () {
         var contraste = "contrast(" + $(this).data('contrast') + ")";
         var saturation = "saturate(" + $(this).data('saturate') + ")";

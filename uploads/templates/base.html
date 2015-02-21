@@ -19,6 +19,15 @@
         <script src="{% static 'js/refreshButton.js' %}"></script>
         <script src="{% static 'js/uploadsLoader.js' %}"></script>
         <script src="{% static 'js/apercuIMG.js' %}"></script>
+        <script language="text/javascript">
+
+              $(document).bind("mobileinit", function () {
+        
+                    $.mobile.ajaxEnabled = false;
+        
+              });
+        
+        </script>
         {% block scripts %}
         {% endblock %}
     </head> 

@@ -8,7 +8,7 @@ var loadFile = function(event, input) {
 
 
 
-$( document ).on( "pagecreate", function() {
+$( document ).ready(function() {
     $( "#contraste" ).on( 'slidestart', function(event) {
         $( "#contraste" ).on( 'slidestop', function(event) {
             var valeurcontraste = $("#contraste").val();
