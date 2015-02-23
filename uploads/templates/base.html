@@ -19,27 +19,18 @@
         <script src="{% static 'js/refreshButton.js' %}"></script>
         <script src="{% static 'js/uploadsLoader.js' %}"></script>
         <script src="{% static 'js/apercuIMG.js' %}"></script>
-        <script language="text/javascript">
-
-              $(document).bind("mobileinit", function () {
-        
-                    $.mobile.ajaxEnabled = false;
-        
-              });
-        
-        </script>
         {% block scripts %}
         {% endblock %}
     </head> 
     <body>
         <!-- début de page --> 
-        <div data-role="page" id="page" >
+        <div data-role="page" id="page" data-theme="a">
         
         <!-- début du panel -->
         <div data-role="panel" id="panel" data-position="left" data-display="overlay">
             <h2>User ##</h2>
             <a href="#" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-mini ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-right">Fermer</a>
-            <ul data-role="listview" data-inset="true" data-divider-theme="a">
+            <ul data-role="listview" data-inset="true">
                 <li data-role="list-divider">Tableau de bord</li>
                 <li><a href="{% url 'uploads:course_index'  %}" data-ajax="false">Cours</a></li>
                 <li><a href="{% url 'uploads:ex_index'  %}">Exercices</a></li>

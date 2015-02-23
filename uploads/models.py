@@ -13,7 +13,8 @@ class Exercise(models.Model):
 class Course(models.Model):
     course_topic = models.CharField(max_length=30)
     
-
+class Theme(models.Model):
+    value = models.CharField(max_length=1)
 
 class Picture(models.Model):
     #ImageField pour que l'image soit enregistrée comme une image
