@@ -4,7 +4,8 @@ from uploads.models import Picture, Course, Exercise, Theme
 
 #affichage du code de base pour une page en jQM
 def base(request):
-    return render(request, 'base.html')
+    theme = Theme.objects.get(id=1)
+    return render(request, 'base.html', locals())
 
 #affichage du dashboard
 def dashboard(request):
@@ -24,21 +25,25 @@ def dashboard(request):
 #affichage des exercices
 def ex_index(request):
     exercises = Exercise.objects.all()
+    theme = Theme.objects.get(id=1)
     return render(request, 'mobile_uploads/exercise_index.html', locals())
     
 #affichage d'un exercice
 def ex_detail(request, exerciseId):
     exercise = Exercise.objects.get(id=exerciseId)
+    theme = Theme.objects.get(id=1)
     return render(request, 'mobile_uploads/exercise_detail.html', locals())
     
 #affichage des cours
 def course_index(request):
     courses = Course.objects.all()
+    theme = Theme.objects.get(id=1)
     return render(request, 'mobile_uploads/course_index.html', locals())
     
 #affichage d'un cours
 def course_detail(request, courseId):
     course = Course.objects.get(id=courseId)
+    theme = Theme.objects.get(id=1)
     return render(request, 'mobile_uploads/course_detail.html', locals())
 
 #requête pour uploader une image simple   
@@ -59,18 +64,21 @@ def upload(request):
             sauvegarde = True
     else:
         form = UploadForm()
+        theme = Theme.objects.get(id=1)
 
     return render(request, 'mobile_uploads/upload.html', locals())
 
 #requête pour afficher toutes les images uploadées
 def uploaded(request):
     images = Picture.objects.all()
+    theme = Theme.objects.get(id=1)
     return render(request, 'mobile_uploads/images_index.html', locals())
 
 #requête pour afficher le détail d'une image
 def detail_uploaded(request, imageId):
     image = Picture.objects.get(id=imageId)
     form = ModifyForm()
+    theme = Theme.objects.get(id=1)
     return render(request, 'mobile_uploads/images_detail.html', locals())
     
 def delete(request, imageId):
