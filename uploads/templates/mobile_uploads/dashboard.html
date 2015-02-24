@@ -7,4 +7,11 @@
     <!-- bloc b de la grille qui s'affiche sous la deuxième colonne -->
     <div class="ui-block-b"><a href="{% url 'uploads:uploaded'  %}" class="ui-btn">Upload: images</a></div>
 </fieldset>
+
+<p>{{ theme.value }}</p>
+    
+<form action="." method="post" data-ajax="false">
+    {% csrf_token %}
+    {{ form }}
+<input type="submit" value="Changer le thème" />
 {% endblock %}
