@@ -24,7 +24,7 @@
     </head> 
     <body>
         <!-- début de page --> 
-        <div data-role="page" id="page" data-theme="{{ theme.value }}">
+        <div data-role="page" id="page" data-theme="a">
         
         <!-- début du panel -->
         <div data-role="panel" id="panel" data-position="left" data-display="overlay">
@@ -32,7 +32,7 @@
             <a href="#" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-mini ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-right">Fermer</a>
             <ul data-role="listview" data-inset="true">
                 <li data-role="list-divider">Tableau de bord</li>
-                <li><a href="#" data-ajax="false">Cours</a></li>
+                <li><a href="#">Cours</a></li>
                 <li><a href="#">Exercices</a></li>
                 <li><a href="http://quiztm-2014-blm08.c9.io/quiz">Quiz</a></li>
                 <li><a href="{% url 'uploads:uploaded'  %}" data-ajax="false">Images</a></li>
