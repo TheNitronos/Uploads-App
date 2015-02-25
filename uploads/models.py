@@ -1,18 +1,5 @@
 from django.db import models
 
-#ces quatres premières classes ont été créées pour faire des essais comme je n'ai pas encore les classe définitives
-class Student(models.Model):
-    student_name = models.CharField(max_length=30)
-
-class Teacher(models.Model):
-    teacher_name = models.CharField(max_length=30)
-
-class Exercise(models.Model):
-    exercise_topic = models.CharField(max_length=30)
-
-class Course(models.Model):
-    course_topic = models.CharField(max_length=30)
-    
 class Theme(models.Model):
     value = models.CharField(max_length=1)
 

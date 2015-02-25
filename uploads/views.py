@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from uploads.forms import UploadForm, ModifyForm, changeTheme
-from uploads.models import Picture, Course, Exercise, Theme
+from uploads.models import Picture, Theme
 
 #affichage du code de base pour une page en jQM
 def base(request):
@@ -22,31 +22,8 @@ def dashboard(request):
 
     return render(request, 'mobile_uploads/dashboard.html', locals())
     
-#affichage des exercices
-def ex_index(request):
-    exercises = Exercise.objects.all()
-    theme = Theme.objects.get(id=1)
-    return render(request, 'mobile_uploads/exercise_index.html', locals())
-    
-#affichage d'un exercice
-def ex_detail(request, exerciseId):
-    exercise = Exercise.objects.get(id=exerciseId)
-    theme = Theme.objects.get(id=1)
-    return render(request, 'mobile_uploads/exercise_detail.html', locals())
-    
-#affichage des cours
-def course_index(request):
-    courses = Course.objects.all()
-    theme = Theme.objects.get(id=1)
-    return render(request, 'mobile_uploads/course_index.html', locals())
-    
-#affichage d'un cours
-def course_detail(request, courseId):
-    course = Course.objects.get(id=courseId)
-    theme = Theme.objects.get(id=1)
-    return render(request, 'mobile_uploads/course_detail.html', locals())
 
-#requête pour uploader une image simple   
+#requête pour uploader une image  
 def upload(request):
     sauvegarde = False
 
