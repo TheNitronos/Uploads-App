@@ -1,4 +1,4 @@
-$( document ).on( "pagecreate", function() {
+$( document ).ready(function() {
     $( "#refresh" ).click(function() {
         location.reload();
     })

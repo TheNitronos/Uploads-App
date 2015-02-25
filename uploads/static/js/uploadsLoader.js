@@ -1,4 +1,4 @@
-$( document ).on( "pagecreate", function() {
+$( document ).ready(function() {
     var $this = $(".buttonLoad"),
     theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
     msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,

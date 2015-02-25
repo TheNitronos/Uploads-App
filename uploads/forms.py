@@ -16,3 +16,7 @@ class UploadForm(forms.Form):
 class ModifyForm(forms.Form):
     tag = forms.CharField(max_length=20, required=False)
     description = forms.CharField(max_length=500, required=False)
+
+class changeTheme(forms.Form):
+    value = forms.CharField(max_length=1)
+    
