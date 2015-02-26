@@ -40,7 +40,7 @@ class Picture(models.Model):
     luminosite = models.DecimalField(decimal_places=1, max_digits=2, default=0)
     
     #relations de l'image
-    proprietaire = models.OneToOneField(Student)
+    proprietaire = models.OneToOneField(Student, null=True)
     
     #date de l'upload
     date = models.DateField(auto_now_add=True)
