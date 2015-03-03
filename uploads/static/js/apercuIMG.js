@@ -6,10 +6,8 @@ var loadFile = function(event, input) {
     $("#output").css("max-height", hauteur)
 };
 
-
-
 $( document ).on( "pagecreate", function() {
-    $( "#contraste" ).on( 'slidestop', function(event) {
+    $( "#contraste" ).on( 'slidestop', function() {
             var valeurcontraste = $("#contraste").val();
             var contraste = 'contrast(' + valeurcontraste + ')';
             
@@ -22,7 +20,7 @@ $( document ).on( "pagecreate", function() {
             var attribut =  contraste + luminosite +  saturation;
             $("#output").css("-webkit-filter", attribut);
     });
-    $( "#luminosite" ).on( 'slidestop', function(event) {
+    $( "#luminosite" ).on( 'slidestop', function() {
             var valeurcontraste = $("#contraste").val();
             var contraste = 'contrast(' + valeurcontraste + ')';
             
@@ -35,7 +33,7 @@ $( document ).on( "pagecreate", function() {
             var attribut =  contraste + luminosite +  saturation;
             $("#output").css("-webkit-filter", attribut);
     });
-    $( "#saturation" ).on( 'slidestop', function(event) {
+    $( "#saturation" ).on( 'slidestop', function() {
             var valeurcontraste = $("#contraste").val();
             var contraste = 'contrast(' + valeurcontraste + ')';
             

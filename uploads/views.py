@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from uploads.forms import UploadForm, ModifyForm, changeTheme
-from uploads.models import Picture, Theme
+from uploads.models import Picture
 
 #affichage du code de base pour une page en jQM
 def base(request):
-    theme = Theme.objects.get(id=1)
+    
     return render(request, 'base.html', locals())
 
 #affichage du dashboard
@@ -13,11 +13,11 @@ def dashboard(request):
     if request.method == "POST":
         form = changeTheme(request.POST, request.FILES)
         if form.is_valid():
-            theme = Theme.objects.get(id=1)
+            
             theme.value = form.cleaned_data["value"]
             theme.save()
     else:
-        theme = Theme.objects.get(id=1)
+        
         form = changeTheme()
 
     return render(request, 'mobile_uploads/dashboard.html', locals())
@@ -41,21 +41,21 @@ def upload(request):
             sauvegarde = True
     else:
         form = UploadForm()
-        theme = Theme.objects.get(id=1)
+        
 
     return render(request, 'mobile_uploads/upload.html', locals())
 
 #requête pour afficher toutes les images uploadées
 def uploaded(request):
     images = Picture.objects.all()
-    theme = Theme.objects.get(id=1)
+    
     return render(request, 'mobile_uploads/images_index.html', locals())
 
 #requête pour afficher le détail d'une image
 def detail_uploaded(request, imageId):
     image = Picture.objects.get(id=imageId)
     form = ModifyForm()
-    theme = Theme.objects.get(id=1)
+    
     return render(request, 'mobile_uploads/images_detail.html', locals())
     
 def delete(request, imageId):
