@@ -1,7 +1,7 @@
-var loadFile = function(event, input) {
+var loadFile = function(input) {
     var output = document.getElementById('output');
-    var img = URL.createObjectURL(input.files[0]);
-    output.src = img;
+    var srcImg = URL.createObjectURL(input.files[0]);
+    output.src = srcImg;
     var hauteur = $( window ).height()*0.6;
     $("#output").css("max-height", hauteur)
 };
