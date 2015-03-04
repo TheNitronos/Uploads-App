@@ -7,6 +7,12 @@ var loadFile = function(input) {
 };
 
 $( document ).on( "pagecreate", function() {
+    $("#btnCompression").click(function() {
+      alert( "Salut" );
+    });
+});
+
+$( document ).on( "pagecreate", function() {
     $( "#contraste" ).on( 'slidestop', function() {
             var valeurcontraste = $("#contraste").val();
             var contraste = 'contrast(' + valeurcontraste + ')';
