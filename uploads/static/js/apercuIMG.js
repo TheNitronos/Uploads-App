@@ -8,9 +8,15 @@ var loadFile = function(input) {
 
 $( document ).on( "pagecreate", function() {
     $("#btnCompression").click(function() {
-      alert( "Salut" );
+        var input = $("#imageInput").val();
+        
+        if (input == "") {
+            alert("Aucune image n'a été selectionnée");
+        }
     });
 });
+    
+
 
 $( document ).on( "pagecreate", function() {
     $( "#contraste" ).on( 'slidestop', function() {
