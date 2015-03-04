@@ -13,6 +13,21 @@ $( document ).on( "pagecreate", function() {
         if (input == "") {
             alert("Aucune image n'a été selectionnée");
         }
+        else {
+            var sourceImage = URL.createObjectURL($("#imageInput").val());
+            var mime_type = "image/jpeg";
+            var cvs = document.createElement('canvas');
+            var quality = 1;
+            
+            cvs.width = sourceImage.naturalWidth;
+            cvs.height = sourceImage.naturalHeight;
+            var ctx = cvs.getContext("2d").drawImage(sourceImage, 0, 0);
+            var newImageData = cvs.toDataURL(mime_type, quality/100);
+            var result_image = new Image();
+            result_image.src = newImageData;
+            
+            alert(result_image)
+        }
     });
 });
     
