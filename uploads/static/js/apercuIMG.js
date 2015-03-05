@@ -12,13 +12,15 @@ $( document ).on( "pagecreate", function() {
         
         if (input == "") {
             alert("Aucune image n'a été selectionnée");
+            
         }
         else {
-            var sourceImage = URL.createObjectURL($("#imageInput").val());
+            var image = document.getElementById('imageInput');
+            var sourceImage = document.getElementById('output');
             var mime_type = "image/jpeg";
-            var cvs = document.createElement('canvas');
-            var quality = 1;
             
+            var cvs = document.createElement('canvas');
+            var quality = 20;
             cvs.width = sourceImage.naturalWidth;
             cvs.height = sourceImage.naturalHeight;
             var ctx = cvs.getContext("2d").drawImage(sourceImage, 0, 0);
@@ -26,7 +28,7 @@ $( document ).on( "pagecreate", function() {
             var result_image = new Image();
             result_image.src = newImageData;
             
-            alert(result_image)
+            $("#compressedImage").append(result_image);
         }
     });
 });
