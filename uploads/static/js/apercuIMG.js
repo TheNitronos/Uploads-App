@@ -11,20 +11,20 @@ $( document ).on( "pagecreate", function() {
         var input = $("#imageInput").val();
         
         if (input == "") {
+            
             alert("Aucune image n'a été selectionnée");
             
         }
         else {
             var image = document.getElementById('imageInput');
             var sourceImage = document.getElementById('output');
-            var mime_type = "image/jpeg";
             
             var cvs = document.createElement('canvas');
-            var quality = 20;
+            var quality = 1;
             cvs.width = sourceImage.naturalWidth;
             cvs.height = sourceImage.naturalHeight;
             var ctx = cvs.getContext("2d").drawImage(sourceImage, 0, 0);
-            var newImageData = cvs.toDataURL(mime_type, quality/100);
+            var newImageData = cvs.toDataURL("image/jpeg", quality/100);
             var result_image = new Image();
             result_image.src = newImageData;
             
