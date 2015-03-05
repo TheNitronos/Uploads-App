@@ -17,6 +17,7 @@ $( document ).on( "pagecreate", function() {
         }
         else {
             var image = document.getElementById('imageInput');
+            var imageFile = image.files[0];
             var sourceImage = document.getElementById('output');
             
             var cvs = document.createElement('canvas');
@@ -29,6 +30,14 @@ $( document ).on( "pagecreate", function() {
             result_image.src = newImageData;
             
             $("#compressedImage").append(result_image);
+            
+            
+            var fileImage = image.files[0];
+            var fileName = fileImage.name;
+            fileImage.src = result_image.src;
+            console.log(fileImage);
+            console.log(fileName);
+            console.log(fileImage.src);
         }
     });
 });
