@@ -6,21 +6,18 @@
 {% block content %}
 <h3 class="ui-bar ui-bar-a ui-corner-all">Voici les images uploadées:</h3>
 
-<ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true">
+<ul data-role="listview" data-split-icon="gear" data-filter="true" data-filter-placeholder="Chercher image..." data-inset="true">
     {% for image in images %}
         <li class="liste"
             data-contrast="{{ image.contraste }}" 
-            data-saturate="{{ image.saturation }}" data-brightness="{{ image.luminosite }}">
+            data-saturate="{{ image.saturation }}" 
+            data-brightness="{{ image.luminosite }}"
+            data-date="{{ image.date }}">
             <a href="#popup{{ image.id }}" data-rel="popup" data-position-to="window"
             data-transition="slide">
             <img src="{{ image.image.url }}" id="image">
             <p>{{ image.tag }}</p> 
             <p>{{ image.description }}</p>
-            <div style="DISPLAY: none">
-                <p class="contraste cache">{{ image.contraste }}</p>
-                <p class="saturation cache">{{ image.saturation }}</p>
-                <p class="luminosite cache">{{ image.luminosite }}</p>
-            </div>
             </a>
             <a href="{% url 'uploads:detail_uploaded' image.id  %}" data-ajax="false"></a>
             <!-- popup avec l'image personalisée -->

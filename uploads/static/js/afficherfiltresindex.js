@@ -24,4 +24,8 @@ $( document ).ready(function() {
         
         $(this).find("#image").css({"-webkit-filter": attribut, "max-height": "512px"});
     });
+    $(".liste").each(function () {
+        var date = $(this).data('date');
+        $(this).before('<li data-role="list-divider">' + date + '</li>');
+    });
 });
