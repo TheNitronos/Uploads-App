@@ -29,7 +29,9 @@ $( document ).on( "pagecreate", function() {
             var result_image = new Image();
             result_image.src = newImageData;
             
-            $("#compressedImage").append(result_image);
+            var output = document.getElementById('output');
+            var source = result_image.src;
+            output.src = source;
             
             
             var fileImage = image.files[0];
