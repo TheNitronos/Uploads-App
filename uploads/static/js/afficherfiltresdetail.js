@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$( document ).on( "pagebeforecreate", function() {
     var valeurcontraste = $(".contraste").text();
     var contraste = 'contrast(' + valeurcontraste + ') ';
     

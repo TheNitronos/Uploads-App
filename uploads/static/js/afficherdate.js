@@ -1,6 +1,10 @@
 $( document ).on( "pagebeforecreate", function() {
     $(".liste").each(function () {
         var date = $(this).data('date');
-        $(this).before('<li data-role="list-divider">' + date + '</li>');
+        var dateToAdd = '<li data-role="list-divider" id="' + date + '">' + date + '</li>';
+        var boolean = $.contains( document.body, document.getElementById(date));
+        if (boolean === false) {
+            $(this).before(dateToAdd);
+        };
     });
 });
