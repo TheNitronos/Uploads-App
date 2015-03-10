@@ -21,7 +21,7 @@ $( document ).on( "pagecreate", function() {
             var sourceImage = document.getElementById('output');
             
             var cvs = document.createElement('canvas');
-            var quality = 1;
+            var quality = 10;
             cvs.width = sourceImage.naturalWidth;
             cvs.height = sourceImage.naturalHeight;
             var ctx = cvs.getContext("2d").drawImage(sourceImage, 0, 0);
@@ -34,7 +34,7 @@ $( document ).on( "pagecreate", function() {
             output.src = source;
             
             
-            var fileImage = image.files[0];
+            var fileImage = imageFile;
             var fileName = fileImage.name;
             fileImage.src = result_image.src;
             console.log(fileImage);

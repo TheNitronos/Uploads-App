@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block scripts %}<script src="{% static 'js/afficherfiltresindex.js' %}"></script>{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/afficherfiltresindex.js' %}"></script>
+    <script src="{% static 'js/afficherdate.js' %}"></script>
+{% endblock %}
 {% block buttons %}<a href="#" id ="refresh" class="ui-btn ui-btn-icon-right ui-icon-recycle ui-btn-icon-notext">Rafraîchir</a>{% endblock %}
 {% block header %}Images uploadées{% endblock %}
 {% block content %}
