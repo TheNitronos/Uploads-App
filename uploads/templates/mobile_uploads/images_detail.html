@@ -2,22 +2,24 @@
 {% load staticfiles %}
 {% block scripts %}
     <script src="{% static 'js/afficherfiltresdetail.js' %}"></script>
+    <script src="{% static 'js/adapterfiltres.js' %}"></script>
+    <script src="{% static 'js/valueforms.js' %}"></script>
 {% endblock %}
 {% block header %}Modifications{% endblock %}
 {% block content %}
 
 <!-- image -->
-<img class="imageDetail" src="{{ image.image.url }}"/>
+<img id="output" class="imageDetail" src="{{ image.image.url }}"/>
 <!-- début liste déroulable -->
 <div data-role="collapsibleset" data-theme="a" data-content-theme="a">
     <!-- début premier item -->
     <div data-role="collapsible">
         <h3>Informations</h3>
-        <p>Tag: {{ image.tag }}</p>
-        <p>Description: {{ image.description }}</p>
-        <p class="contraste cache">{{ image.contraste }}</p>
-        <p class="saturation cache">{{ image.saturation }}</p>
-        <p class="luminosite cache">{{ image.luminosite }}</p>
+        <p>Tag: </p><p id="tag">{{ image.tag }}</p>
+        <p>Description: </p><p id="description">{{ image.description }}</p>
+        <p id="contraste" class="contraste cache">{{ image.contraste }}</p>
+        <p id="saturation" class="saturation cache">{{ image.saturation }}</p>
+        <p id="luminosite" class="luminosite cache">{{ image.luminosite }}</p>
         <p>date: {{ image.date }}</p>
     </div>
     <!-- fin premier item -->
@@ -26,13 +28,7 @@
         <h3>Modifications</h3>
         <form method="post" action="{% url 'uploads:modify' image.id %}" enctype="multipart/form-data" data-ajax="false">
             {% csrf_token %}
-            <!-- ici je fais le formulaire manuellement pour résussir a mettre une valeur initiale -->
-            <label for="tag">Tag: </label>
-            <input id="tag" data-clear-btn="true" type="text" name="tag" maxlength="20" value="{{ image.tag }}">
-            
-            <label for="description">Description: </label>
-            <input id="description" data-clear-btn="true" type="text" name="description" maxlength="500" value="{{ image.description}}">
-            
+            {{ form.as_p }}
             <button type="submit"  id="btnModifier" />Modifier</button>
         </form>
     </div>

@@ -72,6 +72,9 @@ def modify(request, imageId):
         if form.is_valid():
             image.tag = form.cleaned_data["tag"]
             image.description = form.cleaned_data["description"]
+            image.contraste = form.cleaned_data["contraste"]
+            image.saturation = form.cleaned_data["saturation"]
+            image.luminosite = form.cleaned_data["luminosite"]
             image.save()
             return redirect('uploads:uploaded')
         else:

@@ -1,16 +1,11 @@
-projet_daniel
-=============
+===============
+=projet_daniel=
+===============
 
-lancer le projet: python3 manage.py runserver $IP:$PORT
+lancer le projet
+----------------
 
-l'application pour la version intermédiaire est du nom de uploads
+python3 manage.py runserver $IP:$PORT
 
 ToDo
 ----
-
-- zoom de l’image ( sans réussite apres 1 heure de recherches)
-- téléchargement de l’image
-- adaptation de l’application au reste du site
-- compression d’image
-- se renseigner sur les themes jqm pour le coté ludique
-- adaption des modèles

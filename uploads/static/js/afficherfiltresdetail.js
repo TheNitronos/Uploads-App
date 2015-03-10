@@ -13,7 +13,7 @@ $( document ).on( "pagebeforecreate", function() {
     var re = /,/gi;
     attribut= attribut.replace(re, ".");
     
-    $("img").css("-webkit-filter", attribut);
+    $("#output").css("-webkit-filter", attribut);
     
     
 });

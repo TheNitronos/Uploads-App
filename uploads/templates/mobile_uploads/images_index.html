@@ -10,7 +10,7 @@
 {% block content %}
 <h3 class="ui-bar ui-bar-a ui-corner-all">Voici les images uploadées:</h3>
 
-<ul data-role="listview" data-split-icon="gear" data-filter="true" data-filter-placeholder="Chercher image..." data-inset="true">
+<ul id="imageliste" data-role="listview" data-split-icon="gear" data-filter="true" data-filter-placeholder="Chercher image..." data-inset="true">
     {% for image in images %}
         <li class="liste"
             data-contrast="{{ image.contraste }}" 
