@@ -24,4 +24,5 @@ $( document ).ready(function() {
         
         $(this).find("#image").css({"-webkit-filter": attribut, "max-height": "512px"});
     });
+    
 });

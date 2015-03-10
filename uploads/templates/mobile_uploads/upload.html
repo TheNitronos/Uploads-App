@@ -14,9 +14,14 @@
             <form method="post" enctype="multipart/form-data" action="." data-ajax="false">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <img id="output" style="-webkit-filter: contrast(2); -webkit-filter: brightness(1.5); -webkit-filter: saturate(0);"/>
+                <div id ="image" class="imageContent">
+                    <img id="output" class="image" style="-webkit-filter: contrast(2); -webkit-filter: brightness(1.5); -webkit-filter: saturate(0);"/>
+                </div>
+                <div id="compressedImage" class="imageContent"></div>
+                <div id="image"></div>
                 <button type="submit" class="ui-btn btn-bottom buttonLoad" data-textonly="false" data-textvisible="true" data-msgtext="L'image est en chargement" data-inline="true">Uploader !</button>
             </form>
+            <button id="btnCompression">Compresser</button>
         </div>
         
     </div>

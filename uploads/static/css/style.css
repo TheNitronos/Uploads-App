@@ -17,8 +17,7 @@
 {
     padding: 5% 10%;
 }
-
-#output
+.imageContent img
 {
     max-width: 100%;
     border-radius: 10px;

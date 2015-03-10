@@ -1,30 +1,34 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block scripts %}<script src="{% static 'js/afficherfiltresindex.js' %}"></script>{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/afficherfiltresindex.js' %}"></script>
+    <script src="{% static 'js/afficherdate.js' %}"></script>
+{% endblock %}
 {% block buttons %}<a href="#" id ="refresh" class="ui-btn ui-btn-icon-right ui-icon-recycle ui-btn-icon-notext">Rafraîchir</a>{% endblock %}
 {% block header %}Images uploadées{% endblock %}
 {% block content %}
 <h3 class="ui-bar ui-bar-a ui-corner-all">Voici les images uploadées:</h3>
 
-<ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true">
+<ul data-role="listview" data-split-icon="gear" data-filter="true" data-filter-placeholder="Chercher image..." data-inset="true">
     {% for image in images %}
         <li class="liste"
             data-contrast="{{ image.contraste }}" 
-            data-saturate="{{ image.saturation }}" data-brightness="{{ image.luminosite }}">
+            data-saturate="{{ image.saturation }}" 
+            data-brightness="{{ image.luminosite }}"
+            data-date="{{ image.date }}">
+            
             <a href="#popup{{ image.id }}" data-rel="popup" data-position-to="window"
             data-transition="slide">
-            <img src="{{ image.image.url }}" id="image">
-            <p>{{ image.tag }}</p> 
-            <p>{{ image.description }}</p>
-            <div style="DISPLAY: none">
-                <p class="contraste cache">{{ image.contraste }}</p>
-                <p class="saturation cache">{{ image.saturation }}</p>
-                <p class="luminosite cache">{{ image.luminosite }}</p>
-            </div>
+                
+                <img src="{{ image.image.url }}" id="image">
+                <p>{{ image.tag }}</p> 
+                <p>{{ image.description }}</p>
+                
             </a>
             <a href="{% url 'uploads:detail_uploaded' image.id  %}" data-ajax="false"></a>
             <!-- popup avec l'image personalisée -->
-            <div data-role="popup" id="popup{{ image.id }}" data-overlay-theme="a" data-theme="a" data-corners="true" class="popup" data-contrast="{{ image.contraste }}" data-saturate="{{ image.saturation }}" data-brightness="{{ image.luminosite }}">
+            
+            <div data-role="popup" id="popup{{ image.id }}" data-overlay-theme="a" data-corners="true" class="popup" data-contrast="{{ image.contraste }}" data-saturate="{{ image.saturation }}" data-brightness="{{ image.luminosite }}">
                 <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Fermer</a><img src="{{ image.image.url }}" class="ui-corner-all imagepopup" id="image">
             </div>
             
