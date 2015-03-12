@@ -18,14 +18,16 @@
 {% endblock %}
 {% block content %}
 <!-- image -->
+
 <div id="image">
-    <img class="imageDetail" src="{{ image.image.url }}"/>
+    <div class="ui-body ui-body-a ui-corner-all">
+        <img class="imageDetail ui-corner-all" src="{{ image.image.url }}"/>
+    </div>
 </div>
 
 <div id="modifier" class="cache">
     <h3 class="ui-bar ui-bar-a ui-corner-all">Informations: </h3>
     <div class="ui-body ui-body-a ui-corner-all">
-        
         <div class="ui-grid-a">
             <div class="ui-block-a">
                 <p class="souligne">Tag: </p><p id="tag">{{ image.tag }}</p>
@@ -51,16 +53,18 @@
     
 <div id="supprimer" class="cache">
     <h3 class="ui-bar ui-bar-a ui-corner-all">Zone de danger: </h3>
-    <img class="imagePetite imageCentree ui-corner-all" src="{{ image.image.url }}"/>
-    <p><a href="#popupdelete" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-left" data-transition="slide">Supprimer</a></p>
-    <!-- popup pour supprimer -->
-    <div data-role="popup" id="popupdelete" class="ui-corner-all ui-content">
-        <h3 class="center">!!! Attention !!!</h3>
-        <p>Vous êtes sur le point de supprimer cette image.</p>
-        <form method="post" action="{% url 'uploads:delete' image.id %}" data-ajax="false">
-            {% csrf_token %}
-            <button type="submit"  id="btnSupprimer" />Supprimer</button>
-        </form>
+    <div class="ui-body ui-body-a ui-corner-all">
+        <img class="imagePetite imageCentree ui-corner-all" src="{{ image.image.url }}"/>
+        <p><a href="#popupdelete" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-left" data-transition="slide">Supprimer</a></p>
+        <!-- popup pour supprimer -->
+        <div data-role="popup" id="popupdelete" class="ui-corner-all ui-content">
+            <h3 class="center">!!! Attention !!!</h3>
+            <p>Vous êtes sur le point de supprimer cette image.</p>
+            <form method="post" action="{% url 'uploads:delete' image.id %}" data-ajax="false">
+                {% csrf_token %}
+                <button type="submit"  id="btnSupprimer" />Supprimer</button>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}
