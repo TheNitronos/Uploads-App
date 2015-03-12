@@ -21,14 +21,12 @@
             <form method="post" enctype="multipart/form-data" action="." data-ajax="false">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <div id ="image" class="imageContent">
-                    <img id="output" class="image" style="-webkit-filter: contrast(2); -webkit-filter: brightness(1.5); -webkit-filter: saturate(0);"/>
+                <div id ="image"> 
+                    <img id="output" class="imageCentree ui-corner-all" style="-webkit-filter: contrast(2); -webkit-filter: brightness(1.5); -webkit-filter: saturate(0);"/>
                 </div>
-                <div id="compressedImage" class="imageContent"></div>
-                <div id="image"></div>
-                <button type="submit" class="ui-btn btn-bottom buttonLoad" data-textonly="false" data-textvisible="true" data-msgtext="L'image est en chargement" data-inline="true">Uploader !</button>
+                <button type="submit" class="ui-btn btn-bottom buttonLoad ui-corner-all" data-textonly="false" data-textvisible="true" data-msgtext="L'image est en chargement" data-inline="true">Uploader !</button>
             </form>
-            <button id="btnCompression">Compresser</button>
+            <button class="ui-corner-all" id="btnCompression">Compresser</button>
         </div>
         
     </div>

@@ -17,10 +17,9 @@
 {
     padding: 5% 10%;
 }
-.imageContent img
+.imageCentree
 {
     max-width: 100%;
-    border-radius: 10px;
     display: block;
     margin: auto auto;
 }
@@ -28,4 +27,21 @@
 .cache
 {
     display: none;
+}
+
+.imagePetite
+{
+    max-height: 520px;
+}
+
+.btnCentre
+{
+    max-width: 60%;
+    display: block;
+    margin: auto auto;
+}
+
+.souligne
+{
+    text-decoration: underline;
 }
