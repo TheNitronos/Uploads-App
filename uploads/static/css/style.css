@@ -33,14 +33,10 @@
 {
     max-height: 520px;
 }
-
-.btnCentre
+.imageMini
 {
-    max-width: 60%;
-    display: block;
-    margin: auto auto;
+    max-height: 260px;
 }
-
 .souligne
 {
     text-decoration: underline;

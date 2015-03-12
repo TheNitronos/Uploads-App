@@ -25,12 +25,19 @@
 <div id="modifier" class="cache">
     <h3 class="ui-bar ui-bar-a ui-corner-all">Informations: </h3>
     <div class="ui-body ui-body-a ui-corner-all">
-        <p class="souligne">Tag: </p><p id="tag">{{ image.tag }}</p>
-        <p class="souligne">Description: </p><p id="description">{{ image.description }}</p>
-        <p id="contraste" class="contraste cache">{{ image.contraste }}</p>
-        <p id="saturation" class="saturation cache">{{ image.saturation }}</p>
-        <p id="luminosite" class="luminosite cache">{{ image.luminosite }}</p>
-        <p class="souligne">Date: </p><p>{{ image.date }}</p>
+        
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <p class="souligne">Tag: </p><p id="tag">{{ image.tag }}</p>
+                <p class="souligne">Description: </p><p id="description">{{ image.description }}</p>
+                <p id="contraste" class="contraste cache">{{ image.contraste }}</p>
+                <p id="saturation" class="saturation cache">{{ image.saturation }}</p>
+                <p id="luminosite" class="luminosite cache">{{ image.luminosite }}</p>
+                <p class="souligne">Date: </p><p>{{ image.date }}</p>
+            </div>
+            <div class="ui-block-b">
+                <img id="output" class="imageMini ui-corner-all" src="{{ image.image.url }}"/></div>
+            </div>
     </div>    
     <h3 class="ui-bar ui-bar-a ui-corner-all">Modifications: </h3>
     <div class="ui-body ui-body-a ui-corner-all">
@@ -45,7 +52,7 @@
 <div id="supprimer" class="cache">
     <h3 class="ui-bar ui-bar-a ui-corner-all">Zone de danger: </h3>
     <img class="imagePetite imageCentree ui-corner-all" src="{{ image.image.url }}"/>
-    <p><a href="#popupdelete" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-left btnCentre" data-transition="slide">Supprimer</a></p>
+    <p><a href="#popupdelete" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-left" data-transition="slide">Supprimer</a></p>
     <!-- popup pour supprimer -->
     <div data-role="popup" id="popupdelete" data-theme="a" class="ui-corner-all ui-content">
         <h3 class="center">!!! Attention !!!</h3>
