@@ -3,8 +3,7 @@ $( document ).on( "pagecreate", function() {
         var input = $("#imageInput").val();
         
         if (input == "") {
-            
-            alert("Aucune image n'a été selectionnée");
+            $( "#popupNoImage" ).popup( "open", {transition: "slide"});
             
         }
         else {

@@ -54,7 +54,7 @@
     <img class="imagePetite imageCentree ui-corner-all" src="{{ image.image.url }}"/>
     <p><a href="#popupdelete" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-left" data-transition="slide">Supprimer</a></p>
     <!-- popup pour supprimer -->
-    <div data-role="popup" id="popupdelete" data-theme="a" class="ui-corner-all ui-content">
+    <div data-role="popup" id="popupdelete" class="ui-corner-all ui-content">
         <h3 class="center">!!! Attention !!!</h3>
         <p>Vous êtes sur le point de supprimer cette image.</p>
         <form method="post" action="{% url 'uploads:delete' image.id %}" data-ajax="false">
