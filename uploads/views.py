@@ -10,16 +10,6 @@ def base(request):
 #affichage du dashboard
 def dashboard(request):
     
-    if request.method == "POST":
-        form = changeTheme(request.POST, request.FILES)
-        if form.is_valid():
-            
-            theme.value = form.cleaned_data["value"]
-            theme.save()
-    else:
-        
-        form = changeTheme()
-
     return render(request, 'mobile_uploads/dashboard.html', locals())
     
 

@@ -1,11 +1,17 @@
 {% extends "base.html" %}
-{% block header %}Dashboard{% endblock %}
-{% block content %}
-<fieldset class="ui-grid-a">
-    <!-- bloc a de la grille qui s'affiche sous la première colonne -->
-    <div class="ui-block-a"><a href="{% url 'uploads:upload'  %}" class="ui-btn">Upload</a></div>
-    <!-- bloc b de la grille qui s'affiche sous la deuxième colonne -->
-    <div class="ui-block-b"><a href="{% url 'uploads:uploaded'  %}" class="ui-btn" data-ajax="false">Upload: images</a></div>
-</fieldset>
 
+{% block header %}
+    Dashboard
+{% endblock %}
+
+{% block content %}
+    <h3 class="ui-bar ui-bar-a ui-corner-all">Dashboard</h3>
+    <div class="ui-body ui-body-a ui-corner-all">
+        <p>Bienvenue sur votre dashboard.</p>
+        <fieldset class="ui-grid-a ui-responsive">
+            <div class="ui-block-a"><a href="{% url 'uploads:upload'  %}" class="ui-btn ui-corner-all" data-ajax="false">Charger une image</a></div>
+            <div class="ui-block-b"><a href="{% url 'uploads:uploaded'  %}" class="ui-btn ui-corner-all" data-ajax="false">Voir les images chargées</a></div>
+        </fieldset>
+    </div>
+    
 {% endblock %}

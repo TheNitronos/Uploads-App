@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% load staticfiles %}
 {% block scripts %}
     <script src="{% static 'js/adapterfiltres.js' %}"></script>
@@ -6,18 +7,18 @@
     <script src="{% static 'js/compresser.js' %}"></script>
     <script src="{% static 'js/uploadsLoader.js' %}"></script>
 {% endblock %}
-{% block header %}Upload{% endblock %}
+
+{% block header %}
+    Upload
+{% endblock %}
+
 {% block content %}
-<!-- titre du paragraphe -->
-<h3 class="ui-bar ui-bar-a ui-corner-all">Veuillez remplir les champs suivants:</h3>
+    <h3 class="ui-bar ui-bar-a ui-corner-all">Veuillez remplir les champs suivants:</h3>
     <div class="ui-body ui-body-a ui-corner-all">
-    <!-- contenu du paragraphe -->
         <div>
-            <!-- quand l'image a été uploadée cette ligne s'afficher --> 
             {% if sauvegarde %}
                 <p>Cette image a bient été uploadée.</p>
             {% endif %}
-            <!-- formulaire pour upload de l'image, data-ajax="false" permet d'éviter des chargements propres a jQM qui empêchent le bon fonctionnement des formulaires  --> 
             <form method="post" enctype="multipart/form-data" action="." data-ajax="false">
                 {% csrf_token %}
                 {{ form.as_p }}
@@ -28,7 +29,7 @@
             </form>
             <button class="ui-corner-all" id="btnCompression">Compresser</button>
         </div>
-        <div data-role="popup" id="popupNoImage" class="ui-corner-all ui-content">
+        <div data-role="popup" id="popupNoImage"  data-overlay-theme="a"  data-position-to="window" class="ui-corner-all ui-content popup">
             <h3 class="center">!!! Attention !!!</h3>
             <p>Aucune image n'a été selectionnée</p>
         </div>

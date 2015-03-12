@@ -23,20 +23,17 @@
         <div data-role="page" id="page" data-theme="a">
         
         <!-- début du panel -->
-        <div data-role="panel" id="panel" data-position="left" data-display="overlay">
-            <h2>User ##</h2>
+        <div data-role="panel" id="panel" data-position="left" data-display="reveal">
+            <h2>Utilisateur</h2>
             <a href="#" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-mini ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-right">Fermer</a>
             <ul data-role="listview" data-inset="true">
-                <li data-role="list-divider">Tableau de bord</li>
-                <li><a href="#">Cours</a></li>
-                <li><a href="#">Exercices</a></li>
-                <li><a href="http://quiztm-2014-blm08.c9.io/quiz">Quiz</a></li>
-                <li><a href="{% url 'uploads:uploaded'  %}" data-ajax="false">Images</a></li>
-                <li><a href="{% url 'uploads:upload'  %}">Upload</a></li>
+                <li data-role="list-divider">Application</li>
+                <li><a href="{% url 'uploads:dashboard' %}" data-ajax="false">Dashboard</a></li>
+                <li><a href="{% url 'uploads:uploaded' %}" data-ajax="false">Images</a></li>
+                <li><a href="{% url 'uploads:upload' %}" data-ajax="false">Upload</a></li>
                 <li data-role="list-divider">Personnel</li>
-                <li><a href="{% url 'uploads:dashboard'  %}">Dashboard</a></li>
-                <li><a href="#">Compte</a></li>
-                <li><a href="#">Se deconnecter</a></li>
+                <li><a href="#">Nom d'utilisateur</a></li>
+                <li><a href="#">Thème jQuery Mobile</a></li>
             </ul>
         </div>
         <!-- fin du panel -->
