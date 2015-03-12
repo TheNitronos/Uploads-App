@@ -1,13 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 class Picture(models.Model):
     #ImageField pour que l'image soit enregistrée comme une image
     image = models.ImageField(upload_to="uploadedImages")
     
-    #tag: court énoncé sur l'image si nécessaire, par après sera remplacé par
-    #le nom de l'exercice
-    tag = models.CharField(max_length=20, null=True)
+    #tag: court énoncé sur l'image
+    tag = models.CharField(max_length=30)
     
     #description: texte pour décrire l'image et apporter des précisions si 
     #nécessaire
@@ -21,8 +19,13 @@ class Picture(models.Model):
     
     luminosite = models.DecimalField(decimal_places=1, max_digits=2, default=0)
     
-    #relations de l'image
-    #proprietaire = models.OneToOneField(Student, null=True)
-    
     #date de l'upload
     date = models.DateField(auto_now_add=True)
+    
+class User(models.Model):
+    #nom de l'utilisateur
+    prenom = models.CharField(max_length=30)
+    
+    #theme jQuery Mobile
+    theme = models.CharField(max_length=1)
+    
