@@ -11,7 +11,6 @@ $( document ).ready(function() {
         
         var attribut =  modifContraste + modifLuminosite +  modifSaturation;
         $("#output").css("-webkit-filter", attribut);
-        console.log("SAlut")
     });
     $( "#modifLuminosite" ).on( 'slidestop', function() {
         var valeurmodifContraste = $("#modifContraste").val();
