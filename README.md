@@ -10,6 +10,6 @@ python3 manage.py runserver $IP:$PORT
 ToDo
 ----
 
-- Curseur pour modifier la taille de l'image dans image_detail.html
+- Authentification
 - Thèmes et nom pour personnalisation
 - Compression et saisie dans le fileinput, upload.html
