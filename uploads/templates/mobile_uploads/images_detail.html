@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block scripts %}
-    <script src="{% static 'js/adapterfiltres.js' %}"></script>
     <script src="{% static 'js/imageDetail/afficherfiltresdetail.js' %}"></script>
+    <script src="{% static 'js/imageDetail/affichermodifiltres.js' %}"></script>
     <script src="{% static 'js/imageDetail/valueforms.js' %}"></script>
     <script src="{% static 'js/imageDetail/navbar.js' %}"></script>
-    <script src="{% static 'js/imageDetail/affichermodifiltres.js' %}"></script>
+    <script src="{% static 'js/imageDetail/tailleimage.js' %}"></script>
 {% endblock %}
 {% block header %}Modifications{% endblock %}
 {% block navbar %}
@@ -21,7 +21,10 @@
 <div id="image">
     <h3 class="ui-bar ui-bar-a ui-corner-all">Image</h3>
     <div class="ui-body ui-body-a ui-corner-all">
-        <img class="imageDetail ui-corner-all" src="{{ image.image.url }}"/>
+        <label for="largeur">Largeur de l'image:</label>
+        <input type="range" name="largeur" id="largeur" data-highlight="true" min="0" max="100" value="50">
+        
+        <img id="imagePrincipale" class="imageCentree ui-corner-all" src="{{ image.image.url }}"/>
     </div>
 </div>
 
