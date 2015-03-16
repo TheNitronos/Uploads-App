@@ -21,3 +21,7 @@ class Picture(models.Model):
     
     #date de l'upload
     date = models.DateField(auto_now_add=True)
+    
+class User(models.Model):
+    nom = models.CharField(max_length=20, default="User")
+    theme = models.CharField(max_length=1, default="a")
