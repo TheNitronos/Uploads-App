@@ -21,10 +21,3 @@ class Picture(models.Model):
     
     #date de l'upload
     date = models.DateField(auto_now_add=True)
-    
-class User(models.Model):
-    #nom de l'utilisateur
-    prenom = models.CharField(max_length=30)
-    
-    #theme jQuery Mobile
-    theme = models.CharField(max_length=1)
