@@ -4,7 +4,6 @@
 {% block scripts %}
     <script src="{% static 'js/upload/adapterfiltres.js' %}"></script>
     <script src="{% static 'js/upload/afficherapercu.js' %}"></script>
-    <script src="{% static 'js/upload/compresser.js' %}"></script>
     <script src="{% static 'js/upload/uploadsLoader.js' %}"></script>
 {% endblock %}
 
@@ -27,11 +26,6 @@
                 </div>
                 <button type="submit" class="ui-btn btn-bottom buttonLoad ui-corner-all" data-textonly="false" data-textvisible="true" data-msgtext="L'image est en chargement" data-inline="true">Uploader !</button>
             </form>
-            <button class="ui-corner-all" id="btnCompression">Compresser</button>
-        </div>
-        <div data-role="popup" id="popupNoImage"  data-overlay-theme="a"  data-position-to="window" class="ui-corner-all ui-content popup">
-            <h3 class="center">!!! Attention !!!</h3>
-            <p>Aucune image n'a été selectionnée</p>
         </div>
     </div>
 {% endblock %}
