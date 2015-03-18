@@ -22,7 +22,7 @@
     <h3 class="ui-bar ui-bar-a ui-corner-all">Image</h3>
     <div class="ui-body ui-body-a ui-corner-all">
         <label for="largeur">Largeur de l'image:</label>
-        <input type="range" name="largeur" id="largeur" data-highlight="true" min="0" max="100" value="50">
+        <input type="range" name="largeur" id="largeur" min="0" max="100" value="50">
         
         <img id="imagePrincipale" class="imageCentree ui-corner-all" src="{{ image.image.url }}"/>
     </div>
@@ -67,7 +67,7 @@
     <h3 class="ui-bar ui-bar-a ui-corner-all">Zone de danger</h3>
     <div class="ui-body ui-body-a ui-corner-all">
         <img class="imagePetite imageCentree ui-corner-all" src="{{ image.image.url }}"/>
-        <a href="#popupdelete" data-rel="popup" data-overlay-theme="a" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-left" data-transition="slide">Supprimer</a>
+        <a href="#popupdelete" data-rel="popup" data-overlay-theme="a" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-left button" data-transition="slide">Supprimer</a>
         <!-- popup pour supprimer -->
         <div data-role="popup" id="popupdelete" data-overlay-theme="a" data-position-to="window" class="ui-corner-all ui-content popup">
             <h3 class="center">!!! Attention !!!</h3>

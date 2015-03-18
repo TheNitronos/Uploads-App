@@ -8,24 +8,27 @@
         <!-- chargement des script et du css nécessaire --> 
         {% load staticfiles %}
         <!-- cdn jqm et jq -->
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" href="{% static 'jqm/themes/daniel.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'jqm/themes/jquery.mobile.icons.min.css' %}" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <!-- mes scripts et css -->
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
         <script src="{% static 'js/panel.js' %}"></script>
+        <script src="{% static 'js/theme.js' %}"></script>
         {% block scripts %}
         {% endblock %}
     </head> 
     <body>
         <!-- début de page --> 
-        <div data-role="page" id="page" data-theme="a">
+        <div data-role="page" id="page">
         
         <!-- début du panel -->
         <div data-role="panel" id="panel" data-position="left" data-display="reveal">
             <h2>Utilisateur</h2>
             <a href="#" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-mini ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-right">Fermer</a>
-            <ul data-role="listview" data-inset="true">
+            <ul data-role="listview" data-inset="true" >
                 <li data-role="list-divider">Application</li>
                 <li><a href="{% url 'uploads:dashboard' %}" data-ajax="false">Dashboard</a></li>
                 <li><a href="{% url 'uploads:uploaded' %}" data-ajax="false">Images</a></li>
@@ -40,7 +43,7 @@
         <!-- début entête --> 
         <div data-role="header" data-position="fixed">
             <a href="#panel" class="ui-btn ui-icon-bars ui-btn-icon-left ui-shadow ui-corner-all">Panel</a>
-            <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+            <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right" >
                 {% block buttons %}{% endblock %}
                 <a href="#" data-rel="back" class="ui-btn ui-btn-icon-right ui-icon-back ui-btn-icon-notext">Retour</a>
             </div>
@@ -50,13 +53,13 @@
         <!-- fin entête -->
         
         <!-- début contenu --> 
-        <div role="main" class="ui-content">
+        <div role="main" class="ui-content" >
         {% block content %}<p>Content</p>{% endblock %}
         </div>
         <!-- fin contenu -->
         
         <!-- début bas de page --> 
-        <div data-role="footer" data-position="fixed">
+        <div data-role="footer" data-position="fixed" >
         <h4>Mobile</h4>
         </div>
         <!-- fin bas de page -->
