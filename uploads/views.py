@@ -81,6 +81,8 @@ def modify(request, imageId):
             
 
 def connexion(request):
+    if request.user.is_authenticated():
+        return redirect('uploads:dashboard')
     erreur = False
     if request.method == "POST":
         form = LoginForm(request.POST)
