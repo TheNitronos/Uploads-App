@@ -1,4 +1,9 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
+from django.http import HttpResponse
+
 from uploads.forms import *
 from uploads.models import *
 
@@ -81,6 +86,7 @@ def connexion(request):
             user = authenticate(username=username, password=password)
             if user:
                 login(request, user)
+                return render(request, 'mobile_uploads/dashboard.html', locals())
             else:
                 erreur = True
     else:
