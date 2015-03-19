@@ -9,6 +9,7 @@ class BaseProfile(models.Model):
         abstract = True
 
 class Teacher(BaseProfile):
+    theme = models.CharField(max_length=1, default="a")
     def __str__(self):
         return "Professeur {0}".format(self.user.username)
 

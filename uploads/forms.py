@@ -31,4 +31,13 @@ class RegisterForm(forms.Form):
         ))
         
 class themeForm(forms.Form):
-    theme = forms.CharField(max_length=1)
+    theme = forms.ChoiceField(label='Choisissez votre thème:', choices=(
+        ("a", "Standard"),
+        ("b", "Flat Orange"),
+        ("c", "Flat Blue"),
+        ("d", "Brown"),
+        ("e", "Gti"),
+        ("f", "Young"),
+        ("g", "?"),
+        ("h", "Pink"),
+        ))

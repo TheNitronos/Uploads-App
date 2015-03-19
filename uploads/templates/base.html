@@ -28,6 +28,11 @@
         <div data-role="panel" id="panel" data-position="left" data-display="reveal">
             {% if user.is_authenticated %}
             <h2>{{ user.username }}</h2>
+            {% if user.student %}
+                <p id="theme" class="cache">{{ user.student.theme }}</p>
+            {% else %}
+                <p id="theme" class="cache">{{ user.teacher.theme }}</p>
+            {% endif %}
             {% else %}
             <h2>Connectez-vous</h2>
             {% endif %}

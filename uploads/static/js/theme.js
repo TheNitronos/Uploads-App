@@ -1,6 +1,6 @@
 $( document ).on( "pagebeforecreate", function() {
-    $("*").attr('data-theme', 'c');
-    $("*").attr('data-track-theme', 'c');
-    $("button").addClass('ui-btn-c');
-    $(".button").addClass('ui-btn-c');
+    var theme = $("#theme").text();
+    $("*").attr('data-theme', theme);
+    $("*").attr('data-track-theme', theme);
+    var themebtn = 'ui-btn-' + theme +"'";
 });
