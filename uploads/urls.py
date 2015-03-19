@@ -7,6 +7,8 @@ from uploads import views
 
 
 urlpatterns = patterns('',
+    url(r'^$', views.welcome, name='welcome'),
+
     url(r'^base/', views.base, name='base'),
     url(r'^dashboard/', views.dashboard, name='dashboard'),
     

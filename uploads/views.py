@@ -7,6 +7,10 @@ from django.http import HttpResponse
 from uploads.forms import *
 from uploads.models import *
 
+def welcome(request):
+    
+    return render(request, 'mobile_uploads/welcome.html', locals())
+
 #affichage du code de base pour une page en jQM
 def base(request):
     
@@ -86,7 +90,7 @@ def connexion(request):
             user = authenticate(username=username, password=password)
             if user:
                 login(request, user)
-                return render(request, 'mobile_uploads/dashboard.html', locals())
+                return redirect('uploads:dashboard')
             else:
                 erreur = True
     else:

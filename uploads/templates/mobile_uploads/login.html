@@ -1,34 +1,30 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 
-<head>
-    
-    <meta charset="utf-8" />
-    <title>Connexion</title>
-    
-</head>
-<body>
-    
-    <h1>Veuillez remplir les champs suivants:</h1>
-    
-    <button onclick="window.location.href='{% url 'uploads:register' %}'">S'inscrire</button>
-    
-    {% if erreur %}
-    <p><strong>Connexion échouée</strong></p>
-    {% endif %}
-    
-    {% if user.is_authenticated %}
-    Connexion réussie! Bienvenue {{ user.username }}!
-    <form method="post" action="{% url 'uploads:deconnexion' %}">
-        {% csrf_token %}
-        <button type="submit" />Se déconnecter</button>
-    </form>
-    
-    {% else %}
-    <form class="formLogin" method="post" action=".">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Se connecter"/>
-    </form>
-    {% endif %}
+{% block header %}
+    Connexion
+{% endblock %}
+
+{% block content %}
+    <h3 class="ui-bar ui-bar-a ui-corner-all">Veuillez remplir les champs suivants</h3>
+    <div class="ui-body ui-body-a ui-corner-all">
+        <a href='{% url 'uploads:register' %}' class="ui-btn ui-corner-all button" data-ajax="false">S'inscrire</a>
+        {% if erreur %}
+        <p><strong>Connexion échouée</strong></p>
+        {% endif %}
         
-</body>
+        {% if user.is_authenticated %}
+        <form method="post" action="{% url 'uploads:deconnexion' %}" data-ajax="false">
+            {% csrf_token %}
+            <button type="submit" />Se déconnecter</button>
+        </form>
+        
+        {% else %}
+        <form class="formLogin" method="post" action="." data-ajax="false">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Se connecter"/>
+        </form>
+        {% endif %}
+    </div>
+    
+{% endblock %}
