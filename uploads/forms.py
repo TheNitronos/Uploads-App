@@ -1,5 +1,5 @@
 from django import forms
-
+from django.forms.extras.widgets import *
 
 class UploadForm(forms.Form):
     image = forms.ImageField(error_messages={'required': 'Aucune image n\'a été sélectionnée'}, widget=forms.FileInput(attrs={'id': 'imageInput','src': '', 'onchange': 'loadFile(this)', 'accept': 'image/*', "value": "0"}))
@@ -19,4 +19,17 @@ class ModifyForm(forms.Form):
 
 class changeTheme(forms.Form):
     value = forms.CharField(max_length=1)
-  
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label="Nom d'utilisateur", max_length=30)
+    password = forms.CharField(label="Mot de passe", widget=forms.PasswordInput)
+
+
+class RegisterForm(forms.Form):
+    username = forms.CharField(label="Nom d'utilisateur", widget= forms.TextInput(attrs={'class' : 'form-control'}))
+    password = forms.CharField(label='Mot de passe', widget=forms.PasswordInput(attrs={'class' : 'form-control'}))
+    mail = forms.CharField(label='E-mail', widget=forms.EmailInput(attrs={'class' : 'form-control'}))
+    account_type = forms.ChoiceField(label='Type de compte', choices=(
+        ("teacher", "Professeur"),
+        ("student", "Étudiant"),
+        ))
