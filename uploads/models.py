@@ -1,6 +1,26 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+class BaseProfile(models.Model):
+    user = models.OneToOneField(User)
+    theme = models.CharField(max_length=1, default="a")
+        
+    class Meta:
+        abstract = True
+
+class Teacher(BaseProfile):
+
+    def __str__(self):
+        return "Professeur {0}".format(self.user.username)
+
+class Student(BaseProfile):
+
+    def __str__(self):
+        return "Etudiant {0}".format(self.user.username)
 
 class Picture(models.Model):
+    uploader = models.ForeignKey('Student')
+    
     #ImageField pour que l'image soit enregistrée comme une image
     image = models.ImageField(upload_to="uploadedImages")
     
@@ -21,7 +41,3 @@ class Picture(models.Model):
     
     #date de l'upload
     date = models.DateField(auto_now_add=True)
-    
-class User(models.Model):
-    nom = models.CharField(max_length=20, default="User")
-    theme = models.CharField(max_length=1, default="a")
