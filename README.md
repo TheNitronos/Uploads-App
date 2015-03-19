@@ -10,5 +10,7 @@ python3 manage.py runserver $IP:$PORT
 ToDo
 ----
 
-- Thèmes et nom pour personnalisation
-- Compression et saisie dans le fileinput, upload.html
+- Thèmes et nom pour personnalisation a finir les bordure de forms
+- authentification
+- documentation
+- filereader compression
