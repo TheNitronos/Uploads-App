@@ -1,15 +1,23 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    </head>
-    <body>
-        <form method="POST" action="{% url 'uploads:register' %}">
+{% extends "base.html" %}
+
+{% block header %}
+    Inscription
+{% endblock %}
+
+{% block content %}
+    <h3 class="ui-bar ui-bar-a ui-corner-all">Veuillez remplir les champs suivants</h3>
+    <div class="ui-body ui-body-a ui-corner-all">
+        <a href='{% url 'uploads:connexion' %}' class="ui-btn ui-corner-all button" data-ajax="false">Se connecter</a>
+        {% if erreur %}
+        <p><strong>Connexion échouée</strong></p>
+        {% endif %}
+        
+        <form method="POST" action="{% url 'uploads:register' %}" data-ajax="false">
             {% csrf_token %}
             {{ registerform }}
-            <button type="submit" class="btn btn-primary">Envoyer</button>
+            <button type="submit" class="ui-btn ui-corner-all button">S'inscrire</button>
         </form>
-    </body>
-</html>
-
+    </div>
+    
+{% endblock %}
     

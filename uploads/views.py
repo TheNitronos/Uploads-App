@@ -30,6 +30,8 @@ def upload(request):
         form = UploadForm(request.POST, request.FILES)
         if form.is_valid():
             image = Picture()
+            student = Student.objects.get(user = request.user)
+            image.uploader = student
             image.image = form.cleaned_data["image"]
             image.tag = form.cleaned_data["tag"]
             image.description = form.cleaned_data["description"]
@@ -46,7 +48,9 @@ def upload(request):
 
 #requête pour afficher toutes les images uploadées
 def uploaded(request):
-    images = Picture.objects.all()
+    uploaderId = request.user.id
+    
+    images = Picture.objects.filter(uploader_id = uploaderId)
     
     return render(request, 'mobile_uploads/images_index.html', locals())
 
