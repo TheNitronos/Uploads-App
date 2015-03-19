@@ -15,7 +15,7 @@
         <form action="." method="post" enctype="multipart/form-data" data-ajax="false">
             {% csrf_token %}
             <label for="themeSelector" class="select">Choisissez votre thème:</label>
-            <select name="themeSelector" id="themeSelector">
+            <select name="themeSelector" id="themeSelector" name="theme">
                 <option value="a">Standard</option>
                 <option value="b">Flat Organe</option>
                 <option value="b">Flat Blue</option>
@@ -26,6 +26,12 @@
                 <option value="h">Pink</option>
             </select>
         <input type="submit" class="ui-btn ui-corner-all" value="Choisir">
+        
+        <form method="post" action="." enctype="multipart/form-data" data-ajax="false">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Modifier</button>
+        </form>
     </form>
     </div>
     

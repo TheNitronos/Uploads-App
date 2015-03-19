@@ -29,3 +29,6 @@ class RegisterForm(forms.Form):
         ("teacher", "Professeur"),
         ("student", "Étudiant"),
         ))
+        
+class themeForm(forms.Form):
+    theme = forms.CharField(max_length=1)

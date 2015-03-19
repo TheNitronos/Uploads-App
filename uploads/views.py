@@ -18,6 +18,21 @@ def base(request):
 
 #affichage du dashboard
 def dashboard(request):
+    if request.method == "POST":
+        form = themeForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                student = Student.objects.get(user = request.user)
+                student.theme = form.cleaned_data["theme"]
+                student.save()
+                return redirect('uploads:dashboard')
+            except:
+                teacher = Teacher.objects.get(user = request.user)
+                teacher.theme = form.cleaned_data["theme"]
+                student.save()
+                return redirect('uploads:dashboard')
+    else:
+        form = themeForm()
     
     return render(request, 'mobile_uploads/dashboard.html', locals())
     

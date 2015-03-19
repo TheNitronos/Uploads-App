@@ -3,18 +3,17 @@ from django.contrib.auth.models import User
 
 class BaseProfile(models.Model):
     user = models.OneToOneField(User)
-    theme = models.CharField(max_length=1, default="a")
+    
         
     class Meta:
         abstract = True
 
 class Teacher(BaseProfile):
-
     def __str__(self):
         return "Professeur {0}".format(self.user.username)
 
 class Student(BaseProfile):
-
+    theme = models.CharField(max_length=1, default="a")
     def __str__(self):
         return "Etudiant {0}".format(self.user.username)
 
