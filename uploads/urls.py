@@ -20,6 +20,11 @@ urlpatterns = patterns('',
     #suppression d'image et modifications d'images
     url(r'delete/(?P<imageId>\w+)', views.delete, name='delete'),
     url(r'modify/(?P<imageId>\w+)', views.modify, name='modify'),
+    
+    #authentification
+    url(r'^register/$', views.register, name='register'),
+    url(r'^login/$', views.connexion, name='connexion'),
+    url(r'^logout/$', views.deconnexion, name='deconnexion'),
 )
 
 
