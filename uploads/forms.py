@@ -16,10 +16,6 @@ class ModifyForm(forms.Form):
     contraste  = forms.DecimalField(min_value=0, max_value=5, widget=forms.NumberInput(attrs={'type': 'range', 'name': 'contraste', 'id': 'modifContraste', 'min': '0', 'max': '5', 'value': '2', 'step': '.1'}))
     luminosite = forms.DecimalField(min_value=0, max_value=5, widget=forms.NumberInput(attrs={'type': 'range', 'name': 'luminosite', 'id': 'modifLuminosite', 'min': '0', 'max': '5', 'value': '1.5', 'step': '.1'}))
     
-
-class changeTheme(forms.Form):
-    value = forms.CharField(max_length=1)
-
 class LoginForm(forms.Form):
     username = forms.CharField(label="Nom d'utilisateur", max_length=30)
     password = forms.CharField(label="Mot de passe", widget=forms.PasswordInput)

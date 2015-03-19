@@ -48,9 +48,8 @@ def upload(request):
 
 #requête pour afficher toutes les images uploadées
 def uploaded(request):
-    uploaderId = request.user.id
-    
-    images = Picture.objects.filter(uploader_id = uploaderId)
+    student = Student.objects.get(user = request.user)
+    images = Picture.objects.all().filter(uploader = student)
     
     return render(request, 'mobile_uploads/images_index.html', locals())
 
