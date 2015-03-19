@@ -12,6 +12,21 @@
             <div class="ui-block-a"><a href="{% url 'uploads:upload'  %}" class="ui-btn ui-corner-all button" data-ajax="false" >Charger une image</a></div>
             <div class="ui-block-b"><a href="{% url 'uploads:uploaded'  %}" class="ui-btn ui-corner-all button" data-ajax="false" >Voir les images chargées</a></div>
         </fieldset>
+        <form action="." method="post" enctype="multipart/form-data" data-ajax="false">
+            {% csrf_token %}
+            <label for="themeSelector" class="select">Choisissez votre thème:</label>
+            <select name="themeSelector" id="themeSelector">
+                <option value="a">Standard</option>
+                <option value="b">Flat Organe</option>
+                <option value="b">Flat Blue</option>
+                <option value="d">Brown</option>
+                <option value="e">Gti</option>
+                <option value="f">Young</option>
+                <option value="g">?</option>
+                <option value="h">Pink</option>
+            </select>
+        <input type="submit" class="ui-btn ui-corner-all" value="Choisir">
+    </form>
     </div>
     
 {% endblock %}
