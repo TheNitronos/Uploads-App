@@ -15,7 +15,6 @@ admin
 ToDo
 ----
 
-- Thèmes et nom pour personnalisation a finir les bordure de forms
-- authentification
-- documentation
-- filereader compression
+- Thèmes: les bordure de forms
+- Thèmes: bugs teacher
+- Thèmes: problèmes boutons
