@@ -25,7 +25,7 @@
         <div data-role="page" id="page" class="page">
         
         <!-- début du panel -->
-        <div data-role="panel" id="panel" data-position="left" data-display="reveal" class="panel ui-panel-inner">
+        <div data-role="panel" id="panel" data-position="left" data-display="reveal" class="panel">
             {% if user.is_authenticated %}
             <h2>{{ user.username }}</h2>
             {% if user.student %}
@@ -36,7 +36,7 @@
             {% else %}
             <h2>Connectez-vous</h2>
             {% endif %}
-            <a href="#" data-rel="close" class="ui-btn ui-mini ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-right">Fermer</a>
+            <a href="#" data-rel="close" class="ui-btn ui-mini ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-right button">Fermer</a>
             <ul data-role="listview" data-inset="true" >
                 {% if user.is_authenticated %}
                 <li data-role="list-divider">Application</li>
@@ -55,10 +55,10 @@
         
         <!-- début entête --> 
         <div data-role="header" data-position="fixed" class="header">
-            <a href="#panel" class="ui-btn ui-icon-bars ui-btn-icon-left ui-shadow ui-corner-all">Panel</a>
-            <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right" >
+            <a href="#panel" class="ui-btn ui-icon-bars ui-btn-icon-left ui-shadow ui-corner-all button">Panel</a>
+            <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right button" >
                 {% block buttons %}{% endblock %}
-                <a href="#" data-rel="back" class="ui-btn ui-btn-icon-right ui-icon-back ui-btn-icon-notext">Retour</a>
+                <a href="#" data-rel="back" class="ui-btn ui-btn-icon-right ui-icon-back ui-btn-icon-notext button">Retour</a>
             </div>
         <h1>{% block header %}Base{% endblock %}</h1>
         {% block navbar %}{% endblock %}

@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block content %}
-    <h3 class="ui-bar ui-bar-a ui-corner-all">Veuillez remplir les champs suivants</h3>
-    <div class="ui-body ui-body-a ui-corner-all">
+    <h3 class="ui-bar ui-corner-all titre">Veuillez remplir les champs suivants</h3>
+    <div class="ui-body ui-corner-all paragraphe">
         <a href='{% url 'uploads:connexion' %}' class="ui-btn ui-corner-all button" data-ajax="false">Se connecter</a>
         {% if erreur %}
         <p><strong>Connexion échouée</strong></p>

@@ -5,4 +5,17 @@ $( document ).on( "pagebeforecreate", function() {
     $(".header").attr('data-theme', theme);
     $(".content").attr('data-theme', theme);
     $(".footer").attr('data-theme', theme);
+    
+    $(".liste").attr('data-theme', theme);
+    
+    var titre = 'ui-bar-' + theme;
+    $(".titre").addClass(titre);
+    
+    var paragraphe = 'ui-body-' + theme;
+    $(".paragraphe").addClass(paragraphe);
+    
+    var bouton = 'ui-btn-' + theme;
+    $(".button").addClass(bouton);
+    
+    
 });

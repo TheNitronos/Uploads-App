@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block buttons %}
-    <a id="refresh" class="ui-btn ui-btn-icon-right ui-icon-recycle ui-btn-icon-notext">Rafraîchir</a>
+    <a id="refresh" class="ui-btn ui-btn-icon-right ui-icon-recycle ui-btn-icon-notext button">Rafraîchir</a>
 {% endblock %}
 
 {% block header %}
@@ -16,9 +16,9 @@
 {% endblock %}
 
 {% block content %}
-    <h3 class="ui-bar ui-bar-a ui-corner-all">Voici les images uploadées</h3>
+    <h3 class="ui-bar ui-corner-all titre">Voici les images uploadées</h3>
     
-    <ul id="imageliste" data-role="listview" data-split-icon="gear" data-filter="true" data-filter-placeholder="Chercher image..." data-inset="true">
+    <ul id="imageliste" data-role="listview" data-split-icon="gear" data-filter="true" data-filter-placeholder="Chercher image..." data-inset="true" class="liste">
         {% for image in images %}
             <li class="liste"
                 data-contrast="{{ image.contraste }}" 
