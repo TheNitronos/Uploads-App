@@ -78,8 +78,8 @@ def upload(request, tagId):
 def uploaded(request):
     try:
         student = Student.objects.get(user = request.user)
-        student = True
         images = Picture.objects.all().filter(uploader = student).order_by("tag")
+        student = True
         return render(request, 'mobile_uploads/images_index.html', locals())
     except:
         teacher = True
@@ -109,7 +109,6 @@ def modify(request, imageId):
     if request.method == "POST":
         form = ModifyForm(request.POST, request.FILES)
         if form.is_valid():
-            image.tag = form.cleaned_data["tag"]
             image.description = form.cleaned_data["description"]
             image.contraste = form.cleaned_data["contraste"]
             image.saturation = form.cleaned_data["saturation"]
@@ -184,6 +183,11 @@ def register(request):
 @login_required
 def tags_index(request):
     tags = Tag.objects.all()
+    try:
+        student = Student.objects.get(user = request.user)
+        student = True
+    except:
+        teacher = True
     return render(request, "mobile_uploads/tags_index.html", locals())
 
 @login_required

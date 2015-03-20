@@ -16,3 +16,5 @@ ToDo
 ----
 
 - Thèmes: les bordure de forms
+- ajouter tag creator avec image creator
+- qr code generator

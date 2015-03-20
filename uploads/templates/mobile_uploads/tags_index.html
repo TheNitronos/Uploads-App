@@ -13,12 +13,17 @@
 {% endblock %}
 
 {% block content %}
-    <h3 class="ui-bar ui-corner-all titre">Voici les tags disponibles</h3>
+    <h3 class="ui-bar ui-corner-all titre">Cliquez sur un tag pour uploader</h3>
     
     <ul id="imageliste" data-role="listview" data-filter="true" data-filter-placeholder="Chercher tag..." data-inset="true" class="liste">
         {% for tag in tags %}
             <li>
+                {% if student %}
                 <a href="{% url 'uploads:upload' tag.id  %}" data-ajax="false">{{ tag.value }}</a>
+                {% endif %}
+                {% if teacher %}
+                <p>{{ tag.value }}</p>
+                {% endif %}
             </li>
         {% endfor %}
     </ul>
