@@ -7,6 +7,8 @@ $( document ).on( "pagebeforecreate", function() {
     $(".footer").attr('data-theme', theme);
     
     $(".liste").attr('data-theme', theme);
+    $(".popup").attr('data-theme', theme);
+    $(".popup").attr('data-overlay-theme', theme);
     
     var titre = 'ui-bar-' + theme;
     $(".titre").addClass(titre);
@@ -16,6 +18,4 @@ $( document ).on( "pagebeforecreate", function() {
     
     var bouton = 'ui-btn-' + theme;
     $(".button").addClass(bouton);
-    
-    
 });

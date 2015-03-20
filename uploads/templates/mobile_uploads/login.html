@@ -5,9 +5,9 @@
 {% endblock %}
 
 {% block content %}
-    <h3 class="ui-bar ui-bar-a ui-corner-all">Veuillez remplir les champs suivants</h3>
-    <div class="ui-body ui-body-a ui-corner-all">
-        <a href='{% url 'uploads:register' %}' class="ui-btn ui-corner-all button" data-ajax="false">S'inscrire</a>
+    <h3 class="ui-bar ui-corner-all">Veuillez remplir les champs suivants</h3>
+    <div class="ui-body ui-corner-all">
+        <a href='{% url 'uploads:register' %}' class="ui-btn ui-corner-all" data-ajax="false">S'inscrire</a>
         {% if erreur %}
         <p><strong>Connexion échouée</strong></p>
         {% endif %}
@@ -15,7 +15,7 @@
         {% if user.is_authenticated %}
         <form method="post" action="{% url 'uploads:deconnexion' %}" data-ajax="false">
             {% csrf_token %}
-            <button type="submit" />Se déconnecter</button>
+            <button type="submit"/>Se déconnecter</button>
         </form>
         
         {% else %}
