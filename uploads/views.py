@@ -49,26 +49,27 @@ def dashboard(request):
 #requête pour uploader une image
 @login_required
 def upload(request, tagId):
+    form = UploadForm()
+    tag = Tag.objects.get(id=tagId)
+    return render(request, 'mobile_uploads/upload.html', locals())
+
+def sauver(request, tagId):
     if request.method == "POST":
         form = UploadForm(request.POST, request.FILES)
         if form.is_valid():
-            image = Picture()
-            student = Student.objects.get(user = request.user)
-            image.uploader = student
-            image.image = form.cleaned_data["image"]
-            tagValue = Tag.objects.get(id = tagId)
-            image.tag = tagValue
-            image.description = form.cleaned_data["description"]
-            image.contraste = form.cleaned_data["contraste"]
-            image.saturation = form.cleaned_data["saturation"]
-            image.luminosite = form.cleaned_data["luminosite"]
-            image.save()
-            return redirect('uploads:uploaded')
-    else:
-        form = UploadForm()
-    
-    return render(request, 'mobile_uploads/upload.html', locals())
-
+                image = Picture()
+                student = Student.objects.get(user=request.user)
+                image.uploader = student
+                image.image = form.cleaned_data["image"]
+                tagValue = Tag.objects.get(id=tagId)
+                image.tag = tagValue
+                image.description = form.cleaned_data["description"]
+                image.contraste = form.cleaned_data["contraste"]
+                image.saturation = form.cleaned_data["saturation"]
+                image.luminosite = form.cleaned_data["luminosite"]
+                image.save()
+                return redirect('uploads:uploaded')
+                
 #requête pour afficher toutes les images uploadées
 @login_required
 def uploaded(request):
@@ -184,3 +185,7 @@ def tags_index(request):
     except:
         teacher = True
     return render(request, "mobile_uploads/tags_index.html", locals())
+
+@login_required
+def upload_redirect(request):
+    return redirect('uploads:uploaded')

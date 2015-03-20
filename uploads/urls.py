@@ -18,11 +18,12 @@ urlpatterns = patterns('',
     
     #affichage des images
     url(r'imagesAll/', views.uploaded, name='uploaded'),
-    url(r'imageDetail/(?P<tagId>\w+)', views.detail_uploaded, name='detail_uploaded'),
+    url(r'imageDetail/(?P<imageId>\w+)', views.detail_uploaded, name='detail_uploaded'),
     
     #suppression d'image et modifications d'images
     url(r'delete/(?P<imageId>\w+)', views.delete, name='delete'),
     url(r'modify/(?P<imageId>\w+)', views.modify, name='modify'),
+    url(r'sauver/(?P<tagId>\w+)', views.sauver, name='sauver'),
     
     #authentification
     url(r'^register/$', views.register, name='register'),
