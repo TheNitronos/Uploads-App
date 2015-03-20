@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required, user_passes_test
+from uploads.auth_utils import *
 
 from uploads.forms import *
 from uploads.models import *
@@ -17,6 +19,7 @@ def base(request):
     return render(request, 'base.html', locals())
 
 #affichage du dashboard
+@login_required
 def dashboard(request):
     if request.method == "POST":
         form = themeForm(request.POST, request.FILES)
@@ -29,7 +32,7 @@ def dashboard(request):
             except:
                 teacher = Teacher.objects.get(user = request.user)
                 teacher.theme = form.cleaned_data["theme"]
-                student.save()
+                teacher.save()
                 return redirect('uploads:dashboard')
     else:
         form = themeForm()
@@ -37,7 +40,8 @@ def dashboard(request):
     return render(request, 'mobile_uploads/dashboard.html', locals())
     
 
-#requête pour uploader une image  
+#requête pour uploader une image
+@login_required
 def upload(request):
     sauvegarde = False
 
@@ -62,6 +66,7 @@ def upload(request):
     return render(request, 'mobile_uploads/upload.html', locals())
 
 #requête pour afficher toutes les images uploadées
+@login_required
 def uploaded(request):
     student = Student.objects.get(user = request.user)
     images = Picture.objects.all().filter(uploader = student)
@@ -69,19 +74,20 @@ def uploaded(request):
     return render(request, 'mobile_uploads/images_index.html', locals())
 
 #requête pour afficher le détail d'une image
+@login_required
 def detail_uploaded(request, imageId):
     image = Picture.objects.get(id=imageId)
     form = ModifyForm()
     
     return render(request, 'mobile_uploads/images_detail.html', locals())
-    
+@login_required    
 def delete(request, imageId):
     if request.method == "POST":
         image = Picture.objects.get(id=imageId)
         image.image.delete()
         image.delete()
         return redirect('uploads:uploaded')
-
+@login_required
 def modify(request, imageId):
     image = Picture.objects.get(id=imageId)
     if request.method == "POST":
@@ -117,7 +123,7 @@ def connexion(request):
         form = LoginForm()
         
     return render(request, "mobile_uploads/login.html", locals())
-    
+@login_required    
 def deconnexion(request):
     logout(request)
     return redirect('uploads:connexion')
