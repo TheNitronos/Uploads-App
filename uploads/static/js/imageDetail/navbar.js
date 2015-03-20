@@ -9,5 +9,6 @@ $(document).delegate('.ui-navbar a', 'click', function () {
     $("#modifier").hide();
     $("#supprimer").hide();
     
-    $('#' + $(this).attr("data-href")).show();
+    $('#' + $(this).attr("data-href")).show("swing");
+    
 });

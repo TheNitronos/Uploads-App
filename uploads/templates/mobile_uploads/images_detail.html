@@ -11,7 +11,7 @@
 {% block navbar %}
 <div data-role="navbar">
     <ul>
-        <li><a id="btnimage" data-href="image"class="ui-btn-active">Image</a></li>
+        <li><a id="btnimage" data-href="image"class="ui-btn-active" data-transition="flip" >Image</a></li>
         <li><a id="btnmodifier" data-href="modifier">Modifications</a></li>
         <li><a id="btnsupprimer" data-href="supprimer">Supprimer</a></li>
     </ul>
@@ -48,7 +48,7 @@
                 
             </div>
             <div class="ui-block-b">
-                <img id="output" class="imageMini ui-corner-all" src="{{ image.image.url }}"/></div>
+                <img id="output" class="imageCentree ui-corner-all" src="{{ image.image.url }}"/></div>
                 
             </div>
     </div>    
