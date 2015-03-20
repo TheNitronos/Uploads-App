@@ -1,5 +1,5 @@
 $( document ).on( "pagebeforecreate", function() {
-    $(".liste").each(function () {
+    $(".listeDate").each(function () {
         var contraste = "contrast(" + $(this).data('contrast') + ")";
         var saturation = "saturate(" + $(this).data('saturate') + ")";
         var luminosite = "brightness(" + $(this).data('brightness') + ")";

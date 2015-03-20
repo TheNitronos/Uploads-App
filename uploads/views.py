@@ -111,8 +111,7 @@ def modify(request, imageId):
             image.saturation = form.cleaned_data["saturation"]
             image.luminosite = form.cleaned_data["luminosite"]
             image.save()
-        else:
-            return redirect('uploads:uploaded')
+    return redirect('uploads:uploaded')
             
 
 def connexion(request):
