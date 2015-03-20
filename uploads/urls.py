@@ -14,7 +14,8 @@ urlpatterns = patterns('',
     url(r'^tags/', views.tags_index, name='tags_index'),
     
     #upload d'image quelconque
-    url(r'^upload/', views.upload, name='upload'),
+    url(r'^upload/(?P<tagId>\w+)', views.upload, name='upload'),
+    url(r'^upload/', views.upload_redirect, name='upload_redirect'),
     
     #affichage des images
     url(r'imagesAll/', views.uploaded, name='uploaded'),

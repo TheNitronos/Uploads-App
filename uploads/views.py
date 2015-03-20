@@ -66,6 +66,7 @@ def upload(request, tagId):
             image.luminosite = form.cleaned_data["luminosite"]
             image.save()
             sauvegarde = True
+            return redirect('uploads:uploaded')
     else:
         form = UploadForm()
         
@@ -184,4 +185,8 @@ def register(request):
 def tags_index(request):
     tags = Tag.objects.all()
     return render(request, "mobile_uploads/tags_index.html", locals())
+
+@login_required
+def upload_redirect(request):
+    return redirect('uploads:uploaded')
     

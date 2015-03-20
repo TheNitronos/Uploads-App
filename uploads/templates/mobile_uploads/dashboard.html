@@ -9,9 +9,6 @@
     <div class="ui-body ui-corner-all paragraphe">
         <p>Bienvenue sur votre dashboard.</p>
         <fieldset class="ui-grid-a ui-responsive" >
-            {% if student %}
-            <div class="ui-block-a"><a href="{% url 'uploads:upload'  %}" class="ui-btn ui-corner-all button" data-ajax="false" >Charger une image</a></div>
-            {% endif %}
             {% if teacher %}
             <div class="ui-block-a"><a href="#" class="ui-btn ui-corner-all button" data-ajax="false" >Créer un tag</a></div>
             {% endif %}
