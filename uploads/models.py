@@ -25,7 +25,7 @@ class Picture(models.Model):
     image = models.ImageField(upload_to="uploadedImages")
     
     #tag: court énoncé sur l'image
-    tag = models.CharField(max_length=30)
+    tag = models.ForeignKey('Tag')
     
     #description: texte pour décrire l'image et apporter des précisions si 
     #nécessaire
@@ -41,3 +41,6 @@ class Picture(models.Model):
     
     #date de l'upload
     date = models.DateField(auto_now_add=True)
+    
+class Tag(models.Model):
+    value = models.CharField(max_length=30)
