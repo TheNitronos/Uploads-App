@@ -49,8 +49,6 @@ def dashboard(request):
 #requête pour uploader une image
 @login_required
 def upload(request, tagId):
-    tags = Tag.objects.all()
-    sauvegarde = False
     if request.method == "POST":
         form = UploadForm(request.POST, request.FILES)
         if form.is_valid():
@@ -58,14 +56,13 @@ def upload(request, tagId):
             student = Student.objects.get(user = request.user)
             image.uploader = student
             image.image = form.cleaned_data["image"]
-            tagValue = Tag.objects.get(id = imageId)
+            tagValue = Tag.objects.get(id = tagId)
             image.tag = tagValue
             image.description = form.cleaned_data["description"]
             image.contraste = form.cleaned_data["contraste"]
             image.saturation = form.cleaned_data["saturation"]
             image.luminosite = form.cleaned_data["luminosite"]
             image.save()
-            sauvegarde = True
             return redirect('uploads:uploaded')
     else:
         form = UploadForm()

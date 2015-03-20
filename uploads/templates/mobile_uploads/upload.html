@@ -20,11 +20,6 @@
             {% endif %}
             <form method="post" enctype="multipart/form-data" action="." data-ajax="false">
                 {% csrf_token %}
-                <ul data-role="listview" data-filter="true" data-filter-reveal="true" data-input="#autocomplete-input">
-                    {% for tag in tags %}
-                    <li><a href="#">{{ tag.value }}</a></li>
-                    {% endfor %}
-                </ul>
                 {{ form.as_p }}
                 <div id="image"> 
                     <img id="output" class="imageCentree ui-corner-all" style="-webkit-filter: contrast(2); -webkit-filter: brightness(1.5); -webkit-filter: saturate(0);"/>
