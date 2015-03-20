@@ -66,8 +66,7 @@ def upload(request, tagId):
             return redirect('uploads:uploaded')
     else:
         form = UploadForm()
-        
-
+    
     return render(request, 'mobile_uploads/upload.html', locals())
 
 #requête pour afficher toutes les images uploadées
@@ -111,7 +110,6 @@ def modify(request, imageId):
             image.saturation = form.cleaned_data["saturation"]
             image.luminosite = form.cleaned_data["luminosite"]
             image.save()
-            return redirect('uploads:uploaded')
         else:
             return redirect('uploads:uploaded')
             
@@ -186,8 +184,3 @@ def tags_index(request):
     except:
         teacher = True
     return render(request, "mobile_uploads/tags_index.html", locals())
-
-@login_required
-def upload_redirect(request):
-    return redirect('uploads:uploaded')
-    

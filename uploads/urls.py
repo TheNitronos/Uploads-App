@@ -15,11 +15,10 @@ urlpatterns = patterns('',
     
     #upload d'image quelconque
     url(r'^upload/(?P<tagId>\w+)', views.upload, name='upload'),
-    url(r'^upload/', views.upload_redirect, name='upload_redirect'),
     
     #affichage des images
     url(r'imagesAll/', views.uploaded, name='uploaded'),
-    url(r'imageDetail/(?P<imageId>\w+)', views.detail_uploaded, name='detail_uploaded'),
+    url(r'imageDetail/(?P<tagId>\w+)', views.detail_uploaded, name='detail_uploaded'),
     
     #suppression d'image et modifications d'images
     url(r'delete/(?P<imageId>\w+)', views.delete, name='delete'),
