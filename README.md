@@ -16,5 +16,3 @@ ToDo
 ----
 
 - Thèmes: les bordure de forms
-- Thèmes: bugs teacher
-- Thèmes: problèmes boutons

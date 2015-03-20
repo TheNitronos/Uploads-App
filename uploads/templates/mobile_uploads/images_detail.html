@@ -34,7 +34,7 @@
         <div class="ui-grid-a">
             <div class="ui-block-a">
                 <p class="souligne">Tag:</p>
-                <p id="tag">{{ image.tag }}</p>
+                <p id="tag">{{ tag }}</p>
                 
                 <p class="souligne">Description:</p>
                 <p id="description">{{ image.description }}</p>
@@ -57,7 +57,7 @@
         <form method="post" action="{% url 'uploads:modify' image.id %}" enctype="multipart/form-data" data-ajax="false">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit"  id="btnModifier" />Modifier</button>
+            <button type="submit" class="button" id="btnModifier" />Modifier</button>
         </form>
     </div>
     
@@ -74,7 +74,7 @@
             <p>Vous êtes sur le point de supprimer cette image.</p>
             <form method="post" action="{% url 'uploads:delete' image.id %}" data-ajax="false">
                 {% csrf_token %}
-                <button type="submit"  id="btnSupprimer" />Supprimer</button>
+                <button type="submit" class="button" id="btnSupprimer" />Supprimer</button>
             </form>
         </div>
     </div>

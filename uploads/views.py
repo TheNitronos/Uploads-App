@@ -36,15 +36,21 @@ def dashboard(request):
                 return redirect('uploads:dashboard')
     else:
         form = themeForm()
-    
+    try:
+        student = Student.objects.get(user = request.user)
+        student = True
+    except:
+        teacher = Teacher.objects.get(user = request.user)
+        teacher = True
+        
     return render(request, 'mobile_uploads/dashboard.html', locals())
     
 
 #requête pour uploader une image
 @login_required
-def upload(request):
+def upload(request, tagId):
+    tags = Tag.objects.all()
     sauvegarde = False
-
     if request.method == "POST":
         form = UploadForm(request.POST, request.FILES)
         if form.is_valid():
@@ -52,7 +58,8 @@ def upload(request):
             student = Student.objects.get(user = request.user)
             image.uploader = student
             image.image = form.cleaned_data["image"]
-            image.tag = form.cleaned_data["tag"]
+            tagValue = Tag.objects.get(id = imageId)
+            image.tag = tagValue
             image.description = form.cleaned_data["description"]
             image.contraste = form.cleaned_data["contraste"]
             image.saturation = form.cleaned_data["saturation"]
@@ -68,15 +75,22 @@ def upload(request):
 #requête pour afficher toutes les images uploadées
 @login_required
 def uploaded(request):
-    student = Student.objects.get(user = request.user)
-    images = Picture.objects.all().filter(uploader = student)
-    
-    return render(request, 'mobile_uploads/images_index.html', locals())
+    try:
+        student = Student.objects.get(user = request.user)
+        student = True
+        images = Picture.objects.all().filter(uploader = student).order_by("tag")
+        return render(request, 'mobile_uploads/images_index.html', locals())
+    except:
+        teacher = True
+        images = Picture.objects.all().order_by("tag")
+        return render(request, 'mobile_uploads/images_index.html', locals())
+        
 
 #requête pour afficher le détail d'une image
 @login_required
 def detail_uploaded(request, imageId):
     image = Picture.objects.get(id=imageId)
+    tag = image.tag.value
     form = ModifyForm()
     
     return render(request, 'mobile_uploads/images_detail.html', locals())
@@ -87,6 +101,7 @@ def delete(request, imageId):
         image.image.delete()
         image.delete()
         return redirect('uploads:uploaded')
+        
 @login_required
 def modify(request, imageId):
     image = Picture.objects.get(id=imageId)
@@ -164,3 +179,9 @@ def register(request):
         registerform = RegisterForm()
         
     return render(request, "mobile_uploads/register.html", {'registerform' : registerform})
+
+@login_required
+def tags_index(request):
+    tags = Tag.objects.all()
+    return render(request, "mobile_uploads/tags_index.html", locals())
+    

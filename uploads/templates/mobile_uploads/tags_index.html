@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% block scripts %}
+{% endblock %}
+
+{% block buttons %}
+    <a id="refresh" class="ui-btn ui-btn-icon-right ui-icon-recycle ui-btn-icon-notext button">Rafraîchir</a>
+{% endblock %}
+
+{% block header %}
+    Tags
+{% endblock %}
+
+{% block content %}
+    <h3 class="ui-bar ui-corner-all titre">Voici les tags disponibles</h3>
+    
+    <ul id="imageliste" data-role="listview" data-filter="true" data-filter-placeholder="Chercher tag..." data-inset="true" class="liste">
+        {% for tag in tags %}
+            <li>
+                <a href="{% url 'uploads:upload' tag.id  %}" data-ajax="false">{{ tag.value }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

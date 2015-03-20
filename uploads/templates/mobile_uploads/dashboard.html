@@ -9,8 +9,14 @@
     <div class="ui-body ui-corner-all paragraphe">
         <p>Bienvenue sur votre dashboard.</p>
         <fieldset class="ui-grid-a ui-responsive" >
+            {% if student %}
             <div class="ui-block-a"><a href="{% url 'uploads:upload'  %}" class="ui-btn ui-corner-all button" data-ajax="false" >Charger une image</a></div>
+            {% endif %}
+            {% if teacher %}
+            <div class="ui-block-a"><a href="#" class="ui-btn ui-corner-all button" data-ajax="false" >Créer un tag</a></div>
+            {% endif %}
             <div class="ui-block-b"><a href="{% url 'uploads:uploaded'  %}" class="ui-btn ui-corner-all button" data-ajax="false" >Voir les images chargées</a></div>
+            <div class="ui-block-a"><a href="{% url 'uploads:tags_index'  %}" class="ui-btn ui-corner-all button" data-ajax="false" >Voir les tags disponibles</a></div>
         </fieldset>
         <form method="post" action="." enctype="multipart/form-data" data-ajax="false">
             {% csrf_token %}

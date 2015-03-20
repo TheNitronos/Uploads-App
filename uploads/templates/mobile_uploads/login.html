@@ -5,9 +5,9 @@
 {% endblock %}
 
 {% block content %}
-    <h3 class="ui-bar ui-corner-all">Veuillez remplir les champs suivants</h3>
-    <div class="ui-body ui-corner-all">
-        <a href='{% url 'uploads:register' %}' class="ui-btn ui-corner-all" data-ajax="false">S'inscrire</a>
+    <h3 class="ui-bar ui-bar-a ui-corner-all">Veuillez remplir les champs suivants</h3>
+    <div class="ui-body ui-body-a ui-corner-all">
+        <a href='{% url 'uploads:register' %}' class="ui-btn ui-btn-a ui-corner-all" data-ajax="false">S'inscrire</a>
         {% if erreur %}
         <p><strong>Connexion échouée</strong></p>
         {% endif %}

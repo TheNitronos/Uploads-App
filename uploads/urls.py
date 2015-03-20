@@ -11,6 +11,7 @@ urlpatterns = patterns('',
 
     url(r'^base/', views.base, name='base'),
     url(r'^dashboard/', views.dashboard, name='dashboard'),
+    url(r'^tags/', views.tags_index, name='tags_index'),
     
     #upload d'image quelconque
     url(r'^upload/', views.upload, name='upload'),
