@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     url(r'delete/(?P<imageId>\w+)', views.delete, name='delete'),
     url(r'modify/(?P<imageId>\w+)', views.modify, name='modify'),
     url(r'sauver/(?P<tagId>\w+)', views.sauver, name='sauver'),
+    url(r'create/', views.create, name='create'),
     
     #authentification
     url(r'^register/$', views.register, name='register'),

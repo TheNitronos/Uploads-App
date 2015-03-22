@@ -35,15 +35,6 @@ def dashboard(request):
                 teacher.theme = form.cleaned_data["theme"]
                 teacher.save()
                 return redirect('uploads:dashboard')
-    else:
-        form = themeForm()
-    try:
-        student = Student.objects.get(user = request.user)
-        student = True
-    except:
-        teacher = Teacher.objects.get(user = request.user)
-        teacher = True
-        
     return render(request, 'mobile_uploads/dashboard.html', locals())
     
 
@@ -186,8 +177,23 @@ def tags_index(request):
         student = True
     except:
         teacher = True
+    form = tagForm()
     return render(request, "mobile_uploads/tags_index.html", locals())
 
 @login_required
 def upload_redirect(request):
     return redirect('uploads:uploaded')
+
+def create(request):
+    if request.method == "POST":
+        form = tagForm(request.POST, request.FILES)
+        if form.is_valid():
+            tag = Tag()
+            tag.value = form.cleaned_data["value"]
+            tag.save()
+            
+            return redirect ('uploads:tags_index')
+    else:
+        return redirect ('uploads:tag_create')
+        
+    

@@ -39,3 +39,6 @@ class themeForm(forms.Form):
         ("g", "?"),
         ("h", "Pink"),
         ))
+
+class tagForm(forms.Form):
+    value = forms.CharField(label="Tag", max_length=40)
