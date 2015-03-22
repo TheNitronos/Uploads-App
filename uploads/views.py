@@ -4,7 +4,6 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from uploads.auth_utils import *
 
 from uploads.forms import *
 from uploads.models import *
