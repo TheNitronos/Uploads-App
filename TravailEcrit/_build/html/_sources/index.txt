@@ -13,8 +13,6 @@ Bienvenue sur le Travail écrit
    presentation_jQM
    Différence_jQM_boot
    Particularités
-   technologie
-   guide
    mon_application
    ressources
 

@@ -8,20 +8,4 @@
 \BOOKMARK [1][-]{section.3.2}{Fonctionnement g\351n\351ral de Bootstrap}{chapter.3}% 8
 \BOOKMARK [1][-]{section.3.3}{Similitudes et diff\351rences}{chapter.3}% 9
 \BOOKMARK [0][-]{chapter.4}{Particularit\351s du d\351veloppement mobile}{}% 10
-\BOOKMARK [0][-]{chapter.5}{Technologies utilis\351es pour le d\351veloppement}{}% 11
-\BOOKMARK [1][-]{section.5.1}{HTML 5}{chapter.5}% 12
-\BOOKMARK [1][-]{section.5.2}{CSS 3}{chapter.5}% 13
-\BOOKMARK [1][-]{section.5.3}{Javascript}{chapter.5}% 14
-\BOOKMARK [1][-]{section.5.4}{jQuery}{chapter.5}% 15
-\BOOKMARK [1][-]{section.5.5}{Django}{chapter.5}% 16
-\BOOKMARK [1][-]{section.5.6}{python}{chapter.5}% 17
-\BOOKMARK [1][-]{section.5.7}{jQuery Mobile}{chapter.5}% 18
-\BOOKMARK [0][-]{chapter.6}{Guide du programmeur}{}% 19
-\BOOKMARK [1][-]{section.6.1}{Introduction}{chapter.6}% 20
-\BOOKMARK [1][-]{section.6.2}{Les mod\350les}{chapter.6}% 21
-\BOOKMARK [1][-]{section.6.3}{Les formulaires}{chapter.6}% 22
-\BOOKMARK [1][-]{section.6.4}{Les vues}{chapter.6}% 23
-\BOOKMARK [1][-]{section.6.5}{Fichier settings.py}{chapter.6}% 24
-\BOOKMARK [1][-]{section.6.6}{Fichier urls.py}{chapter.6}% 25
-\BOOKMARK [1][-]{section.6.7}{Les templates}{chapter.6}% 26
-\BOOKMARK [0][-]{chapter.7}{Ressources utilis\351es pour mon TM}{}% 27
+\BOOKMARK [0][-]{chapter.5}{Ressources utilis\351es pour mon TM}{}% 11

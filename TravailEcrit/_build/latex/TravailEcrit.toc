@@ -1,28 +1,12 @@
 \select@language {french}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
-\contentsline {chapter}{\numberline {2}Pr\IeC {\'e}sentation de jQuery Mobile}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Pourquoi avoir choisi une biblioth\IeC {\`e}que de ce genre ?}{3}{section.2.1}
-\contentsline {section}{\numberline {2.2}Existe-t-il des concurents \IeC {\`a} jQuery Mobile ?}{3}{section.2.2}
-\contentsline {section}{\numberline {2.3}Le choix de jQuery Mobile plut\IeC {\^o}t que d'un autre concurent}{3}{section.2.3}
-\contentsline {chapter}{\numberline {3}jQuery Mobile et Bootstrap}{5}{chapter.3}
-\contentsline {section}{\numberline {3.1}Fonctionnement g\IeC {\'e}n\IeC {\'e}ral de jQuery Mobile}{5}{section.3.1}
-\contentsline {section}{\numberline {3.2}Fonctionnement g\IeC {\'e}n\IeC {\'e}ral de Bootstrap}{5}{section.3.2}
-\contentsline {section}{\numberline {3.3}Similitudes et diff\IeC {\'e}rences}{6}{section.3.3}
-\contentsline {chapter}{\numberline {4}Particularit\IeC {\'e}s du d\IeC {\'e}veloppement mobile}{7}{chapter.4}
-\contentsline {chapter}{\numberline {5}Technologies utilis\IeC {\'e}es pour le d\IeC {\'e}veloppement}{9}{chapter.5}
-\contentsline {section}{\numberline {5.1}HTML 5}{9}{section.5.1}
-\contentsline {section}{\numberline {5.2}CSS 3}{10}{section.5.2}
-\contentsline {section}{\numberline {5.3}Javascript}{11}{section.5.3}
-\contentsline {section}{\numberline {5.4}jQuery}{12}{section.5.4}
-\contentsline {section}{\numberline {5.5}Django}{12}{section.5.5}
-\contentsline {section}{\numberline {5.6}python}{13}{section.5.6}
-\contentsline {section}{\numberline {5.7}jQuery Mobile}{13}{section.5.7}
-\contentsline {chapter}{\numberline {6}Guide du programmeur}{17}{chapter.6}
-\contentsline {section}{\numberline {6.1}Introduction}{17}{section.6.1}
-\contentsline {section}{\numberline {6.2}Les mod\IeC {\`e}les}{17}{section.6.2}
-\contentsline {section}{\numberline {6.3}Les formulaires}{17}{section.6.3}
-\contentsline {section}{\numberline {6.4}Les vues}{18}{section.6.4}
-\contentsline {section}{\numberline {6.5}Fichier settings.py}{19}{section.6.5}
-\contentsline {section}{\numberline {6.6}Fichier urls.py}{19}{section.6.6}
-\contentsline {section}{\numberline {6.7}Les templates}{20}{section.6.7}
-\contentsline {chapter}{\numberline {7}Ressources utilis\IeC {\'e}es pour mon TM}{25}{chapter.7}
+\contentsline {chapter}{\numberline {2}Pr\IeC {\'e}sentation de jQuery Mobile}{2}{chapter.2}
+\contentsline {section}{\numberline {2.1}Pourquoi avoir choisi une biblioth\IeC {\`e}que de ce genre ?}{2}{section.2.1}
+\contentsline {section}{\numberline {2.2}Existe-t-il des concurents \IeC {\`a} jQuery Mobile ?}{2}{section.2.2}
+\contentsline {section}{\numberline {2.3}Le choix de jQuery Mobile plut\IeC {\^o}t que d'un autre concurent}{2}{section.2.3}
+\contentsline {chapter}{\numberline {3}jQuery Mobile et Bootstrap}{3}{chapter.3}
+\contentsline {section}{\numberline {3.1}Fonctionnement g\IeC {\'e}n\IeC {\'e}ral de jQuery Mobile}{3}{section.3.1}
+\contentsline {section}{\numberline {3.2}Fonctionnement g\IeC {\'e}n\IeC {\'e}ral de Bootstrap}{4}{section.3.2}
+\contentsline {section}{\numberline {3.3}Similitudes et diff\IeC {\'e}rences}{4}{section.3.3}
+\contentsline {chapter}{\numberline {4}Particularit\IeC {\'e}s du d\IeC {\'e}veloppement mobile}{5}{chapter.4}
+\contentsline {chapter}{\numberline {5}Ressources utilis\IeC {\'e}es pour mon TM}{6}{chapter.5}
