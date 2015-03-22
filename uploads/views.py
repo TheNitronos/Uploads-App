@@ -35,6 +35,7 @@ def dashboard(request):
                 teacher.theme = form.cleaned_data["theme"]
                 teacher.save()
                 return redirect('uploads:dashboard')
+    form = themeForm()
     return render(request, 'mobile_uploads/dashboard.html', locals())
     
 
