@@ -19,6 +19,3 @@ $( document ).on( "pagechange", function() {
     $.mobile.loading( "hide", {
     });
 });
-
-
-    

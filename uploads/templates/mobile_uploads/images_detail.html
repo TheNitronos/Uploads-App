@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% load staticfiles %}
 {% block scripts %}
     <script src="{% static 'js/imageDetail/afficherfiltresdetail.js' %}"></script>
@@ -7,7 +8,11 @@
     <script src="{% static 'js/imageDetail/navbar.js' %}"></script>
     <script src="{% static 'js/imageDetail/tailleimage.js' %}"></script>
 {% endblock %}
-{% block header %}Modifications{% endblock %}
+
+{% block header %}
+    Modifications
+{% endblock %}
+
 {% block navbar %}
 <div data-role="navbar">
     <ul>
@@ -15,11 +20,13 @@
         <li><a id="btnmodifier" data-href="modifier">Modifications</a></li>
         <li><a id="btnsupprimer" data-href="supprimer">Supprimer</a></li>
     </ul>
-</div><!-- /navbar -->
+</div>
 {% endblock %}
+
 {% block content %}
 <div id="image">
     <h3 class="ui-bar ui-corner-all titre">Image</h3>
+    
     <div class="ui-body ui-corner-all paragraphe">
         <label for="largeur">Largeur de l'image:</label>
         <input type="range" name="largeur" id="largeur" min="0" max="100" value="50">
@@ -30,6 +37,7 @@
 
 <div id="modifier" class="cache">
     <h3 class="ui-bar ui-corner-all titre">Informations</h3>
+    
     <div class="ui-body ui-corner-all paragraphe">
         <div class="ui-grid-a">
             <div class="ui-block-a">
@@ -65,6 +73,7 @@
     
 <div id="supprimer" class="cache">
     <h3 class="ui-bar ui-corner-all titre">Zone de danger</h3>
+    
     <div class="ui-body ui-corner-all paragraphe">
         <img class="imagePetite imageCentree ui-corner-all" src="{{ image.image.url }}"/>
         <a href="#popupdelete" data-rel="popup" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-left button" data-transition="slide">Supprimer</a>

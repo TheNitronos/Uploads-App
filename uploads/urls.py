@@ -13,24 +13,17 @@ urlpatterns = patterns('',
     url(r'^dashboard/', views.dashboard, name='dashboard'),
     url(r'^tags/', views.tags_index, name='tags_index'),
     
-    #upload d'image quelconque
     url(r'^upload/(?P<tagId>\w+)', views.upload, name='upload'),
     
-    #affichage des images
     url(r'imagesAll/', views.uploaded, name='uploaded'),
     url(r'imageDetail/(?P<imageId>\w+)', views.detail_uploaded, name='detail_uploaded'),
     
-    #suppression d'image et modifications d'images
     url(r'delete/(?P<imageId>\w+)', views.delete, name='delete'),
     url(r'modify/(?P<imageId>\w+)', views.modify, name='modify'),
     url(r'sauver/(?P<tagId>\w+)', views.sauver, name='sauver'),
     url(r'create/', views.create, name='create'),
     
-    #authentification
     url(r'^register/$', views.register, name='register'),
     url(r'^login/$', views.connexion, name='connexion'),
     url(r'^logout/$', views.deconnexion, name='deconnexion'),
 )
-
-
-

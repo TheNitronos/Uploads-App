@@ -1,5 +1,6 @@
 $( document ).on( "pagebeforecreate", function() {
     var theme = $("#theme").text();
+    
     $(".panel").attr('data-theme', theme);
     $(".page").attr('data-theme', theme);
     $(".header").attr('data-theme', theme);
@@ -24,5 +25,4 @@ $( document ).on( "pagebeforecreate", function() {
     
     var panel = 'ui-page-theme-' + theme;
     $(".panel").addClass(panel);
-    
 });

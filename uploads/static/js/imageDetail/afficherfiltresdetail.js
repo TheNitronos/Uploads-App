@@ -14,6 +14,4 @@ $( document ).on( "pagebeforecreate", function() {
     attribut= attribut.replace(re, ".");
     
     $("img").css("-webkit-filter", attribut);
-    
-    
 });

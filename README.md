@@ -11,9 +11,3 @@ admin
 ----------------
 - pseudo: thenitronos
 - password: 12345
-
-ToDo
-----
-
-- qr code generator
-- tag avec images
