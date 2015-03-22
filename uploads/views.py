@@ -42,9 +42,11 @@ def dashboard(request):
 def upload(request, tagId):
     form = UploadForm()
     tag = Tag.objects.get(id=tagId)
+        
     
     return render(request, 'mobile_uploads/upload.html', locals())
 
+@login_required
 def sauver(request, tagId):
     if request.method == "POST":
         form = UploadForm(request.POST, request.FILES)
@@ -208,6 +210,8 @@ def create(request):
         if form.is_valid():
             tag = Tag()
             tag.value = form.cleaned_data["value"]
+            tag.donnee = form.cleaned_data["donnee"]
+            tag.exercice = form.cleaned_data["exercice"]
             tag.save()
             
             return redirect ('uploads:tags_index')
