@@ -18,4 +18,11 @@ $( document ).on( "pagebeforecreate", function() {
     
     var bouton = 'ui-btn-' + theme;
     $(".button").addClass(bouton);
+    
+    var page = 'ui-page-theme-' + theme;
+    $(".page").addClass(page);
+    
+    var panel = 'ui-page-theme-' + theme;
+    $(".panel").addClass(panel);
+    
 });
