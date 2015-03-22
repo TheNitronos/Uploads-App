@@ -35,6 +35,6 @@ class Picture(models.Model):
 class Tag(models.Model):
     value = models.CharField(max_length=30)
     donnee = models.CharField(max_length=500, null=True)
-    exercice = models.ImageField(upload_to="exercices")
-    corrige = models.ImageField(upload_to="corriges")
+    exercice = models.ImageField(upload_to="exercices", null=True)
+    corrige = models.ImageField(upload_to="corriges", null=True)
     
