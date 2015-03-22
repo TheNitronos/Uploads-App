@@ -8,6 +8,7 @@ from uploads.auth_utils import *
 
 from uploads.forms import *
 from uploads.models import *
+from uploads.auth_utils import *
 
 def welcome(request):
     
@@ -69,6 +70,8 @@ def sauver(request, tagId):
                 image.luminosite = form.cleaned_data["luminosite"]
                 image.save()
                 return redirect('uploads:uploaded')
+        else:
+            return redirect('uploads:upload', tagId)
                 
 #requête pour afficher toutes les images uploadées
 @login_required
