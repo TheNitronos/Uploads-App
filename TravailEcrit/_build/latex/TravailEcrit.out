@@ -1,11 +1,15 @@
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
-\BOOKMARK [0][-]{chapter.2}{Pr\351sentation de jQuery Mobile}{}% 2
-\BOOKMARK [1][-]{section.2.1}{Pourquoi avoir choisi une biblioth\350que de ce genre ?}{chapter.2}% 3
-\BOOKMARK [1][-]{section.2.2}{Existe-t-il des concurents \340 jQuery Mobile ?}{chapter.2}% 4
-\BOOKMARK [1][-]{section.2.3}{Le choix de jQuery Mobile plut\364t que d'un autre concurent}{chapter.2}% 5
-\BOOKMARK [0][-]{chapter.3}{jQuery Mobile et Bootstrap}{}% 6
-\BOOKMARK [1][-]{section.3.1}{Fonctionnement g\351n\351ral de jQuery Mobile}{chapter.3}% 7
-\BOOKMARK [1][-]{section.3.2}{Fonctionnement g\351n\351ral de Bootstrap}{chapter.3}% 8
-\BOOKMARK [1][-]{section.3.3}{Similitudes et diff\351rences}{chapter.3}% 9
-\BOOKMARK [0][-]{chapter.4}{Particularit\351s du d\351veloppement mobile}{}% 10
-\BOOKMARK [0][-]{chapter.5}{Ressources utilis\351es pour mon TM}{}% 11
+\BOOKMARK [0][-]{chapter.2}{Particularit\351s du d\351veloppement mobile}{}% 2
+\BOOKMARK [0][-]{chapter.3}{jQuery Mobile et Bootstrap}{}% 3
+\BOOKMARK [1][-]{section.3.1}{Fonctionnement g\351n\351ral de jQuery Mobile}{chapter.3}% 4
+\BOOKMARK [1][-]{section.3.2}{Fonctionnement g\351n\351ral de Bootstrap}{chapter.3}% 5
+\BOOKMARK [1][-]{section.3.3}{Similitudes et diff\351rences}{chapter.3}% 6
+\BOOKMARK [0][-]{chapter.4}{Pr\351sentation de jQuery Mobile}{}% 7
+\BOOKMARK [1][-]{section.4.1}{Pourquoi avoir choisi une biblioth\350que de ce genre ?}{chapter.4}% 8
+\BOOKMARK [1][-]{section.4.2}{Existe-t-il des concurents \340 jQuery Mobile ?}{chapter.4}% 9
+\BOOKMARK [1][-]{section.4.3}{Le choix de jQuery Mobile plut\364t que d'un autre concurent}{chapter.4}% 10
+\BOOKMARK [0][-]{chapter.5}{Views.py et urls.py}{}% 11
+\BOOKMARK [0][-]{chapter.6}{Models.py}{}% 12
+\BOOKMARK [0][-]{chapter.7}{Templates}{}% 13
+\BOOKMARK [0][-]{chapter.8}{Mise en pratique de mon application}{}% 14
+\BOOKMARK [0][-]{chapter.9}{Ressources utilis\351es pour mon TM}{}% 15

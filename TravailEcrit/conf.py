@@ -190,9 +190,16 @@ PREAMBLE = f.read();
 
 latex_elements = {
    'papersize':'a4paper',
-   'pointsize':'11pt',
+   'author': 'Daniel Filipe Nunes Silva',
+   'pointsize':'12pt',
    'classoptions': ',oneside',
-   'date': '27 mars 1015',
+   'date': '27 mars 2015',
+   'release': 'Collège du Sud',
+   'releasename': 'Travail de maturié',
+   'title': 'Développement Web: Conception et développement d\'une plateforme de téléversement d\'images en version mobile',
+   'fontpkg': '\\usepackage{times}',
+   'setspace': '\\linespread{3.05}',
+   'babel': '\\usepackage[francais]{babel}',
 
 }
 

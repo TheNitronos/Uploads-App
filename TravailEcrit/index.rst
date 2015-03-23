@@ -10,10 +10,13 @@ Bienvenue sur le Travail écrit
    :maxdepth: 2
 
    intro
-   presentation_jQM
-   Différence_jQM_boot
    Particularités
-   mon_application
+   Différence_jQM_boot
+   presentation_jQM
+   views_urls
+   models
+   templates
+   pratique
    ressources
 
 
