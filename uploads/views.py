@@ -8,18 +8,20 @@ from django.contrib.auth.decorators import login_required
 from uploads.forms import *
 from uploads.models import *
 
-
+def base(request):
+    
+    return render(request, 'base.html', locals())
 
 def welcome(request):
+    
     return render(request, 'mobile_uploads/welcome.html', locals())
 
-def base(request):
-    return render(request, 'base.html', locals())
 
 @login_required
 def dashboard(request):
     if request.method == "POST":
         form = themeForm(request.POST, request.FILES)
+        
         if form.is_valid():
             try:
                 student = Student.objects.get(user = request.user)
@@ -42,7 +44,6 @@ def dashboard(request):
 def upload(request, tagId):
     form = UploadForm()
     tag = Tag.objects.get(id=tagId)
-        
     
     return render(request, 'mobile_uploads/upload.html', locals())
 
@@ -50,6 +51,7 @@ def upload(request, tagId):
 def sauver(request, tagId):
     if request.method == "POST":
         form = UploadForm(request.POST, request.FILES)
+        
         if form.is_valid():
                 image = Picture()
                 student = Student.objects.get(user=request.user)
@@ -204,14 +206,15 @@ def upload_redirect(request):
     
     return redirect('uploads:uploaded')
 
+@login_required
 def create(request):
     if request.method == "POST":
         form = tagForm(request.POST, request.FILES)
         if form.is_valid():
             tag = Tag()
             tag.value = form.cleaned_data["value"]
-            tag.donnee = form.cleaned_data["donnee"]
-            tag.exercice = form.cleaned_data["exercice"]
+            #tag.donnee = form.cleaned_data["donnee"]
+            #tag.exercice = form.cleaned_data["exercice"]
             tag.save()
             
             return redirect ('uploads:tags_index')

@@ -9,6 +9,7 @@ class BaseProfile(models.Model):
 
 class Teacher(BaseProfile):
     theme = models.CharField(max_length=1, default="a")
+    #classe = models.ForeignKey('Groupe')
     
     def __str__(self):
         return "Professeur {0}".format(self.user.username)
@@ -34,7 +35,10 @@ class Picture(models.Model):
     
 class Tag(models.Model):
     value = models.CharField(max_length=30)
-    donnee = models.CharField(max_length=500, null=True)
-    exercice = models.ImageField(upload_to="exercices", null=True)
-    corrige = models.ImageField(upload_to="corriges", null=True)
+    #donnee = models.CharField(max_length=500, null=True)
+    #exercice = models.ImageField(upload_to="exercices", null=True)
+    #corrige = models.ImageField(upload_to="corriges", null=True)
+    
+#class Groupe(models.Model):
+    #name = models.CharField(max_length=20)
     

@@ -41,5 +41,5 @@ class themeForm(forms.Form):
 
 class tagForm(forms.Form):
     value = forms.CharField(label="Tag", max_length=40, widget=forms.TextInput(attrs={"data-clear-btn": "True"}))
-    donnee = forms.CharField(max_length=500, required=False, widget=forms.Textarea)
-    exercice = forms.ImageField(required=False, widget=forms.FileInput(attrs={"data-clear-btn": "True", 'accept': 'image/*'}))
+    #donnee = forms.CharField(max_length=500, required=False, widget=forms.Textarea)
+    #exercice = forms.ImageField(required=False, widget=forms.FileInput(attrs={"data-clear-btn": "True", 'accept': 'image/*'}))
