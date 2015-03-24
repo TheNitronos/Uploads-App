@@ -213,8 +213,6 @@ def create(request):
         if form.is_valid():
             tag = Tag()
             tag.value = form.cleaned_data["value"]
-            #tag.donnee = form.cleaned_data["donnee"]
-            #tag.exercice = form.cleaned_data["exercice"]
             tag.save()
             
             return redirect ('uploads:tags_index')
