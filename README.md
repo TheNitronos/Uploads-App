@@ -2,6 +2,12 @@
 UploadsApp
 ==========
 
+*************
+Documentation
+*************
+
+https://github.com/TheNitronos/TM_Ecrit
+
 *********************************
 Installer django, pillow et clone
 *********************************
