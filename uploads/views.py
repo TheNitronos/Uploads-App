@@ -8,20 +8,23 @@ from django.contrib.auth.decorators import login_required
 from uploads.forms import *
 from uploads.models import *
 
+#template de base
 def base(request):
     
     return render(request, 'base.html', locals())
-
+    
+#tempalte d'accueil
 def welcome(request):
     
     return render(request, 'mobile_uploads/welcome.html', locals())
 
-
+#dashboard
 @login_required
 def dashboard(request):
+    #requête post pour modification du thème
     if request.method == "POST":
         form = themeForm(request.POST, request.FILES)
-        
+        #différence Student Teacher
         if form.is_valid():
             try:
                 student = Student.objects.get(user = request.user)
@@ -40,6 +43,7 @@ def dashboard(request):
     
     return render(request, 'mobile_uploads/dashboard.html', locals())
 
+#upload pour un tag
 @login_required
 def upload(request, tagId):
     form = UploadForm()
@@ -47,6 +51,7 @@ def upload(request, tagId):
     
     return render(request, 'mobile_uploads/upload.html', locals())
 
+#enregistrement de l'image pour un tag donné
 @login_required
 def sauver(request, tagId):
     if request.method == "POST":
@@ -70,6 +75,7 @@ def sauver(request, tagId):
             
             return redirect('uploads:upload', tagId)
 
+#images uploadées
 @login_required
 def uploaded(request):
     try:
@@ -84,6 +90,7 @@ def uploaded(request):
         
         return render(request, 'mobile_uploads/images_index.html', locals())
 
+#détail d'une image
 @login_required
 def detail_uploaded(request, imageId):
     image = Picture.objects.get(id=imageId)
@@ -92,6 +99,7 @@ def detail_uploaded(request, imageId):
     
     return render(request, 'mobile_uploads/images_detail.html', locals())
     
+#supprimer image
 @login_required    
 def delete(request, imageId):
     if request.method == "POST":
@@ -101,6 +109,7 @@ def delete(request, imageId):
         
     return redirect('uploads:uploaded')
 
+#modifier image
 @login_required
 def modify(request, imageId):
     image = Picture.objects.get(id=imageId)
@@ -116,7 +125,7 @@ def modify(request, imageId):
             
     return redirect('uploads:uploaded')
             
-
+#authentification
 def connexion(request):
     if request.user.is_authenticated():
         return redirect('uploads:dashboard')
@@ -141,14 +150,14 @@ def connexion(request):
         form = LoginForm()
         
     return render(request, "mobile_uploads/login.html", locals())
-    
+#authentification    
 @login_required    
 def deconnexion(request):
     logout(request)
     
     return redirect('uploads:connexion')
     
-    
+#authentification    
 def register(request):
     if request.method == "POST":
         registerform = RegisterForm(data=request.POST)
@@ -189,6 +198,7 @@ def register(request):
         
     return render(request, "mobile_uploads/register.html", {'registerform' : registerform})
 
+#index de tags
 @login_required
 def tags_index(request):
     tags = Tag.objects.all()
@@ -201,11 +211,7 @@ def tags_index(request):
     
     return render(request, "mobile_uploads/tags_index.html", locals())
 
-@login_required
-def upload_redirect(request):
-    
-    return redirect('uploads:uploaded')
-
+#création tag
 @login_required
 def create(request):
     if request.method == "POST":
