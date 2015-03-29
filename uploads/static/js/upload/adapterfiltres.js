@@ -1,5 +1,7 @@
 $( document ).ready(function() {
+    //chaque fois qu'un curseur s'arrête : 
     $( "#contraste" ).on( 'slidestop', function() {
+        //chaque fois qu'un curseur s'arrête : 
         var valeurcontraste = $("#contraste").val();
         var contraste = 'contrast(' + valeurcontraste + ')';
         
@@ -10,6 +12,7 @@ $( document ).ready(function() {
         var saturation = 'saturate(' + valeursaturation + ')';
         
         var attribut =  contraste + luminosite +  saturation;
+        //récupération de la valeur de chaque curseur
         $("#output").css("-webkit-filter", attribut);
     });
     $( "#luminosite" ).on( 'slidestop', function() {
