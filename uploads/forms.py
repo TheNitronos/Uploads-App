@@ -9,10 +9,10 @@ class UploadForm(forms.Form):
     luminosite = forms.DecimalField(min_value=0, max_value=5, widget=forms.NumberInput(attrs={'type': 'range', 'name': 'luminosite', 'id': 'luminosite', 'min': '0', 'max': '5', 'value': '1.5', 'step': '.1'}))
 
 class ModifyForm(forms.Form):
-    description = forms.CharField(max_length=500, required=False, widget=forms.Textarea)
     saturation = forms.DecimalField(min_value=0, max_value=5, widget=forms.NumberInput(attrs={'type': 'range', 'name': 'saturation', 'id': 'modifSaturation', 'min': '0', 'max': '5', 'value': '0', 'step': '.1'}))
     contraste  = forms.DecimalField(min_value=0, max_value=5, widget=forms.NumberInput(attrs={'type': 'range', 'name': 'contraste', 'id': 'modifContraste', 'min': '0', 'max': '5', 'value': '2', 'step': '.1'}))
     luminosite = forms.DecimalField(min_value=0, max_value=5, widget=forms.NumberInput(attrs={'type': 'range', 'name': 'luminosite', 'id': 'modifLuminosite', 'min': '0', 'max': '5', 'value': '1.5', 'step': '.1'}))
+    description = forms.CharField(max_length=500, required=False, widget=forms.Textarea)
     
 class LoginForm(forms.Form):
     username = forms.CharField(label="Nom d'utilisateur", max_length=30, widget=forms.TextInput(attrs={"data-clear-btn": "True"}))

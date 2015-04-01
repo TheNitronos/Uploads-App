@@ -25,9 +25,7 @@
 
 <ul id="imageliste" data-role="listview" data-filter="true" data-filter-placeholder="Chercher tag..." data-inset="true" class="liste">
     {% for tag in tags %}
-        <li>
-            <p>{{ tag.value }}</p>
-        </li>
+        <li data-icon="gear"><a href="#">{{ tag.value }}</a></li>
     {% endfor %}
 </ul>
 {% endblock %}

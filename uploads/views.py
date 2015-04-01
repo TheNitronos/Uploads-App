@@ -236,14 +236,15 @@ def tags_index(request):
 #création tag
 @login_required
 def create(request):
-    if request.method == "POST":
-        form = tagForm(request.POST, request.FILES)
-        if form.is_valid():
-            tag = Tag()
-            tag.value = form.cleaned_data["value"]
-            tag.save()
-            
-            return redirect ('uploads:tags_index')
+    if is_teacher(request.user):
+        if request.method == "POST":
+            form = tagForm(request.POST, request.FILES)
+            if form.is_valid():
+                tag = Tag()
+                tag.value = form.cleaned_data["value"]
+                tag.save()
+                
+                return redirect ('uploads:tags_index')
     else:
+        return redirect('uploads:connexion')
         
-        return redirect ('uploads:tag_create')
