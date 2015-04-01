@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
 class BaseProfile(models.Model):
     user = models.OneToOneField(User)
@@ -9,7 +9,6 @@ class BaseProfile(models.Model):
 
 class Teacher(BaseProfile):
     theme = models.CharField(max_length=1, default="a")
-    
     def __str__(self):
         return "Professeur {0}".format(self.user.username)
 
@@ -31,6 +30,8 @@ class Picture(models.Model):
     luminosite = models.DecimalField(decimal_places=1, max_digits=2, default=0)
     
     date = models.DateField(auto_now_add=True)
+    
+        
     
 class Tag(models.Model):
     value = models.CharField(max_length=30)

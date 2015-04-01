@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 
+from uploads.auth_utils import *
 from uploads.forms import *
 from uploads.models import *
 
@@ -21,27 +22,28 @@ def welcome(request):
 #dashboard
 @login_required
 def dashboard(request):
-    #requête post pour modification du thème
-    if request.method == "POST":
-        form = themeForm(request.POST, request.FILES)
-        #différence Student Teacher
-        if form.is_valid():
-            try:
+    if is_student(request.user):
+        if request.method == "POST":
+            form = themeForm(request.POST, request.FILES)
+            if form.is_valid():
                 student = Student.objects.get(user = request.user)
                 student.theme = form.cleaned_data["theme"]
                 student.save()
-                
-                return redirect('uploads:dashboard')
-            except:
+        else:
+            form = themeForm()
+        
+        return render(request, 'students/dashboard.html', locals())
+    
+    if is_teacher(request.user):
+        if request.method == "POST":
+            form = themeForm(request.POST, request.FILES)
+            if form.is_valid():
                 teacher = Teacher.objects.get(user = request.user)
                 teacher.theme = form.cleaned_data["theme"]
                 teacher.save()
-                
-                return redirect('uploads:dashboard')
-    else:
-        form = themeForm()
-    
-    return render(request, 'mobile_uploads/dashboard.html', locals())
+        else:
+            form = themeForm()
+        return render(request, 'teachers/dashboard.html', locals())
 
 #upload pour un tag
 @login_required
@@ -169,31 +171,35 @@ def register(request):
             
             try:
                 User.objects.get(username=username)
-            
             except User.DoesNotExist:
-                user = User.objects.create_user(username, mail, password)
-                user.save()
-                
                 account_model = None # Modèle à instancier pour créer le compte
                 
                 if registerform.cleaned_data["account_type"] == "student":
                     account_model = Student # Le modèle à utiliser est Student
+                    group_name = "students"
                     
                 elif registerform.cleaned_data["account_type"] == "teacher":
                     account_model = Teacher # Le modèle à utiliser est Teacher
+                    group_name = "teachers"
+                    
+                user = User.objects.create_user(username, mail, password)
+                try:
+                    group = Group.objects.get(name=group_name)
+                except:
+                    group = Group.objects.create(name=group_name)
+                
+                user.groups.add(group)
+                user.save()
                     
                 account = account_model() # Instanciation du modèle
                 account.user = user # Liaison au compte user
                 account.save()
                 
                 return redirect('uploads:connexion')
-                
             except Exception as e:
-                
                 return HttpResponse("Erreur non gérée : {}".format(str(e)))
 
     else:
-        
         registerform = RegisterForm()
         
     return render(request, "mobile_uploads/register.html", {'registerform' : registerform})
