@@ -9,8 +9,6 @@ from uploads import views
 urlpatterns = patterns('',
     #accueil
     url(r'^$', views.welcome, name='welcome'),
-    #template base
-    url(r'^base/', views.base, name='base'),
     #dashboard
     url(r'^dashboard/', views.dashboard, name='dashboard'),
     #tags

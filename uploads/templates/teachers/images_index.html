@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "baseTeachers.html" %}
 
 {% load staticfiles %}
 {% block scripts %}
@@ -31,12 +31,7 @@
             data-transition="slide">
                 <img src="{{ image.image.url }}" id="image" class="image">
                 <p>{{ image.date }}</p>
-                {% if student %}
-                <p>{{ image.description }}</p>
-                {% endif %}
-                {% if teacher %}
                 <p>{{ image.uploader }}</p>
-                {% endif %}
                 
             </a>
             <a href="{% url 'uploads:detail_uploaded' image.id  %}" data-ajax="false"></a>

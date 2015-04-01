@@ -9,18 +9,13 @@ from uploads.auth_utils import *
 from uploads.forms import *
 from uploads.models import *
 
-#template de base
-def base(request):
-    
-    return render(request, 'base.html', locals())
-    
+
 #tempalte d'accueil
 def welcome(request):
     
-    return render(request, 'mobile_uploads/welcome.html', locals())
+    return render(request, 'uploads/welcome.html', locals())
 
 #dashboard
-@login_required
 def dashboard(request):
     if is_student(request.user):
         if request.method == "POST":
@@ -34,7 +29,7 @@ def dashboard(request):
         
         return render(request, 'students/dashboard.html', locals())
     
-    if is_teacher(request.user):
+    elif is_teacher(request.user):
         if request.method == "POST":
             form = themeForm(request.POST, request.FILES)
             if form.is_valid():
@@ -44,88 +39,108 @@ def dashboard(request):
         else:
             form = themeForm()
         return render(request, 'teachers/dashboard.html', locals())
+    else:
+        return redirect('uploads:connexion')
 
 #upload pour un tag
-@login_required
 def upload(request, tagId):
-    form = UploadForm()
-    tag = Tag.objects.get(id=tagId)
+    if is_student(request.user):
+        form = UploadForm()
+        tag = Tag.objects.get(id=tagId)
     
-    return render(request, 'mobile_uploads/upload.html', locals())
+        return render(request, 'students/upload.html', locals())
+    else:
+        return redirect('uploads:connexion')
 
 #enregistrement de l'image pour un tag donné
-@login_required
 def sauver(request, tagId):
-    if request.method == "POST":
-        form = UploadForm(request.POST, request.FILES)
+    if is_student(request.user):
+        if request.method == "POST":
+            form = UploadForm(request.POST, request.FILES)
+            
+            if form.is_valid():
+                    image = Picture()
+                    student = Student.objects.get(user=request.user)
+                    image.uploader = student
+                    image.image = form.cleaned_data["image"]
+                    tagValue = Tag.objects.get(id=tagId)
+                    image.tag = tagValue
+                    image.description = form.cleaned_data["description"]
+                    image.contraste = form.cleaned_data["contraste"]
+                    image.saturation = form.cleaned_data["saturation"]
+                    image.luminosite = form.cleaned_data["luminosite"]
+                    image.save()
+                    
+                    return redirect('uploads:uploaded')
+            else:
+                
+                return redirect('uploads:upload', tagId)
+    else:
+        return redirect('uploads:connexion')
+
+#images uploadées
+def uploaded(request):
+    if is_student(request.user):
+        student = Student.objects.get(user = request.user)
+        images = Picture.objects.all().filter(uploader = student).order_by("tag")
         
-        if form.is_valid():
-                image = Picture()
-                student = Student.objects.get(user=request.user)
-                image.uploader = student
-                image.image = form.cleaned_data["image"]
-                tagValue = Tag.objects.get(id=tagId)
-                image.tag = tagValue
+        return render(request, 'students/images_index.html', locals())
+    elif is_teacher(request.user):
+        images = Picture.objects.all().order_by("tag")
+        
+        return render(request, 'teachers/images_index.html', locals())
+    else:
+        return redirect('uploads:connexion')
+
+#détail d'une image
+def detail_uploaded(request, imageId):
+    if is_student(request.user):
+        image = Picture.objects.get(id=imageId)
+        tag = image.tag.value
+        form = ModifyForm()
+        
+        return render(request, 'students/images_detail.html', locals())
+        
+    elif is_teacher(request.user):
+        image = Picture.objects.get(id=imageId)
+        tag = image.tag.value
+        form = ModifyForm()
+        
+        return render(request, 'teachers/images_detail.html', locals())
+    else:
+        return redirect('uploads:connexion')
+        
+    
+#supprimer image
+def delete(request, imageId):
+    if is_student(request.user):
+        if request.method == "POST":
+            image = Picture.objects.get(id=imageId)
+            image.delete()
+            
+        return redirect('uploads:uploaded')
+    else:
+        return redirect('uploads:connexion')
+        
+
+#modifier image
+def modify(request, imageId):
+    if is_student(request.user):
+        image = Picture.objects.get(id=imageId)
+        if request.method == "POST":
+            form = ModifyForm(request.POST, request.FILES)
+            
+            if form.is_valid():
                 image.description = form.cleaned_data["description"]
                 image.contraste = form.cleaned_data["contraste"]
                 image.saturation = form.cleaned_data["saturation"]
                 image.luminosite = form.cleaned_data["luminosite"]
                 image.save()
                 
-                return redirect('uploads:uploaded')
-        else:
-            
-            return redirect('uploads:upload', tagId)
-
-#images uploadées
-@login_required
-def uploaded(request):
-    try:
-        student = Student.objects.get(user = request.user)
-        images = Picture.objects.all().filter(uploader = student).order_by("tag")
-        student = True
+        return redirect('uploads:uploaded')
+    else:
+        return redirect('uploads:connexion')
         
-        return render(request, 'mobile_uploads/images_index.html', locals())
-    except:
-        teacher = True
-        images = Picture.objects.all().order_by("tag")
-        
-        return render(request, 'mobile_uploads/images_index.html', locals())
-
-#détail d'une image
-@login_required
-def detail_uploaded(request, imageId):
-    image = Picture.objects.get(id=imageId)
-    tag = image.tag.value
-    form = ModifyForm()
-    
-    return render(request, 'mobile_uploads/images_detail.html', locals())
-    
-#supprimer image
-@login_required    
-def delete(request, imageId):
-    if request.method == "POST":
-        image = Picture.objects.get(id=imageId)
-        image.image.delete()
-        image.delete()
-        
-    return redirect('uploads:uploaded')
-
-#modifier image
-@login_required
-def modify(request, imageId):
-    image = Picture.objects.get(id=imageId)
-    if request.method == "POST":
-        form = ModifyForm(request.POST, request.FILES)
-        
-        if form.is_valid():
-            image.description = form.cleaned_data["description"]
-            image.contraste = form.cleaned_data["contraste"]
-            image.saturation = form.cleaned_data["saturation"]
-            image.luminosite = form.cleaned_data["luminosite"]
-            image.save()
-            
-    return redirect('uploads:uploaded')
             
 #authentification
 def connexion(request):
@@ -151,9 +166,8 @@ def connexion(request):
     else:
         form = LoginForm()
         
-    return render(request, "mobile_uploads/login.html", locals())
+    return render(request, "uploads/login.html", locals())
 #authentification    
-@login_required    
 def deconnexion(request):
     logout(request)
     
@@ -202,20 +216,22 @@ def register(request):
     else:
         registerform = RegisterForm()
         
-    return render(request, "mobile_uploads/register.html", {'registerform' : registerform})
+    return render(request, "uploads/register.html", {'registerform' : registerform})
 
 #index de tags
-@login_required
 def tags_index(request):
-    tags = Tag.objects.all()
-    try:
-        student = Student.objects.get(user = request.user)
-        student = True
-    except:
-        teacher = True
-    form = tagForm()
+    if is_student(request.user):
+        tags = Tag.objects.all()
+        return render(request, "students/tags_index.html", locals())
     
-    return render(request, "mobile_uploads/tags_index.html", locals())
+    elif is_teacher(request.user):
+        tags = Tag.objects.all()
+        form = tagForm()
+        return render(request, "teachers/tags_index.html", locals())
+    
+    else:
+        return redirect('uploads:connexion')
+        
 
 #création tag
 @login_required
