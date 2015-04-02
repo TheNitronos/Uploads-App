@@ -8,7 +8,16 @@
 <h3 class="ui-bar ui-corner-all titre">Ajouter une classe</h3>
 
 <div class="ui-body ui-corner-all paragraphe">
-    
+    <div>
+        {% if erreur %}
+        <p>Cette classe existe déjà.</p>
+        {% endif %}
+        <form method="post" enctype="multipart/form-data" action="{% url 'uploads:create_classe'%}" data-ajax="false">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="ui-btn ui-corner-all button" data-textonly="false">Valider !</button>
+        </form>
+    </div>
 </div>
 
 <h3 class="ui-bar ui-corner-all titre">Voici vos classes</h3>

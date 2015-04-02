@@ -251,5 +251,29 @@ def classes_index(request):
     if is_teacher(request.user):
         prof = Teacher.objects.get(user = request.user)
         classes = Classe.objects.filter(teacher = prof)
+        form = classeForm()
+        
         return render(request, "teachers/classes_index.html", locals())
+
+def create_classe(request):
+    if is_teacher(request.user):
+        if request.method == "POST":
+            form = classeForm(request.POST, request.FILES)
+            if form.is_valid():
+                groupName = form.cleaned_data["name"]
+                prof = Teacher.objects.get(user = request.user)
+                try:
+                    group = Group.objects.get(name=groupName)
+                except:
+                    group = Group.objects.create(name=groupName)
+                    groupe = Classe()
+                    groupe.group = group
+                    groupe.name = groupName
+                    groupe.teacher = prof
+                    groupe.save()
+                
+                return redirect('uploads:classes_index')
+    else:
+        return redirect('uploads:connexion')
+    
         

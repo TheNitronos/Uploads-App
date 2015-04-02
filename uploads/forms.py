@@ -41,3 +41,6 @@ class themeForm(forms.Form):
 
 class tagForm(forms.Form):
     value = forms.CharField(label="Tag", max_length=40, widget=forms.TextInput(attrs={"data-clear-btn": "True"}))
+    
+class classeForm(forms.Form):
+    name = forms.CharField(label="Nom de la classe", max_length=20, widget=forms.TextInput(attrs={"data-clear-btn": "True"}))
