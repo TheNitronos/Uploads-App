@@ -1,0 +1,21 @@
+{% extends "baseTeachers.html" %}
+
+{% block header %}
+    Classes
+{% endblock %}
+
+{% block content %}
+<h3 class="ui-bar ui-corner-all titre">Ajouter une classe</h3>
+
+<div class="ui-body ui-corner-all paragraphe">
+    
+</div>
+
+<h3 class="ui-bar ui-corner-all titre">Voici vos classes</h3>
+
+<ul id="imageliste" data-role="listview" data-filter="true" data-filter-placeholder="Chercher classe..." data-inset="true" class="liste">
+    {% for classe in classes %}
+        <li data-icon="gear"><a href="#">{{ classe.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

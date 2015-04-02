@@ -14,7 +14,7 @@ class Teacher(BaseProfile):
 
 class Student(BaseProfile):
     theme = models.CharField(max_length=1, default="a")
-    
+    classes = models.ManyToManyField('Classe')
     def __str__(self):
         return "Etudiant {0}".format(self.user.username)
 
@@ -36,3 +36,7 @@ class Picture(models.Model):
 class Tag(models.Model):
     value = models.CharField(max_length=30)
     
+class Classe(models.Model):
+    group = models.OneToOneField(Group)
+    name = models.CharField(max_length=20)
+    teacher = models.ForeignKey('Teacher')

@@ -82,11 +82,11 @@ def sauver(request, tagId):
 def uploaded(request):
     if is_student(request.user):
         student = Student.objects.get(user = request.user)
-        images = Picture.objects.all().filter(uploader = student).order_by("tag")
+        images = Picture.objects.all().filter(uploader = student).order_by("date")[:10]
         
         return render(request, 'students/images_index.html', locals())
     elif is_teacher(request.user):
-        images = Picture.objects.all().order_by("tag")
+        images = Picture.objects.all().order_by("date")[:10]
         
         return render(request, 'teachers/images_index.html', locals())
     else:
@@ -225,7 +225,7 @@ def tags_index(request):
         return render(request, "students/tags_index.html", locals())
     
     elif is_teacher(request.user):
-        tags = Tag.objects.all()
+        tags = Tag.objects.all()[:10]
         form = tagForm()
         return render(request, "teachers/tags_index.html", locals())
     
@@ -234,7 +234,6 @@ def tags_index(request):
         
 
 #création tag
-@login_required
 def create(request):
     if is_teacher(request.user):
         if request.method == "POST":
@@ -247,4 +246,10 @@ def create(request):
                 return redirect ('uploads:tags_index')
     else:
         return redirect('uploads:connexion')
+        
+def classes_index(request):
+    if is_teacher(request.user):
+        prof = Teacher.objects.get(user = request.user)
+        classes = Classe.objects.filter(teacher = prof)
+        return render(request, "teachers/classes_index.html", locals())
         
