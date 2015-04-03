@@ -254,6 +254,12 @@ def classes_index(request):
         form = classeForm()
         
         return render(request, "teachers/classes_index.html", locals())
+    
+    elif is_student(request.user):
+        student = Student.objects.get(user = request.user)
+        classes = student.classes.all()
+        
+        return render(request, "students/classes_index.html", locals())
 
 def create_classe(request):
     if is_teacher(request.user):
