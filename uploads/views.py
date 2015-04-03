@@ -258,6 +258,7 @@ def classes_index(request):
     elif is_student(request.user):
         student = Student.objects.get(user = request.user)
         classes = student.classes.all()
+        allClasses = Classe.objects.all()
         
         return render(request, "students/classes_index.html", locals())
 

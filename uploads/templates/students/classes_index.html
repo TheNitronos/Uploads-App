@@ -1,4 +1,4 @@
-{% extends "baseTeachers.html" %}
+{% extends "baseStudents.html" %}
 
 {% block header %}
     Classes
@@ -7,9 +7,21 @@
 {% block content %}
 <h3 class="ui-bar ui-corner-all titre">Voici vos classes</h3>
 
-<ul id="imageliste" data-role="listview" data-filter="true" data-filter-placeholder="Chercher classe..." data-inset="true" class="liste">
+<ul id="imageliste" data-role="listview" data-filter="true" data-filter-placeholder="Chercher ma classe..." data-inset="true" class="liste">
     {% for classe in classes %}
         <li data-icon="gear"><a href="#">{{ classe.name }}</a></li>
+    {% endfor %}
+</ul>
+
+<h3 class="ui-bar ui-corner-all titre">Rejoindre une classe</h3>
+
+<form class="ui-filterable">
+    <input id="inset-autocomplete-input" data-type="search" placeholder="Chercher une classe...">
+</form>
+
+<ul data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-input="#inset-autocomplete-input" class="liste">
+    {% for classe in allClasses %}
+        <li><p>{{ classe.name }}</p></li>
     {% endfor %}
 </ul>
 {% endblock %}
