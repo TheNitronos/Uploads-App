@@ -40,7 +40,11 @@ class themeForm(forms.Form):
         ))
 
 class tagForm(forms.Form):
-    value = forms.CharField(label="Tag", max_length=40, widget=forms.TextInput(attrs={"data-clear-btn": "True"}))
-    
+    value = forms.CharField(label="Tag", max_length=30, widget=forms.TextInput(attrs={"data-clear-btn": "True"}))
+    consigne = forms.CharField(label="Consigne", required=False, max_length=250, widget=forms.TextInput(attrs={"data-clear-btn": "True"}))
+    consigneImg = forms.ImageField(label="Consigne en image", required=False, widget=forms.FileInput(attrs={'accept': 'image/*', "data-clear-btn": "True"}))
+    reponse = forms.CharField(label="Réponse", required=False, max_length=250, widget=forms.TextInput(attrs={"data-clear-btn": "True"}))
+    reponseImg = forms.ImageField(label="Réponse en image", required=False, widget=forms.FileInput(attrs={'accept': 'image/*', "data-clear-btn": "True"}))
+
 class classeForm(forms.Form):
     name = forms.CharField(label="Nom de la classe", max_length=20, widget=forms.TextInput(attrs={"data-clear-btn": "True"}))

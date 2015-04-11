@@ -238,12 +238,21 @@ def create(request):
     if is_teacher(request.user):
         if request.method == "POST":
             form = tagForm(request.POST, request.FILES)
-            if form.is_valid():
-                tag = Tag()
-                tag.value = form.cleaned_data["value"]
-                tag.save()
-                
-                return redirect ('uploads:tags_index')
+            try:
+                tag = Tag.objects.get(value=form.cleaned_data["value"])
+            except:    
+                if form.is_valid():
+                    prof = Teacher.objects.get(user=request.user)
+                    tag = Tag()
+                    tag.uploader = prof
+                    tag.value = form.cleaned_data["value"]
+                    tag.value = form.cleaned_data["value"]
+                    tag.value = form.cleaned_data["value"]
+                    tag.value = form.cleaned_data["value"]
+                    tag.value = form.cleaned_data["value"]
+                    tag.save()
+                    
+                    return redirect ('uploads:tags_index')
     else:
         return redirect('uploads:connexion')
         
