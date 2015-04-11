@@ -26,7 +26,7 @@
         
         <!-- début du panel -->
         <div data-role="panel" id="panel" data-position="left" data-display="reveal" class="panel">
-            <h2>Connectez-vous</h2>
+            <h2>Connexion</h2>
             <a href="#" data-rel="close" class="ui-btn ui-mini ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-right button">Fermer</a>
             <ul data-role="listview" data-inset="true" >
                 <li data-role="list-divider">Compte</li>
@@ -38,10 +38,12 @@
         
         <!-- début entête --> 
         <div data-role="header" data-position="fixed" class="header">
-            <a href="#panel" class="ui-btn ui-icon-bars ui-btn-icon-left ui-shadow ui-corner-all button">Panel</a>
+            <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left button" >
+                <a href="#panel" class="ui-btn ui-icon-bullets button ui-btn-icon-notext">Panel</a>
+            </div>
             <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right button" >
                 {% block buttons %}{% endblock %}
-                <a href="#" data-rel="back" class="ui-btn ui-btn-icon-right ui-icon-back ui-btn-icon-notext button">Retour</a>
+                <a href="#" data-rel="back" class="ui-btn ui-icon-back ui-btn-icon-right button ui-btn-icon-notext">Retour</a>
             </div>
         <h1>{% block header %}Base{% endblock %}</h1>
         {% block navbar %}{% endblock %}

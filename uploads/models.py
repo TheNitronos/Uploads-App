@@ -25,16 +25,22 @@ class Picture(models.Model):
     tag = models.ForeignKey('Tag')
     description = models.CharField(max_length=500, null=True)
     
-    saturation = models.DecimalField(decimal_places=1, max_digits=2, default=0)
-    contraste = models.DecimalField(decimal_places=1, max_digits=2, default=0)
-    luminosite = models.DecimalField(decimal_places=1, max_digits=2, default=0)
+    saturation = models.DecimalField(decimal_places=1, max_digits=2)
+    contraste = models.DecimalField(decimal_places=1, max_digits=2)
+    luminosite = models.DecimalField(decimal_places=1, max_digits=2)
     
     date = models.DateField(auto_now_add=True)
     
         
     
 class Tag(models.Model):
+    uploader = models.ForeignKey('Teacher')
+    classes = models.ManyToManyField('Classe')
     value = models.CharField(max_length=30)
+    consigne = models.CharField(max_length=250)
+    consigneImg = models.ImageField(upload_to="consignes")
+    reponse = models.CharField(max_length=250)
+    reponseImg = models.ImageField(upload_to="corriges")
     
 class Classe(models.Model):
     name = models.CharField(max_length=20)

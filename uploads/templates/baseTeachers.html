@@ -45,10 +45,12 @@
         
         <!-- début entête --> 
         <div data-role="header" data-position="fixed" class="header">
-            <a href="#panel" class="ui-btn ui-icon-bars ui-btn-icon-left ui-shadow ui-corner-all button">Panel</a>
+            <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left button" >
+                <a href="#panel" class="ui-btn ui-icon-bullets button ui-btn-icon-notext">Panel</a>
+            </div>
             <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right button" >
                 {% block buttons %}{% endblock %}
-                <a href="#" data-rel="back" class="ui-btn ui-btn-icon-right ui-icon-back ui-btn-icon-notext button">Retour</a>
+                <a href="#" data-rel="back" class="ui-btn ui-icon-back ui-btn-icon-right button ui-btn-icon-notext">Retour</a>
             </div>
         <h1>{% block header %}Base{% endblock %}</h1>
         {% block navbar %}{% endblock %}

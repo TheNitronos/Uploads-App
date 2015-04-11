@@ -287,7 +287,7 @@ def create_classe(request):
 
 def classes_detail(request, classeId):
     classe = Classe.objects.get(id=classeId)
-    eleves = Student.objects.filter(classes=classe)
+    eleves = Student.objects.filter(classes=classe).order_by("user")
     prof = classe.teacher
     allEleves = Student.objects.exclude(classes=classe)
     
@@ -303,8 +303,6 @@ def classes_detail(request, classeId):
         
     else:
         return redirect('uploads:connexion')
-        
-        
         
 def add_student(request, classeId, studentId):
     classe = Classe.objects.get(id=classeId)
