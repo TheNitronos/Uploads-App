@@ -9,7 +9,7 @@
 
 <ul id="imageliste" data-role="listview" data-filter="true" data-filter-placeholder="Chercher un élève..." data-inset="true" class="liste">
     {% for eleve in eleves %}
-        <li data-icon="minus"><a href="#">{{ eleve.user.username }}</a></li>
+        <li data-icon="minus"><a href="#" data-ajax="false">{{ eleve.user.username }}</a></li>
     {% endfor %}
 </ul>
 
@@ -21,7 +21,7 @@
 
 <ul data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-input="#inset-autocomplete-input" class="liste">
     {% for eleve in allEleves %}
-        <li data-icon="plus"><a href="{% url 'uploads:add_student' classe.id eleve.id %}">{{ eleve.user.username }}</a></li>
+        <li data-icon="plus"><a href="{% url 'uploads:add_student' classe.id eleve.id %}" data-ajax="false">{{ eleve.user.username }}</a></li>
     {% endfor %}
 </ul>
 {% endblock %}

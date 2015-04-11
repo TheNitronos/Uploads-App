@@ -291,14 +291,21 @@ def classes_detail(request, classeId):
         return render(request, "teachers/classes_detail.html", locals())
         
 def add_student(request, classeId, studentId):
-    if is_teacher(request.user):
-        if request.method == "POST":
-            classe = Classe.objects.get(id=classeId)
-            eleve = Student.objects.get(id=studentId)
-            eleve.classes.add(classe)
-            eleve.save()
+    classe = Classe.objects.get(id=classeId)
+    eleve = Student.objects.get(id=studentId)
+    eleve.classes.add(classe)
+    eleve.save()
+
+    return redirect('uploads:classes_detail', args=(classeId))
         
-            return redirect('uploads:classes_detail classeId')
+def remove_student(request, classeId, studentId):
+    if request.method == "POST":
+        classe = Classe.objects.get(id=classeId)
+        eleve = Student.objects.get(id=studentId)
+        eleve.classes.add(classe)
+        eleve.save()
+    
+        return redirect('uploads:classes_index')
     else:
         return HttpResponse("ca marche pas")
         
