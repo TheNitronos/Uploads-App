@@ -261,6 +261,9 @@ def classes_index(request):
         allClasses = Classe.objects.all()
         
         return render(request, "students/classes_index.html", locals())
+    
+    else:
+        return redirect('uploads:connexion')
 
 def create_classe(request):
     if is_teacher(request.user):
@@ -283,30 +286,45 @@ def create_classe(request):
         
 
 def classes_detail(request, classeId):
+    classe = Classe.objects.get(id=classeId)
+    eleves = Student.objects.filter(classes=classe)
+    prof = classe.teacher
+    allEleves = Student.objects.exclude(classes=classe)
+    
     if is_teacher(request.user):
-        classe = Classe.objects.get(id=classeId)
-        eleves = Student.objects.filter(classes=classe)
-        allEleves = Student.objects.exclude(classes=classe)
+        if Teacher.objects.get(user = request.user) == classe.teacher:
+            return render(request, "teachers/classes_detail.html", locals())
+        else:
+            return render(request, "teachers/classes_detail_2.html", locals())
+    
+    elif is_student(request.user):
+        vous = Student.objects.get(user = request.user)
+        return render(request, "students/classes_detail.html", locals())
         
-        return render(request, "teachers/classes_detail.html", locals())
+    else:
+        return redirect('uploads:connexion')
+        
+        
         
 def add_student(request, classeId, studentId):
     classe = Classe.objects.get(id=classeId)
     eleve = Student.objects.get(id=studentId)
-    eleve.classes.add(classe)
-    eleve.save()
-
-    return redirect('uploads:classes_detail', args=(classeId))
-        
-def remove_student(request, classeId, studentId):
-    if request.method == "POST":
-        classe = Classe.objects.get(id=classeId)
-        eleve = Student.objects.get(id=studentId)
+    if Teacher.objects.get(user = request.user) == classe.teacher:
         eleve.classes.add(classe)
         eleve.save()
+        
+    url = '/uploads/classe/' + classeId
     
-        return redirect('uploads:classes_index')
-    else:
-        return HttpResponse("ca marche pas")
+    return redirect(url)
+    
         
+def remove_student(request, classeId, studentId):
+    classe = Classe.objects.get(id=classeId)
+    eleve = Student.objects.get(id=studentId)
+    if Teacher.objects.get(user = request.user) == classe.teacher:
+        eleve.classes.remove(classe)
+        eleve.save()
+    
+    url = '/uploads/classe/' + classeId
         
+    return redirect(url)

@@ -1,0 +1,15 @@
+{% extends "baseTeachers.html" %}
+
+{% block header %}
+    {{ classe.name }}
+{% endblock %}
+
+{% block content %}
+<h3 class="ui-bar ui-corner-all titre">{{ prof }}</h3>
+
+<ul id="imageliste" data-role="listview" data-filter="true" data-filter-placeholder="Chercher un élève..." data-inset="true" class="liste">
+    {% for eleve in eleves %}
+        <li>{{ eleve.user.username }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

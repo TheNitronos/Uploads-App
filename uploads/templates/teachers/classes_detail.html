@@ -9,7 +9,7 @@
 
 <ul id="imageliste" data-role="listview" data-filter="true" data-filter-placeholder="Chercher un élève..." data-inset="true" class="liste">
     {% for eleve in eleves %}
-        <li data-icon="minus"><a href="#" data-ajax="false">{{ eleve.user.username }}</a></li>
+        <li data-icon="minus"><a href="{% url 'uploads:remove_student' classe.id eleve.id %}" data-ajax="false">{{ eleve.user.username }}</a></li>
     {% endfor %}
 </ul>
 
