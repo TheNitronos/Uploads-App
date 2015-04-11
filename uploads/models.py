@@ -37,6 +37,5 @@ class Tag(models.Model):
     value = models.CharField(max_length=30)
     
 class Classe(models.Model):
-    group = models.OneToOneField(Group)
     name = models.CharField(max_length=20)
     teacher = models.ForeignKey('Teacher')

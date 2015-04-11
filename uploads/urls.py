@@ -15,6 +15,8 @@ urlpatterns = patterns('',
     url(r'^tags/', views.tags_index, name='tags_index'),
     #classes
     url(r'^classes/', views.classes_index, name='classes_index'),
+    url(r'^classe/(?P<classeId>\w+)', views.classes_detail, name='classes_detail'),
+    url(r'^classes/(?P<classeId>\w+)/(?P<studentId>\w+)', views.add_student, name='add_student'),
     #Créer classes
     url(r'^create_classe/', views.create_classe, name='create_classe'),
     #upload d'une image avec id de celle-ci en argument

@@ -252,7 +252,7 @@ def classes_index(request):
         prof = Teacher.objects.get(user = request.user)
         classes = Classe.objects.filter(teacher = prof)
         form = classeForm()
-        
+
         return render(request, "teachers/classes_index.html", locals())
     
     elif is_student(request.user):
@@ -270,17 +270,36 @@ def create_classe(request):
                 groupName = form.cleaned_data["name"]
                 prof = Teacher.objects.get(user = request.user)
                 try:
-                    group = Group.objects.get(name=groupName)
+                    classe = Classe.objects.get(name=groupName)
                 except:
-                    group = Group.objects.create(name=groupName)
-                    groupe = Classe()
-                    groupe.group = group
-                    groupe.name = groupName
-                    groupe.teacher = prof
-                    groupe.save()
+                    classe = Classe()
+                    classe.name = groupName
+                    classe.teacher = prof
+                    classe.save()
                 
                 return redirect('uploads:classes_index')
     else:
         return redirect('uploads:connexion')
-    
+        
+
+def classes_detail(request, classeId):
+    if is_teacher(request.user):
+        classe = Classe.objects.get(id=classeId)
+        eleves = Student.objects.filter(classes=classe)
+        allEleves = Student.objects.exclude(classes=classe)
+        
+        return render(request, "teachers/classes_detail.html", locals())
+        
+def add_student(request, classeId, studentId):
+    if is_teacher(request.user):
+        if request.method == "POST":
+            classe = Classe.objects.get(id=classeId)
+            eleve = Student.objects.get(id=studentId)
+            eleve.classes.add(classe)
+            eleve.save()
+        
+            return redirect('uploads:classes_detail classeId')
+    else:
+        return HttpResponse("ca marche pas")
+        
         

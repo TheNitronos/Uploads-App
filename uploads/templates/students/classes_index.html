@@ -12,16 +12,4 @@
         <li data-icon="gear"><a href="#">{{ classe.name }}</a></li>
     {% endfor %}
 </ul>
-
-<h3 class="ui-bar ui-corner-all titre">Rejoindre une classe</h3>
-
-<form class="ui-filterable">
-    <input id="inset-autocomplete-input" data-type="search" placeholder="Chercher une classe...">
-</form>
-
-<ul data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-input="#inset-autocomplete-input" class="liste">
-    {% for classe in allClasses %}
-        <li><p>{{ classe.name }}</p></li>
-    {% endfor %}
-</ul>
 {% endblock %}
