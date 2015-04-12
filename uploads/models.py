@@ -9,12 +9,14 @@ class BaseProfile(models.Model):
 
 class Teacher(BaseProfile):
     theme = models.CharField(max_length=1, default="a")
+    
     def __str__(self):
         return "Professeur {0}".format(self.user.username)
 
 class Student(BaseProfile):
     theme = models.CharField(max_length=1, default="a")
     classes = models.ManyToManyField('Classe')
+    
     def __str__(self):
         return "Etudiant {0}".format(self.user.username)
 
@@ -31,6 +33,9 @@ class Picture(models.Model):
     
     date = models.DateField(auto_now_add=True)
     
+    def __str__(self):
+        return self.tag
+    
         
     
 class Tag(models.Model):
@@ -42,6 +47,12 @@ class Tag(models.Model):
     reponse = models.CharField(max_length=250)
     reponseImg = models.ImageField(upload_to="corriges")
     
+    def __str__(self):
+        return self.value
+    
 class Classe(models.Model):
     name = models.CharField(max_length=20)
     teacher = models.ForeignKey('Teacher')
+    
+    def __str__(self):
+        return self.name

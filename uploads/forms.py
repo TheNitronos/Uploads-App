@@ -1,6 +1,8 @@
 from django import forms
 from django.forms.extras.widgets import *
 
+from uploads.models import Classe
+
 class UploadForm(forms.Form):
     description = forms.CharField(max_length=500, required=False, widget=forms.Textarea)
     image = forms.ImageField(error_messages={'required': 'Aucune image n\'a été sélectionnée'}, widget=forms.FileInput(attrs={'id': 'imageInput','src': '', 'onchange': 'loadFile(this)', 'accept': 'image/*', "value": "0", "data-clear-btn": "True"}))
@@ -39,12 +41,15 @@ class themeForm(forms.Form):
         ("h", "Pink"),
         ))
 
+
 class tagForm(forms.Form):
     value = forms.CharField(label="Tag", max_length=30, widget=forms.TextInput(attrs={"data-clear-btn": "True"}))
     consigne = forms.CharField(label="Consigne", required=False, max_length=250, widget=forms.TextInput(attrs={"data-clear-btn": "True"}))
     consigneImg = forms.ImageField(label="Consigne en image", required=False, widget=forms.FileInput(attrs={'accept': 'image/*', "data-clear-btn": "True"}))
     reponse = forms.CharField(label="Réponse", required=False, max_length=250, widget=forms.TextInput(attrs={"data-clear-btn": "True"}))
     reponseImg = forms.ImageField(label="Réponse en image", required=False, widget=forms.FileInput(attrs={'accept': 'image/*', "data-clear-btn": "True"}))
+    classes = forms.ModelMultipleChoiceField(label="", queryset=Classe.objects.all(), to_field_name="name", widget=forms.CheckboxSelectMultiple())
 
 class classeForm(forms.Form):
     name = forms.CharField(label="Nom de la classe", max_length=20, widget=forms.TextInput(attrs={"data-clear-btn": "True"}))
+    

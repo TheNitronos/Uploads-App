@@ -82,11 +82,11 @@ def sauver(request, tagId):
 def uploaded(request):
     if is_student(request.user):
         student = Student.objects.get(user = request.user)
-        images = Picture.objects.all().filter(uploader = student).order_by("date")[:10]
+        images = Picture.objects.all().filter(uploader = student).order_by("date")
         
         return render(request, 'students/images_index.html', locals())
     elif is_teacher(request.user):
-        images = Picture.objects.all().order_by("date")[:10]
+        images = Picture.objects.all().order_by("date")
         
         return render(request, 'teachers/images_index.html', locals())
     else:
@@ -225,8 +225,11 @@ def tags_index(request):
         return render(request, "students/tags_index.html", locals())
     
     elif is_teacher(request.user):
-        tags = Tag.objects.all()[:10]
+        tags = Tag.objects.all()
+        prof = Teacher.objects.get(user=request.user)
+        classes = Classe.objects.filter(teacher=prof)
         form = tagForm()
+        form.fields['classes'].queryset = Classe.objects.filter(teacher=prof)
         return render(request, "teachers/tags_index.html", locals())
     
     else:
@@ -246,10 +249,16 @@ def create(request):
                     tag = Tag()
                     tag.uploader = prof
                     tag.value = form.cleaned_data["value"]
-                    tag.value = form.cleaned_data["value"]
-                    tag.value = form.cleaned_data["value"]
-                    tag.value = form.cleaned_data["value"]
-                    tag.value = form.cleaned_data["value"]
+                    tag.consigne = form.cleaned_data["consigne"]
+                    tag.consigneImg = form.cleaned_data["consigneImg"]
+                    tag.reponse = form.cleaned_data["reponse"]
+                    tag.reponseImg = form.cleaned_data["reponseImg"]
+                    tag.save()
+                    
+                    for classesName in form.cleaned_data['classes']:
+                        classe = Classe.objects.get(name=classesName)
+                        tag.classes.add(classe)
+    
                     tag.save()
                     
                     return redirect ('uploads:tags_index')
