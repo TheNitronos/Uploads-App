@@ -30,7 +30,8 @@ class RegisterForm(forms.Form):
         ))
         
 class themeForm(forms.Form):
-    theme = forms.ChoiceField(label='Choisissez votre thème:', choices=(
+    theme = forms.ChoiceField(label='', choices=(
+        ("", "Thème"),
         ("a", "Standard"),
         ("b", "Flat Orange"),
         ("c", "Flat Blue"),
@@ -43,13 +44,28 @@ class themeForm(forms.Form):
 
 
 class tagForm(forms.Form):
-    value = forms.CharField(label="Tag", max_length=30, widget=forms.TextInput(attrs={"data-clear-btn": "True"}))
-    consigne = forms.CharField(label="Consigne", required=False, max_length=250, widget=forms.TextInput(attrs={"data-clear-btn": "True"}))
-    consigneImg = forms.ImageField(label="Consigne en image", required=False, widget=forms.FileInput(attrs={'accept': 'image/*', "data-clear-btn": "True"}))
-    reponse = forms.CharField(label="Réponse", required=False, max_length=250, widget=forms.TextInput(attrs={"data-clear-btn": "True"}))
-    reponseImg = forms.ImageField(label="Réponse en image", required=False, widget=forms.FileInput(attrs={'accept': 'image/*', "data-clear-btn": "True"}))
+    value = forms.CharField(label="", max_length=30, widget=forms.TextInput(attrs={"data-clear-btn": "True", "placeholder": "Tag"}))
+    consigne = forms.CharField(label="", required=False, max_length=250, widget=forms.Textarea(attrs={"data-clear-btn": "True", "placeholder": "Consigne"}))
     classes = forms.ModelMultipleChoiceField(label="", queryset=Classe.objects.all(), to_field_name="name", widget=forms.CheckboxSelectMultiple())
+    consigneImg = forms.ImageField(label="Consigne en image (Facultatif)", required=False, widget=forms.FileInput(attrs={'accept': 'image/*', "data-clear-btn": "True", "placeholder": "Consigne en image (Facultatif)"}))
+    reponse = forms.CharField(label="", required=False, max_length=250, widget=forms.Textarea(attrs={"data-clear-btn": "True", "placeholder": "Réponse (Facultatif)"}))
+    reponseImg = forms.ImageField(label="Réponse en image (Facultatif)", required=False, widget=forms.FileInput(attrs={'accept': 'image/*', "data-clear-btn": "True", "placeholder": "Réponse en image (Facultatif)"}))
 
 class classeForm(forms.Form):
-    name = forms.CharField(label="Nom de la classe", max_length=20, widget=forms.TextInput(attrs={"data-clear-btn": "True"}))
+    name = forms.CharField(label="", max_length=20, widget=forms.TextInput(attrs={"data-clear-btn": "True", "placeholder": "Nom de la classe"}))
+    branche = forms.ChoiceField(label='', choices=(
+        ("", "Choisissez votre Branche"),
+        ("Allemand", "Allemand"),
+        ("Anglais", "Anglais"),
+        ("Arts Visuels", "Arts Visuels"),
+        ("Biologie", "Biologie"),
+        ("Chimie", "Chimie"),
+        ("Français", "Français"),
+        ("Histoire", "Histoire"),
+        ("Maths", "Maths"),
+        ("Musique", "Musique"),
+        ("Philosophie", "Philosophie"),
+        ("Physique", "Physique"),
+        ("Sport", "Sport"),
+        ))
     

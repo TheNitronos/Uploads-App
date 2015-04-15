@@ -23,9 +23,16 @@
 
 <h3 class="ui-bar ui-corner-all titre">Voici les tags</h3>
 
-<ul id="imageliste" data-role="listview" data-filter="true" data-filter-placeholder="Chercher tag..." data-inset="true" class="liste">
-    {% for tag in tags %}
-        <li data-icon="gear"><a href="#">{{ tag.value }}</a></li>
-    {% endfor %}
-</ul>
+<div class="ui-body ui-corner-all paragraphe">
+    <ul id="imageliste" data-role="listview" data-filter="true" data-filter-placeholder="Chercher tag..." data-inset="true" class="liste">
+        {% for tag in tags %}
+            <div data-role="collapsible" data-inset="true" data-iconpos="right">
+                <h4>{{ tag.value }}</h4>
+                <a href="#" class="ui-btn">Consigne</a>
+                <a href="#" class="ui-btn">Réponse</a>
+                <a href="#" class="ui-btn">Supprimer</a>
+            </div>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

@@ -86,7 +86,8 @@ def uploaded(request):
         
         return render(request, 'students/images_index.html', locals())
     elif is_teacher(request.user):
-        images = Picture.objects.all().order_by("date")
+        prof = Teacher.objects.get(user=request.user)
+        tags = Tag.objects.filter(uploader=prof)
         
         return render(request, 'teachers/images_index.html', locals())
     else:
@@ -221,13 +222,16 @@ def register(request):
 #index de tags
 def tags_index(request):
     if is_student(request.user):
-        tags = Tag.objects.all()
+        eleve = Student.objects.get(user=request.user)
+        classes = eleve.classes.queryset
+        for classe in classes:
+            tags += Tag.objects.filter(classes=classe)
         return render(request, "students/tags_index.html", locals())
     
     elif is_teacher(request.user):
-        tags = Tag.objects.all()
         prof = Teacher.objects.get(user=request.user)
         classes = Classe.objects.filter(teacher=prof)
+        tags = Tag.objects.filter(uploader=prof)
         form = tagForm()
         form.fields['classes'].queryset = Classe.objects.filter(teacher=prof)
         return render(request, "teachers/tags_index.html", locals())
@@ -296,9 +300,10 @@ def create_classe(request):
                     classe = Classe()
                     classe.name = groupName
                     classe.teacher = prof
+                    classe.branche = form.cleaned_data["branche"]
                     classe.save()
                 
-                return redirect('uploads:classes_index')
+        return redirect('uploads:classes_index')
     else:
         return redirect('uploads:connexion')
         

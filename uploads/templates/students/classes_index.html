@@ -9,7 +9,7 @@
 
 <ul id="imageliste" data-role="listview" data-filter="true" data-filter-placeholder="Chercher ma classe..." data-inset="true" class="liste">
     {% for classe in classes %}
-        <li data-icon="bars"><a href="{% url 'uploads:classes_detail' classe.id %}" data-ajax="false">{{ classe.name }}</a></li>
+        <li data-icon="bars"><a href="{% url 'uploads:classes_detail' classe.id %}" data-ajax="false">{{classe.branche }}: {{ classe.name }}</a></li>
     {% endfor %}
 </ul>
 {% endblock %}

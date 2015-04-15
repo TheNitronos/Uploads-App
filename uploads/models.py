@@ -43,15 +43,17 @@ class Tag(models.Model):
     classes = models.ManyToManyField('Classe')
     value = models.CharField(max_length=30)
     consigne = models.CharField(max_length=250)
-    consigneImg = models.ImageField(upload_to="consignes")
-    reponse = models.CharField(max_length=250)
-    reponseImg = models.ImageField(upload_to="corriges")
+    consigneImg = models.ImageField(upload_to="consignes", null=True)
+    reponse = models.CharField(max_length=250, null=True)
+    reponseImg = models.ImageField(upload_to="corriges", null=True)
     
     def __str__(self):
         return self.value
+        
     
 class Classe(models.Model):
     name = models.CharField(max_length=20)
+    branche = models.CharField(max_length=50)
     teacher = models.ForeignKey('Teacher')
     
     def __str__(self):
