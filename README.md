@@ -1,30 +1,19 @@
-==========
-UploadsApp
-==========
+# Upload App
 
-*************
-Documentation
-*************
+## Description
+This app has been developped for teachers and students to communicate. Teachers can upload homeworks (text or images) to students enrolled to their classes. Students are then able to upload their solutions, which will appear on their teacher dashboard.
 
-https://github.com/TheNitronos/TM_Ecrit
+## Motivation
+This was my high school project. The idea was to develop a mobile web app taking advantage of the smartphone camera.
 
-*********************************
-Installer django, pillow et clone
-*********************************
+## Tecnologies
+- Python and Django
+- HTML, CSS and JavaScript
+- JQuery and JQuery Mobile
+- Materialize for lifted version
 
-- sudo pip3 install django
-- sudo pip3 install pillow
-- git clone https://github.com/TheNitronos/projet_daniel
-
-***************
-Créer superuser
-***************
-
-- python3 manage.py createsuperuser
-
-
-*****************
-lancer le serveur
-*****************
-
-- python3 manage.py runserver $IP:$PORT
+## Main Functionnalities
+- Upload and download images
+- Take images directly from the web app
+- Adjust contrast, brightness and saturation
+- Mobile interface
