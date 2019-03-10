@@ -1,0 +1,15 @@
+{% extends "baseStudents.html" %}
+
+{% block header %}
+    Classes
+{% endblock %}
+
+{% block content %}
+<h3 class="ui-bar ui-corner-all titre">Voici vos classes</h3>
+
+<ul id="imageliste" data-role="listview" data-filter="true" data-filter-placeholder="Chercher ma classe..." data-inset="true" class="liste">
+    {% for classe in classes %}
+        <li data-icon="bars"><a href="{% url 'uploads:classes_detail' classe.id %}" data-ajax="false">{{classe.branche }}: {{ classe.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

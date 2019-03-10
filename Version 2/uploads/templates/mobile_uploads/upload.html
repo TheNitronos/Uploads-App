@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% block scripts %}
+    <script src="{% static 'js/upload/adapterfiltres.js' %}"></script>
+    <script src="{% static 'js/upload/afficherapercu.js' %}"></script>
+    <script src="{% static 'js/upload/uploadsLoader.js' %}"></script>
+{% endblock %}
+
+{% block header %}
+    Upload
+{% endblock %}
+
+{% block content %}
+<h3 class="ui-bar ui-corner-all titre">Tag : {{ tag.value }}</h3>
+
+<div class="ui-body ui-corner-all paragraphe">
+    <div>
+        <form method="post" enctype="multipart/form-data" action="{% url 'uploads:sauver' tag.id %}" data-ajax="false">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div id="image"> 
+                <img id="output" class="imageCentree ui-corner-all" style="-webkit-filter: contrast(2); -webkit-filter: brightness(1.5); -webkit-filter: saturate(0);"/>
+            </div>
+            <button type="submit" class="ui-btn btn-bottom buttonLoad ui-corner-all button" data-textonly="false" data-textvisible="true" data-msgtext="L'image est en chargement" data-inline="true">Uploader !</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

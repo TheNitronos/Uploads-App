@@ -1,0 +1,27 @@
+{% extends "baseTeachers.html" %}
+
+{% block header %}
+    {{classe.branche }}: {{ classe.name }}
+{% endblock %}
+
+{% block content %}
+<h3 class="ui-bar ui-corner-all titre">Elèves actuels</h3>
+
+<ul id="imageliste" data-role="listview" data-filter="true" data-filter-placeholder="Chercher un élève..." data-inset="true" class="liste">
+    {% for eleve in eleves %}
+        <li data-icon="minus"><a href="{% url 'uploads:remove_student' classe.id eleve.id %}" data-ajax="false">{{ eleve.user.username }}</a></li>
+    {% endfor %}
+</ul>
+
+<h3 class="ui-bar ui-corner-all titre">Elèves à ajouter</h3>
+
+<form class="ui-filterable">
+    <input id="inset-autocomplete-input" data-type="search" placeholder="Chercher un élève...">
+</form>
+
+<ul data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-input="#inset-autocomplete-input" class="liste">
+    {% for eleve in allEleves %}
+        <li data-icon="plus"><a href="{% url 'uploads:add_student' classe.id eleve.id %}" data-ajax="false">{{ eleve.user.username }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

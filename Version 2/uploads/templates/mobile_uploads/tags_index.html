@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block buttons %}
+    <a id="refresh" class="ui-btn ui-btn-icon-right ui-icon-recycle ui-btn-icon-notext button">Rafraîchir</a>
+{% endblock %}
+
+{% block header %}
+    Tags
+{% endblock %}
+
+{% block content %}
+{% if teacher %}
+<h3 class="ui-bar ui-corner-all titre">Créer un tag</h3>
+
+<div class="ui-body ui-corner-all paragraphe">
+    <div>
+        <form method="post" enctype="multipart/form-data" action="{% url 'uploads:create'%}" data-ajax="false">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="ui-btn ui-corner-all button" data-textonly="false">Valider !</button>
+        </form>
+    </div>
+</div>
+{% endif %}
+
+{% if student %}
+<h3 class="ui-bar ui-corner-all titre">Cliquez sur un tag pour uploader</h3>
+{% else %}
+<h3 class="ui-bar ui-corner-all titre">Voici les tags</h3>
+{% endif %}
+<ul id="imageliste" data-role="listview" data-filter="true" data-filter-placeholder="Chercher tag..." data-inset="true" class="liste">
+    {% for tag in tags %}
+        <li>
+            {% if student %}
+            <a href="{% url 'uploads:upload' tag.id  %}" data-ajax="false">{{ tag.value }}</a>
+            {% endif %}
+            {% if teacher %}
+            <p>{{ tag.value }}</p>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

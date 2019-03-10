@@ -1,0 +1,75 @@
+<!DOCTYPE html> 
+<html> 
+    <head>
+        <meta charset="utf-8" />
+        <title>Uploads</title>
+        <!-- ligne pour que le contenu s'adapte à l'appreil mobile --> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- chargement des script et du css nécessaire --> 
+        {% load staticfiles %}
+        <!-- cdn jqm et jq -->
+        <link rel="stylesheet" href="{% static 'jqm/themes/daniel3.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'jqm/themes/jquery.mobile.icons.min.css' %}" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <!-- mes scripts et css et favicon -->
+        <link rel="shortcut icon" href="{% static "favI/favicon.ico" %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <script src="{% static 'js/panel.js' %}"></script>
+        <script src="{% static 'js/theme.js' %}"></script>
+        {% block scripts %}
+        {% endblock %}
+    </head> 
+    <body>
+        <!-- début de page --> 
+        <div data-role="page" id="page" class="page">
+        
+        <!-- début du panel -->
+        <div data-role="panel" id="panel" data-position="left" data-display="reveal" class="panel">
+            <h2>{{ user.username }}</h2>
+            <p id="theme" class="cache">{{ user.teacher.theme }}</p>
+            
+            <a href="#" data-rel="close" class="ui-btn ui-mini ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-right button">Fermer</a>
+            <ul data-role="listview" data-inset="true" >
+                <li data-role="list-divider">Application</li>
+                <li><a href="{% url 'uploads:uploaded' %}" data-ajax="false">Voir Tags</a></li>
+                <li><a href="{% url 'uploads:tags_index' %}" data-ajax="false">Créer Tags</a></li>
+                <li><a href="{% url 'uploads:classes_index' %}" data-ajax="false">Classes</a></li>
+                <li data-role="list-divider">Personnel</li>
+                <li><a href="{% url 'uploads:dashboard' %}" data-ajax="false">Dashboard</a></li>
+                <li><a href="{% url 'uploads:deconnexion' %}" data-ajax="false">Se déconnecter</a></li>
+            </ul>
+        </div>
+        <!-- fin du panel -->
+        
+        <!-- début entête --> 
+        <div data-role="header" data-position="fixed" class="header">
+            <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left button" >
+                <a href="#panel" class="ui-btn ui-icon-bullets button ui-btn-icon-notext">Panel</a>
+            </div>
+            <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right button" >
+                {% block buttons %}{% endblock %}
+                <a href="#" data-rel="back" class="ui-btn ui-icon-back ui-btn-icon-right button ui-btn-icon-notext">Retour</a>
+            </div>
+        <h1>{% block header %}Base{% endblock %}</h1>
+        {% block navbar %}{% endblock %}
+        </div>
+        <!-- fin entête -->
+        
+        <!-- début contenu --> 
+        <div role="main" class="ui-content contenu" class="content">
+        {% block content %}<p>Content</p>{% endblock %}
+        </div>
+        <!-- fin contenu -->
+        
+        <!-- début bas de page --> 
+        <div data-role="footer" data-position="fixed" class="footer">
+        <h4>Mobile</h4>
+        </div>
+        <!-- fin bas de page -->
+        
+        </div>
+        <!-- fin de page --> 
+    </body>
+</html>
